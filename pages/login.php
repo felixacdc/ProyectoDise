@@ -4,14 +4,15 @@
 	<meta charset="UTF-8">
 	<title>Login</title>
 	<link rel="stylesheet" href="../css/login.css">
+	<link rel="stylesheet" href="../font-awesome-4.4.0/css/font-awesome.min.css">
 </head>
 <body>
 	<form action="">
-	  <h2><span class="entypo-login"></span> Login</h2>
-	  <button class="submit"><span class="entypo-lock"></span></button>
-	  <span class="entypo-user inputUserIcon"></span>
+	  <h2><span class="fa fa-sign-in"></span> Login</h2>
+	  <button class="submit"><span class="fa fa-unlock-alt"></span></button>
+	  <span class="fa fa-user inputUserIcon"></span>
 	  <input type="text" class="user" placeholder="ursername"/>
-	  <span class="entypo-key inputPassIcon"></span>
+	  <span class="fa fa-key inputPassIcon"></span>
 	  <input type="password" class="pass"placeholder="password"/>
 	</form>
 	
