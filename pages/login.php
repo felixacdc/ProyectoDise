@@ -4,20 +4,23 @@
 	<meta charset="UTF-8">
 	<title>Login</title>
 	<link rel="stylesheet" href="../css/login.css">
-
 	<style>
 		body{
-			background:url("../assets/img/header_bg.jpg");
+			background:url("../assets/img/header_login.jpg");
+		}
+		.sombra{
+			text-shadow: black 0.1em 0.1em 0.1em;
 		}
 	</style>
+	<link rel="stylesheet" href="../font-awesome-4.4.0/css/font-awesome.min.css">
 </head>
 <body>
 	<form action="">
-	  <h2><span class="entypo-login"></span> Login</h2>
-	  <button class="submit"><span class="entypo-lock"></span></button>
-	  <span class="entypo-user inputUserIcon"></span>
+	  <h1><span class="fa fa-sign-in"></span><span class="sombra"> Login</span></h1>
+	  <button class="submit"><span class="fa fa-unlock-alt"></span></button>
+	  <span class="fa fa-user inputUserIcon"></span>
 	  <input type="text" class="user" placeholder="ursername"/>
-	  <span class="entypo-key inputPassIcon"></span>
+	  <span class="fa fa-key inputPassIcon"></span>
 	  <input type="password" class="pass"placeholder="password"/>
 	</form>
 	
