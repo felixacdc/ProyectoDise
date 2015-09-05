@@ -1,4 +1,7 @@
-/* zocial */
+.sombra{
+  text-shadow: black 0.1em 0.1em 0.1em;
+}
+
 [class*="entypo-"]:before {
   font-family: 'entypo', sans-serif;
 }
@@ -18,7 +21,7 @@ h1 {
 }
 
 body {
-  background: #272125;
+  background:url("../assets/img/header_login.jpg");
   font-family: 'Roboto', sans-serif;
   
 }
@@ -36,7 +39,7 @@ input {
   border:0px;
   background: rgba(255,255,255,.2);
   display: block;
-  margin: 15px;
+  margin: 15px auto;
   width: 300px;  
   color:white;
   font-size:18px;
@@ -63,14 +66,14 @@ button {
 
 .inputUserIcon {
   position:absolute;
-  top:68px;
+  top:75px;
   right: 80px;
   color:white;
 }
 
 .inputPassIcon {
   position:absolute;
-  top:136px;
+  top:145px;
   right: 80px;
   color:white;
 }
@@ -82,3 +85,34 @@ input::-webkit-input-placeholder {
 input:focus::-webkit-input-placeholder {
   color: #e74c3c;
 }
+
+.ocultar{
+  display: none;
+}
+
+@media only screen and (max-width: 500px) {
+  button {
+    display: none;
+    height: 51px;
+    width: 300px;
+  }
+
+  .ocultar{
+    float: left;
+    display: block;
+    margin-left:10px;
+  }
+
+  form{
+    width:320px;
+  }
+
+  .inputUserIcon {
+    right: 20px;
+  }
+
+  .inputPassIcon {
+    right: 20px;
+  }
+}
+
