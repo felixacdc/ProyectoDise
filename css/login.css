@@ -104,6 +104,7 @@ input:focus::-webkit-input-placeholder {
   }
 
   form{
+    margin-top: 100px;
     width:320px;
   }
 
