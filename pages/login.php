@@ -4,6 +4,12 @@
 	<meta charset="UTF-8">
 	<title>Login</title>
 	<link rel="stylesheet" href="../css/login.css">
+
+	<style>
+		body{
+			background:url("../assets/img/header_bg.jpg");
+		}
+	</style>
 </head>
 <body>
 	<form action="">
