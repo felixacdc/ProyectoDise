@@ -79,7 +79,8 @@ $(document).ready(function(){
 		}
 
 		if(ejecutar)
-		{
+		{	
+			
 			setTimeout(function(){
 			$("form").css("margin-top","230px");
 			},410);

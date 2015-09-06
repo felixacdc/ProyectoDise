@@ -12,18 +12,18 @@
 	
 	<div class="MensajeError animated rubberBand retraso-2">Error al ingresar los datos</div>
 
-	<form action="#" class="animated fadeInDown retraso-2">
+	<form name="Logins" action="#" class="animated fadeInDown retraso-2">
 	  <h1><span class="fa fa-sign-in"></span><span class="sombra"> Login</span></h1>
-	  
-	  <button id="submit"><span class="fa fa-unlock-alt"></span></button>
+
+	  <button type="button" id="submit" class="button"><span class="fa fa-unlock-alt"></span></button>
 
 	  <span class="fa fa-user inputUserIcon" id="spuser"></span>
-	  <input type="text" id="user"  placeholder="Usuario" autocomplete="off"/>
+	  <input type="text" id="user" class="input" placeholder="Usuario" autocomplete="off"/>
 
 	  <span class="fa fa-key inputPassIcon" id="sppass"></span>
-	  <input type="password" id="pass" placeholder="Contraseña" autocomplete="off"/>
+	  <input type="password" id="pass" class="input" placeholder="Contraseña" autocomplete="off"/>
 
-	  <button class="ocultar" id="submit2"><span class="fa fa-unlock-alt"></span></button>
+	  <button type="button" class="ocultar button" id="submit2"><span class="fa fa-unlock-alt"></span></button>
 	</form>
 	
 	<script src="../js/jquery-1.11.3.min.js"></script>
