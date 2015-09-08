@@ -65,6 +65,14 @@ form {
   margin-top: 0;
 }
 
+.button:hover{
+  background: #F74835;
+}
+
+.button:focus{
+  outline:0px;
+}
+
 .inputUserIcon {
   position:absolute;
   top:75px;
