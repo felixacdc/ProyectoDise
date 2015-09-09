@@ -12,7 +12,7 @@
 	
 	<div class="MensajeError animated rubberBand retraso-2">Error al ingresar los datos</div>
 
-	<form name="Logins" action="#" class="animated fadeInDown retraso-2">
+	<form name="Logins" action="#" class="animated fadeInDown retraso-6">
 	  <h1><span class="fa fa-sign-in"></span><span class="sombra"> Login</span></h1>
 
 	  <button type="button" id="submit" class="button"><span class="fa fa-unlock-alt"></span></button>
