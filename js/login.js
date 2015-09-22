@@ -48,6 +48,19 @@ function limpiarInput(){
 	password=$("#pass").val().trim();
 }
 
+/*--------------------------------------
+			Verificacion de datos
+-----------------------------------------*/
+
+function verificarDatos()
+{
+	
+}
+
+/*--------------------------------------
+					Funcion Validar
+-----------------------------------------*/
+
 function fnvalidacion(){
 		resets();
 		ejecutar=true;
@@ -58,8 +71,8 @@ function fnvalidacion(){
 			$(".MensajeError").fadeIn();
 			$("#user").addClass("holder errorinput");
 			$("#spuser").addClass("errorspan");
-			$("form").css("margin-top","100px");			
-			$('#user').val(user);			
+			$("form").css("margin-top","100px");
+			$('#user').val(user);
 			ejecutar=false;
 		}else
 		{
@@ -69,8 +82,8 @@ function fnvalidacion(){
 				$(".MensajeError").fadeIn();
 				$("#user").addClass("holder errorinput");
 				$("#spuser").addClass("errorspan");
-				$("form").css("margin-top","100px");			
-				$('#user').val(user);			
+				$("form").css("margin-top","100px");
+				$('#user').val(user);
 				ejecutar=false;
 			}else
 			{
@@ -79,8 +92,8 @@ function fnvalidacion(){
 					$(".MensajeError").fadeIn();
 					$("#pass").addClass("holder errorinput");
 					$("#sppass").addClass("errorspan");
-					$("form").css("margin-top","100px");			
-					$('#pass').val(password);			
+					$("form").css("margin-top","100px");
+					$('#pass').val(password);
 					ejecutar=false;
 				}else
 				{
@@ -90,8 +103,8 @@ function fnvalidacion(){
 						$(".MensajeError").fadeIn();
 						$("#pass").addClass("holder errorinput");
 						$("#sppass").addClass("errorspan");
-						$("form").css("margin-top","100px");			
-						$('#pass').val(password);			
+						$("form").css("margin-top","100px");
+						$('#pass').val(password);
 						ejecutar=false;
 					}
 				}
@@ -99,27 +112,26 @@ function fnvalidacion(){
 		}
 
 		if(ejecutar)
-		{				
+		{
 			setTimeout(function(){
 			$("form").css("margin-top","230px");
 			},410);
 		}
 }
 
-
 $(document).ready(function(){
 
 	focoinput();
 
 	$("#submit").click(function(){
-		
+
 		fnvalidacion()
-		
+
 	});
 
 	$("#submit2").click(function(){
 		fnvalidacion()
 	});
-	
+
 
 });

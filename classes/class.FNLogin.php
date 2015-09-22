@@ -4,8 +4,9 @@
 
   class Login
   {
-    function verificarExistencia()
+    public function verificarExistencia()
     {
+			
       $db = new conexionbd();
     }
 
