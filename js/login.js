@@ -52,9 +52,19 @@ function limpiarInput(){
 			Verificacion de datos
 -----------------------------------------*/
 
-function verificarDatos()
+function verificarDatos(euser, epass)
 {
-	
+	$.ajax({
+		url: '../Functions/CallLogin.php',
+		dataType: 'json',
+		data:{
+			user:euser,
+			pass:epass
+		},
+		success: function(data){
+
+		}
+	});
 }
 
 /*--------------------------------------
