@@ -9,10 +9,10 @@
 	<link rel="stylesheet" href="../css/animate.css">
 </head>
 <body>
-	
+
 	<div class="MensajeError animated rubberBand retraso-2">Error al ingresar los datos</div>
 
-	<form name="Logins" action="#" class="animated fadeInDown retraso-6">
+	<form name="Logins" action="../CallVwUsers.php" class="animated fadeInDown retraso-6">
 	  <h1><span class="fa fa-sign-in"></span><span class="sombra"> Login</span></h1>
 
 	  <button type="button" id="submit" class="button"><span class="fa fa-unlock-alt"></span></button>
@@ -25,7 +25,7 @@
 
 	  <button type="button" class="ocultar button" id="submit2"><span class="fa fa-unlock-alt"></span></button>
 	</form>
-	
+
 	<script src="../js/jquery-1.11.3.min.js"></script>
 	<script src="../js/login.js"></script>
 </body>

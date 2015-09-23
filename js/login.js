@@ -56,13 +56,20 @@ function verificarDatos(euser, epass)
 {
 	$.ajax({
 		url: '../Functions/CallLogin.php',
-		dataType: 'json',
+		type: 'POST',
 		data:{
-			user:euser,
-			pass:epass
+			user: euser,
+			pass: epass
 		},
-		success: function(data){
-
+	}).done(function(answer){
+		if (answer != '') {
+			$('.MensajeError').text(answer);
+			$(".MensajeError").fadeIn();
+			$("form").css("margin-top","100px");
+		} else {
+				setTimeout(function(){
+				$("form").css("margin-top","230px");
+				},410);
 		}
 	});
 }
@@ -123,9 +130,7 @@ function fnvalidacion(){
 
 		if(ejecutar)
 		{
-			setTimeout(function(){
-			$("form").css("margin-top","230px");
-			},410);
+			verificarDatos(user, password);
 		}
 }
 

@@ -3,10 +3,10 @@
 require_once '../classes/class.Connection.php';
 require_once '../classes/class.FNLogin.php';
 
-// $user = $_POST['euser'];
-// $pass = $_POST['epass'];
+$userPost = $_POST['user'];
+$passPost = $_POST['pass'];
 
-$fnVerify = new Login('Direc01', '123');
+$fnVerify = new Login($userPost, $passPost);
 
 echo $fnVerify->verifyData();
 

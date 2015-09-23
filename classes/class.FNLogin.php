@@ -23,10 +23,13 @@
       if ($numberRecord == 0) {
         return 'Usuario o Contraseña incorrectos';
       }else {
-        $array = mysqli_fetch_array($sql);
-        $string = $array['usuario']. '---'. $array['contraseña'];
-        return $string;
+        return '';
       }
+    }
+
+    public function manageSessions()
+    {
+      $db = new ConnectionClass();
     }
 
   }
