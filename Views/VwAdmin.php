@@ -25,7 +25,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Binary admin</a>
+                <a class="navbar-brand" href="VwUser.php">Binary admin</a>
             </div>
   <div style="color: white;
 padding: 15px 50px 5px 50px;
@@ -42,7 +42,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
 
 
                     <li>
-                        <a class="active-menu"  href="plantilla.html"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                        <a class="active-menu"  href="VwUser.php"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                     </li>
                      <li>
                         <a  href="ui.html"><i class="fa fa-desktop fa-3x"></i> UI Elements</a>
