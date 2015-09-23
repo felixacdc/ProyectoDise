@@ -14,6 +14,14 @@
     <link href="../assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+  <style media="screen">
+    #logo{
+      background-color:#A70303;
+      height: auto;
+    }
+  </style>
+
 </head>
 <body>
     <div id="wrapper">
@@ -26,12 +34,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="VwAdmin.php"><img align="bootom" src="../assets/img/LogoProyecto.png"></a>
+                <a id="logo" class="navbar-brand" href="VwAdmin.php"><img src="../assets/img/LogoProyecto.png" class="user-image img-responsive"></a>
             </div>
-  <div style="color: white;
-padding: 15px 50px 5px 50px;
-float: right;
-font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+            <div style="color: white; padding: 15px 50px 5px 50px; float:right; font-size: 16px;">
+                <?php echo '<strong style="color: black">Fecha: </strong>', date('d-M-Y',time()); ?> &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a>
+            </div>
         </nav>
            <!-- /. NAV TOP  -->
                 <nav class="navbar-default navbar-side" role="navigation">
