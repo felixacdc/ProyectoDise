@@ -1,6 +1,6 @@
 <?php
 
-class conexionbd extends mysqli{
+class ConnectionClass extends mysqli{
 
 	private $servidor = 'localhost';
 	private $db = 'edusoft';
@@ -8,7 +8,7 @@ class conexionbd extends mysqli{
 	private $password = '';
 
 	public function __construct(){
-		parent::__construct($this->servidor, $this->user, $this->password, $this->db); 
+		parent::__construct($this->servidor, $this->user, $this->password, $this->db);
 		$this->query("SET NAMES 'utf8';"); //verifica el lenguaje que se envia a la bd o se resive
 		$this->connect_errno ? die('Error en la conexion') : $x = 'Conectado';
 		// echo $x;
