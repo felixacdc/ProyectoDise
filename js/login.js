@@ -62,14 +62,16 @@ function verificarDatos(euser, epass)
 			pass: epass
 		},
 	}).done(function(answer){
-		if (answer != '') {
-			$('.MensajeError').text(answer);
+		if (answer == '') {
+			$('.MensajeError').text('Usuario o contraseña incorrectas');
 			$(".MensajeError").fadeIn();
 			$("form").css("margin-top","100px");
 		} else {
 				setTimeout(function(){
 				$("form").css("margin-top","230px");
 				},410);
+				$('#hiddenValue').val(parseInt(answer));
+				document.createElement('form').submit.call(document.Logins);
 		}
 	});
 }

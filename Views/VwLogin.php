@@ -12,7 +12,7 @@
 
 	<div class="MensajeError animated rubberBand retraso-2">Error al ingresar los datos</div>
 
-	<form name="Logins" action="../CallVwUsers.php" class="animated fadeInDown retraso-6">
+	<form name="Logins" action="../Functions/CallVwUsers.php" class="animated fadeInDown retraso-6" method="post">
 	  <h1><span class="fa fa-sign-in"></span><span class="sombra"> Login</span></h1>
 
 	  <button type="button" id="submit" class="button"><span class="fa fa-unlock-alt"></span></button>
@@ -22,6 +22,7 @@
 
 	  <span class="fa fa-key inputPassIcon" id="sppass"></span>
 	  <input type="password" id="pass" class="input" placeholder="Contraseña" autocomplete="off"/>
+		<input type="hidden" name='hiddenValue' id="hiddenValue" value="0">
 
 	  <button type="button" class="ocultar button" id="submit2"><span class="fa fa-unlock-alt"></span></button>
 	</form>

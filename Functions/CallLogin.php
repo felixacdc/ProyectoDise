@@ -6,7 +6,7 @@ require_once '../classes/class.FNLogin.php';
 $userPost = $_POST['user'];
 $passPost = $_POST['pass'];
 
-$fnVerify = new Login($userPost, $passPost);
+$fnVerify = new Login($userPost, $passPost, 0);
 
 echo $fnVerify->verifyData();
 
