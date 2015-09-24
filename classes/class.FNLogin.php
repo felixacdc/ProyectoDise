@@ -1,5 +1,7 @@
 <?php
 
+require_once 'class.FnSessions.php';
+
   class Login
   {
     private $user;
@@ -39,40 +41,8 @@
       $sql = $db->query("SELECT * FROM usuarios WHERE idUsuarios='$tid'");
       $data = $sql->fetch_assoc();
 
-      switch ($data['IdTipoUsuario']) {
-        case '1':
-          session_start();
-          $_SESSION[''] = TRUE;
-          $_SESSION[''] = ;
-          $_SESSION[''] = ;
-
-          header ('location: Vw');
-          break;
-        case '2':
-          session_start();
-          $_SESSION[''] = TRUE;
-          $_SESSION[''] = ;
-          $_SESSION[''] = ;
-
-          header ('location: Vw');
-          break;
-        case '3':
-          session_start();
-          $_SESSION[''] = TRUE;
-          $_SESSION[''] = ;
-          $_SESSION[''] = ;
-
-          header ('location: Vw');
-          break;
-        case '4':
-          session_start();
-          $_SESSION[''] = TRUE;
-          $_SESSION[''] = ;
-          $_SESSION[''] = ;
-
-          header ('location: Vw');
-          break;
-      }
+      $OpenSession = new SessionClass();
+      $OpenSession->manageSession($data['IdTipoUsuario'], $data['usuario']);
     }
 
   }

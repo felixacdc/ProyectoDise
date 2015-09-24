@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+<?php
+  require_once '../classes/class.FnSessions.php';
+
+  $OpenSession = new SessionClass();
+  $OpenSession->verifySession(1);
+?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
       <meta charset="utf-8" />
