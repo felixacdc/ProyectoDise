@@ -63,14 +63,17 @@ class SessionClass
   public function verifySession($typeUser)
   {
     session_start();
-    if (!$_SESSION['activado']) {
-      session_destroy();
-      if ($typeUser != 'i') {
-        header('location: ../index.php');
+    if (isset($_SESSION['activado'])) {
+      if (!$_SESSION['activado']) {
+        session_destroy();
+        if ($typeUser != 'i') {
+          header('location: ../index.php');
+        }
+      } else {
+        $this->addressSession($_SESSION['id'], $typeUser);
       }
-    } else {
-      $this->addressSession($_SESSION['id'], $typeUser);
     }
+
   }
 }
 

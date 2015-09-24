@@ -39,10 +39,10 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idUsuarios`, `usuario`, `contraseña`, `IdTipoUsuario`, `IdEstudiante`) VALUES
-(1, 'Direc01', '123', 1, NULL),
-(2, 'Secre01', '456', 2, NULL),
-(3, 'Profe01', 'abcd', 3, NULL),
-(4, 'Alum01', 'efgh', 4, 1);
+(1, 'Direc01', '12345', 1, NULL),
+(2, 'Secre01', '45678', 2, NULL),
+(3, 'Profe01', 'abcd12', 3, NULL),
+(4, 'Alum01', 'efgh12', 4, 1);
 
 --
 -- Índices para tablas volcadas
