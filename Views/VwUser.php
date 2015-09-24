@@ -1,10 +1,11 @@
 <?php
-  require_once '../classes/class.FnSessions.php';
+    require_once '../classes/class.FnSessions.php';
 
-  $OpenSession = new SessionClass();
-  $OpenSession->verifySession(4);
+    $OpenSession = new SessionClass();
+    $OpenSession->verifySession(4);
+
 ?>
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
       <meta charset="utf-8" />
@@ -20,10 +21,19 @@
     <link href="../assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+  <style media="screen">
+    #logo{
+      /*background-color:#A70303;*/
+      background-color: #FFFFFF;
+      height: auto;
+    }
+  </style>
+
 </head>
 <body>
     <div id="wrapper">
-        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+        <nav id="logo" class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -31,19 +41,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="VwUser.php">Binary admin</a>
+                <a class="navbar-brand" href="VwUser.php" style="color: write; background-color: #202020">Bienvenido</a>
+                <!-- <a class="navbar-brand" href="VwAdmin.php" style="color: write; font-size:25px; background-color: #202020">Bienvenido</a> -->
             </div>
-  <div style="color: white;
-padding: 15px 50px 5px 50px;
-float: right;
-font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+            <div style="color: white; padding: 15px 50px 5px 50px; float:right; font-size: 16px;">
+                <img src="../assets/img/LogoProyecto.png"><button type="button"></botton>
+                <!-- <?php echo '<strong style="color: black">Fecha: </strong>', date('d-M-Y',time()); ?> &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> -->
+            </div>
         </nav>
            <!-- /. NAV TOP  -->
                 <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 				<li class="text-center">
-                    <img src="../assets/img/find_user.png" class="user-image img-responsive"/>
+                    <img src="../assets/img/userFem.png" class="user-image img-responsive"/>
 					</li>
 
 
@@ -104,7 +115,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
         </nav>
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
-            <div id="page-inner">
+            <div id="page-inner"><a style="color: black; float: right"><?php echo '<strong>Fecha: </strong>', date('d-M-Y',time()); ?></a>
                 <div class="row">
                     <div class="col-md-12">
                      <h2>Admin Dashboard</h2>
