@@ -39,18 +39,22 @@ class SessionClass
   public function addressSession($paramId, $typeUser)
   {
     if ($paramId != $typeUser) {
+      if ($typeUser == 'i') {
+        $advance = 'Views/';
+      }
       switch ($paramId) {
         case '1':
-          header('location: VwAdmin.php');
+
+          header('location: ' . $advance . 'VwAdmin.php');
           break;
         case '2':
-          header('location: VwSecretary.php');
+          header('location: ' . $advance . 'VwSecretary.php');
           break;
         case '3':
-          header('location: VwTeacher.php');
+          header('location: ' . $advance . 'VwTeacher.php');
           break;
         case '4':
-          header('location: VwUser.php');
+          header('location: ' . $advance . 'VwUser.php');
           break;
       }
     }
@@ -61,7 +65,9 @@ class SessionClass
     session_start();
     if (!$_SESSION['activado']) {
       session_destroy();
-      header('location: ../Index.html');
+      if ($typeUser != 'i') {
+        header('location: ../index.php');
+      }
     } else {
       $this->addressSession($_SESSION['id'], $typeUser);
     }

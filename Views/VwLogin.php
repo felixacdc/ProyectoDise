@@ -1,3 +1,9 @@
+<?php
+  require_once '../classes/class.FnSessions.php';
+
+  $OpenSession = new SessionClass();
+  $OpenSession->verifySession(0);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
