@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
+-- version 4.0.9
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 23-09-2015 a las 17:55:27
--- Versión del servidor: 5.6.26
--- Versión de PHP: 5.6.12
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 25-09-2015 a las 17:53:30
+-- Versión del servidor: 5.6.14
+-- Versión de PHP: 5.5.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de datos: `edusoft`
@@ -27,12 +27,15 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
-  `idUsuarios` int(11) NOT NULL,
+  `idUsuarios` int(11) NOT NULL AUTO_INCREMENT,
   `usuario` varchar(100) NOT NULL,
   `contraseña` varchar(45) NOT NULL,
   `IdTipoUsuario` int(11) NOT NULL,
-  `IdEstudiante` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `IdEstudiante` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idUsuarios`),
+  KEY `fk_Usuario_tipousuario_idx` (`IdTipoUsuario`),
+  KEY `fk_Estudiante_Usuario_idx` (`IdEstudiante`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -42,29 +45,9 @@ INSERT INTO `usuarios` (`idUsuarios`, `usuario`, `contraseña`, `IdTipoUsuario`,
 (1, 'Direc01', '12345', 1, NULL),
 (2, 'Secre01', '45678', 2, NULL),
 (3, 'Profe01', 'abcd12', 3, NULL),
-(4, 'Alum01', 'efgh12', 4, 1);
+(4, 'Alum01', 'efgh12', 4, 1),
+(5, 'Alum02', '12345', 4, 2);
 
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`idUsuarios`),
-  ADD KEY `fk_Usuario_tipousuario_idx` (`IdTipoUsuario`),
-  ADD KEY `fk_Estudiante_Usuario_idx` (`IdEstudiante`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `idUsuarios` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- Restricciones para tablas volcadas
 --
