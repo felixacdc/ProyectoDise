@@ -26,7 +26,7 @@ require_once 'class.FnSessions.php';
       $numberRecord = $sql->num_rows;
 
       if ($numberRecord == 0) {
-        return '';
+        return 's';
       }else {
         $data = $sql->fetch_assoc();
         if ($data['IdTipoUsuario'] == 4) {
@@ -34,11 +34,13 @@ require_once 'class.FnSessions.php';
           $sql2 = $db->query("SELECT * FROM usuarios AS usr INNER JOIN estudiantes AS est ON usr.idUsuarios = '$iduser' AND usr.IdEstudiante = est.idEstudiante AND est.idEstado = 1 ");
           $numberRecord2 = $sql2->num_rows;
           if ($numberRecord2 == 0) {
-            return '';
+            return 'a';
           } else {
             $data2 = $sql2->fetch_assoc();
             return $data2['idUsuarios'];
           }
+        }else {
+          return $data['idUsuarios'];
         }
       }
     }
@@ -54,7 +56,11 @@ require_once 'class.FnSessions.php';
       $OpenSession = new SessionClass();
       $OpenSession->manageSession($data['IdTipoUsuario'], $data['usuario']);
     }
-
+    
+    public function closeSessions(){
+      $CloseSession = new SessionClass();
+      $CloseSession->CloseSession();
+    }    
   }
 
 

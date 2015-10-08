@@ -8,7 +8,10 @@ if (isset($_POST['hiddenValue'])) {
 
   $fnBeginSession = new Login('', '', $hiddenId);
   $fnBeginSession->manageSessions();
-} else {
+} elseif(isset($_GET['close'])) {
+	$fnCloseSession = new Login('', '', '');
+  	$fnCloseSession->closeSessions();
+}else {
   header('location: ../Index.html');
 }
 

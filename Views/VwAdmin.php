@@ -45,7 +45,7 @@
                 <!-- <a class="navbar-brand" href="VwAdmin.php" style="color: write; font-size:25px; background-color: #202020">Bienvenido</a> -->
             </div>
             <div style="color: white; padding: 15px 50px 5px 50px; float:right; font-size: 16px;">
-                <img src="../assets/img/LogoProyecto.png">
+                <img src="../assets/img/LogoProyecto.png" id="CloseSession">
                 <!-- <?php echo '<strong style="color: black">Fecha: </strong>', date('d-M-Y',time()); ?> &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> -->
             </div>
         </nav>
@@ -539,6 +539,8 @@
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     <script src="../assets/js/jquery-1.10.2.js"></script>
+    <!-- JS Admin -->
+    <script src="../js/js.Admin.js"></script>
       <!-- BOOTSTRAP SCRIPTS -->
     <script src="../assets/js/bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->

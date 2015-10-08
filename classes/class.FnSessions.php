@@ -75,6 +75,12 @@ class SessionClass
     }
 
   }
+
+  public function CloseSession(){
+    session_start();
+    session_destroy();
+    header('location: ../index.php');
+  }
 }
 
 
