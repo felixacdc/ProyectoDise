@@ -1,8 +1,11 @@
 <?php
   require_once '../classes/class.FnSessions.php';
 
-  $OpenSession = new SessionClass();
-  $OpenSession->verifySession(0);
+  session_start();
+  if (isset($_SESSION['activado'])) {
+  	$OpenSession = new SessionClass();
+  	$OpenSession->verifySession('h');	
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">

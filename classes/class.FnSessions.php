@@ -41,10 +41,11 @@ class SessionClass
     if ($paramId != $typeUser) {
       if ($typeUser == 'i') {
         $advance = 'Views/';
+      } elseif ($typeUser == 'h') {
+        $advance = '';
       }
       switch ($paramId) {
         case '1':
-
           header('location: ' . $advance . 'VwAdmin.php');
           break;
         case '2':
@@ -72,6 +73,8 @@ class SessionClass
       } else {
         $this->addressSession($_SESSION['id'], $typeUser);
       }
+    }else {
+      header('location: ../index.php');
     }
 
   }
@@ -79,7 +82,7 @@ class SessionClass
   public function CloseSession(){
     session_start();
     session_destroy();
-    header('location: ../index.php');
+    header('location: ../index.php?si=0');
   }
 }
 
