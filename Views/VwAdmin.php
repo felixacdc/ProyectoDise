@@ -19,6 +19,9 @@
     <link href="../assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
     <link href="../assets/css/custom.css" rel="stylesheet" />
+    <!-- Animate y font-->
+    <link rel="stylesheet" href="../font-awesome-4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/animate.css">
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
@@ -124,8 +127,18 @@
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     <script src="../assets/js/jquery-1.10.2.js"></script>
+
+    <!-- *************** JS personales ********************* -->
+    
     <!-- JS Admin -->
     <script src="../js/js.Admin.js"></script>
+    <!-- JS Inscripcion -->
+    <script src="../js/jsInscripcion.js"></script>
+    <!-- JS Mantenimiento Grados -->
+    <script src="../js/jsMantGrados.js"></script>
+
+    <!-- *************** Fin JS personales ***************** -->
+
       <!-- BOOTSTRAP SCRIPTS -->
     <script src="../assets/js/bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->

@@ -1,4 +1,4 @@
-<div id="page-inner">
+  <div id="page-inner">
     <div class="row">
         <div class="col-md-12">
          <h2>Inscripcion de alumnos</h2>
@@ -36,8 +36,8 @@
                               </div>
 
                               <!-- Ingreso de Direccion encargado -->
-                              <div class="form-group" id="ErrorApdiv">
-                                <label class="control-label control-label-input-group" id="ErrorAplbl" for="inputError2"></label>
+                              <div class="form-group" id="ErrorDirdiv">
+                                <label class="control-label control-label-input-group" id="ErrorDirlbl" for="ErrorDirlbl"></label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                     <input type="text" name="AddressE" class="form-control" id="txtAddressE" placeholder="Direccion Encargado" autocomplete="off">
@@ -46,7 +46,7 @@
 
                               <!-- Ingreso de Telefono Encargado-->
                               <div class="form-group" id="ErrorTeldiv">
-                                <label class="control-label control-label-input-group" id="ErrorTellbl" for="inputError2"></label>
+                                <label class="control-label control-label-input-group" id="ErrorTellbl" for="ErrorTellbl"></label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-phone-square"></i></span>
                                     <input type="text" name="PhoneE" class="form-control" id="txtPhoneE" placeholder="Telefono Encargado" autocomplete="off">
@@ -66,8 +66,8 @@
                                 <h3>Datos Estudiantes</h3>
                                 <hr>
                                 <!-- Ingreso de Nombre Estudiante -->
-                                  <div class="form-group" id="ErrorNomdiv">
-                                    <label class="control-label control-label-input-group" id="ErrorNomlbl" for="inputError1"></label>
+                                  <div class="form-group" id="ErrorNomSdiv">
+                                    <label class="control-label control-label-input-group" id="ErrorNomSlbl" for="ErrorNomSlbl"></label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                         <input type="text" name="NameS" class="form-control" id="txtNameS" placeholder="Nombre Estudiante" autocomplete="off">
@@ -75,8 +75,8 @@
                                   </div>
 
                                   <!-- Ingreso de Direccion Estudiante -->
-                                  <div class="form-group" id="ErrorApdiv">
-                                    <label class="control-label control-label-input-group" id="ErrorAplbl" for="inputError2"></label>
+                                  <div class="form-group" id="ErrorDirSdiv">
+                                    <label class="control-label control-label-input-group" id="ErrorDirSlbl" for="ErrorDirSlbl"></label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                         <input type="text" name="AddressS" class="form-control" id="txtAddressS" placeholder="Direccion Estudiante" autocomplete="off">
@@ -84,8 +84,8 @@
                                   </div>
 
                                   <!-- Ingreso de Telefono Estudiante-->
-                                  <div class="form-group" id="ErrorTeldiv">
-                                    <label class="control-label control-label-input-group" id="ErrorTellbl" for="inputError2"></label>
+                                  <div class="form-group" id="ErrorTelSdiv">
+                                    <label class="control-label control-label-input-group" id="ErrorTelSlbl" for="ErrorTelSlbl"></label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-phone-square"></i></span>
                                         <input type="text" name="PhoneS" class="form-control" id="txtPhoneS" placeholder="Telefono Estudiante" autocomplete="off">
@@ -93,8 +93,8 @@
                                   </div>
 
                                   <!-- Ingreso de Email Estudiante-->
-                                  <div class="form-group" id="ErrorEmadiv">
-                                    <label class="control-label control-label-input-group" id="ErrorEmalbl" for="inputError2"></label>
+                                  <div class="form-group" id="ErrorEmaSdiv">
+                                    <label class="control-label control-label-input-group" id="ErrorEmaSlbl" for="ErrorEmaSlbl"></label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-at"></i></span>
                                         <input type="text" name="EmailS" class="form-control" id="txtemailS" placeholder="Email Estudiante" autocomplete="off">
@@ -110,7 +110,7 @@
                                     </div>
                                   </div> -->
 
-                                  <button type="button" class="btn btn-success btn-lg" id="buttone">Registrar</button>
+                                  <button type="button" class="btn btn-success btn-lg" id="buttone" >Registrar</button>
                             </form>
                         </div>
                         <div class="col-md-3">
@@ -123,3 +123,5 @@
     </div>
 </div>
 <!-- /. PAGE INNER  -->
+
+

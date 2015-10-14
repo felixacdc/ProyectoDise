@@ -10,7 +10,7 @@ $(document).ready(function(){
 		$('#op1').addClass('active-menu');
 	});
 	$('#op2').on('click',function(){
-		// $("#page-wrapper").load('VwAdmin/VwInscripcion.php');
+		$("#page-wrapper").load('VwAdmin/VwMantGrados.php');
 		$('a').removeClass('active-menu');
 		$('#op2').addClass('active-menu');
 	});
