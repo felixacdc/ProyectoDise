@@ -65,7 +65,7 @@
                               <!-- ******** Datos Estudiante ********* -->
                                 <h3>Datos Estudiantes</h3>
                                 <hr>
-                                <!-- Ingreso de Nombre Encargado -->
+                                <!-- Ingreso de Nombre Estudiante -->
                                   <div class="form-group" id="ErrorNomdiv">
                                     <label class="control-label control-label-input-group" id="ErrorNomlbl" for="inputError1"></label>
                                     <div class="input-group">
@@ -74,7 +74,7 @@
                                     </div>
                                   </div>
 
-                                  <!-- Ingreso de Direccion encargado -->
+                                  <!-- Ingreso de Direccion Estudiante -->
                                   <div class="form-group" id="ErrorApdiv">
                                     <label class="control-label control-label-input-group" id="ErrorAplbl" for="inputError2"></label>
                                     <div class="input-group">
@@ -83,7 +83,7 @@
                                     </div>
                                   </div>
 
-                                  <!-- Ingreso de Telefono Encargado-->
+                                  <!-- Ingreso de Telefono Estudiante-->
                                   <div class="form-group" id="ErrorTeldiv">
                                     <label class="control-label control-label-input-group" id="ErrorTellbl" for="inputError2"></label>
                                     <div class="input-group">
@@ -92,7 +92,7 @@
                                     </div>
                                   </div>
 
-                                  <!-- Ingreso de Email Encargado-->
+                                  <!-- Ingreso de Email Estudiante-->
                                   <div class="form-group" id="ErrorEmadiv">
                                     <label class="control-label control-label-input-group" id="ErrorEmalbl" for="inputError2"></label>
                                     <div class="input-group">
@@ -102,13 +102,15 @@
                                   </div>
 
                                   <!-- Ingreso de Grado -->
-                                  <div class="form-group" id="ErrorPladiv">
+                                  <!-- <div class="form-group" id="ErrorPladiv">
                                     <label class="control-label control-label-input-group" id="ErrorPlalbl" for="inputError2"></label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-language"></i></span>
                                         <SELECT NAME="cboGrado" class="form-control" SIZE=0 id="cboGrado" placeholder="Grado"></SELECT>
                                     </div>
-                                  </div>
+                                  </div> -->
+
+                                  <button type="button" class="btn btn-success btn-lg" id="buttone">Registrar</button>
                             </form>
                         </div>
                         <div class="col-md-3">

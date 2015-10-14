@@ -67,7 +67,7 @@
                     <li>
                         <a  href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i>Registro Catedraticos</a>
                     </li>
-						   <li  >
+						        <li>
                         <a   href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>
                     </li>
                       <li  >
