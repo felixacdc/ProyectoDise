@@ -1,17 +1,26 @@
-<?php 
+<?php
 
+require_once '../classes/class.FNRecord.php';
 require_once '../classes/class.Connection.php';
 
 if (isset($_POST['rGrad'])) {
-	// $userPost = $_POST['user'];
-	// $passPost = $_POST['pass'];
+	$gradPost = $_POST['rGrad'];
 
-	// $fnVerify = new Login($userPost, $passPost, 0);
+	$fnGrad = new Record();
 
-	// echo $fnVerify->verifyData();
-	echo 'Siiiii';	
+	echo $fnGrad->vGrado($gradPost);
 } elseif (isset($_POST['rSec'])) {
-	echo 'NOOOOOO';
+	$secPost = $_POST['rSec'];
+
+	$fnSec = new Record();
+
+	echo $fnSec->vSec($secPost);
+} elseif (isset($_POST['txtGradE'])) {
+	$gradPost = $_POST['txtGradE'];
+
+	$fnGrad = new Record();
+
+	echo $fnGrad->rGrad($gradPost);
 }
 
  ?>

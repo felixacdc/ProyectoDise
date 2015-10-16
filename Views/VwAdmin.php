@@ -11,6 +11,7 @@
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Administrador</title>
+    <link rel="stylesheet" href="../css/Admin.css" media="screen" title="no title" charset="utf-8">
 	<!-- BOOTSTRAP STYLES-->
     <link href="../assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -24,14 +25,6 @@
     <link rel="stylesheet" href="../css/animate.css">
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-
-  <style media="screen">
-    #logo{
-      /*background-color:#A70303;*/
-      background-color: #FFFFFF;
-      height: auto;
-    }
-  </style>
 
 </head>
 <body>
@@ -129,7 +122,7 @@
     <script src="../assets/js/jquery-1.10.2.js"></script>
 
     <!-- *************** JS personales ********************* -->
-    
+
     <!-- JS Admin -->
     <script src="../js/js.Admin.js"></script>
     <!-- JS Inscripcion -->

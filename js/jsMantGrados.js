@@ -18,6 +18,10 @@ function limpiarInputMG(){
 	$("#txtSec").val(Seccion);
 }
 
+function vaciarInput(){
+	$("#txtGra").clear();
+}
+
 /*--------------------------------------
 				Reset Clases
 -----------------------------------------*/
@@ -36,7 +40,7 @@ function fnvaliGMG(){
 		resetClassMG();
 
 		if (Grado==""){
-      		$("#ErrorGradiv").addClass("has-error has-feedback");
+      $("#ErrorGradiv").addClass("has-error has-feedback");
 			$("#ErrorGralbl").text("Ingrese el Grado");
 			$("#ErrorGralbl").addClass("animated bounceIn retraso-2");
 			$('#ErrorGralbl').fadeIn();
@@ -62,7 +66,7 @@ function fnvaliSMG(){
 		resetClassMG();
 
 		if (Seccion==""){
-      		$("#ErrorSecdiv").addClass("has-error has-feedback");
+      $("#ErrorSecdiv").addClass("has-error has-feedback");
 			$("#ErrorSeclbl").text("Ingrese el nombres");
 			$("#ErrorSeclbl").addClass("animated bounceIn retraso-2");
 			$('#ErrorSeclbl').fadeIn();
@@ -95,11 +99,12 @@ function verifyG(Grad)
 		},
 	}).done(function(answer){
 		if (answer != '') {
-			alert(answer);
-			// $('.MensajeError').text(answer);
-			// $(".MensajeError").fadeIn();
+			$("#ErrorGradiv").addClass("has-error has-feedback");
+			$("#ErrorGralbl").text(answer);
+			$("#ErrorGralbl").addClass("animated bounceIn retraso-2");
+			$('#ErrorGralbl').fadeIn();
 		} else {
-			/*REGISTRAR GRADO*/
+			registarGrad();
 		}
 	});
 }
@@ -114,14 +119,37 @@ function verifyS(Sec)
 		},
 	}).done(function(answer){
 		if (answer != '') {
-			alert(answer);
-			// $('.MensajeError').text(answer);
-			// $(".MensajeError").fadeIn();
+			$("#ErrorSecdiv").addClass("has-error has-feedback");
+			$("#ErrorSeclbl").text(answer);
+			$("#ErrorSeclbl").addClass("animated bounceIn retraso-2");
+			$('#ErrorSeclbl').fadeIn();
 		} else {
-			/*REGISTRAR GRADO*/
+			/*REGISTRAR SECCION*/
 		}
 	});
 }
+
+/*--------------------------------------
+			ENVIO DE FORMULARIOS PARA REGISTRO
+-----------------------------------------*/
+
+function registarGrad(){
+	var url = "../Functions/CallRecordMG.php"; // El script a dónde se realizará la petición.
+
+	$.ajax({
+	  type: "POST",
+	  url: url,
+	  data: $("#frmGrado").serialize(), // Adjuntar los campos del formulario enviado.
+	  success: function(data)
+	  {
+			$('#alert').text(data);
+			$('#alert').show();
+			$('#alert').delay(3000).hide(600);
+			vaciarInput();
+	  }
+	});
+}
+
 
 $(document).ready(function(){
 

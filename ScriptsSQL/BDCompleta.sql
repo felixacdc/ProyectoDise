@@ -21,9 +21,9 @@ USE `edusoft` ;
 -- Table `edusoft`.`profesiones`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`profesiones` (
-  `idProfesion` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
-  `Profesion` VARCHAR(50) NOT NULL COMMENT '',
-  PRIMARY KEY (`idProfesion`)  COMMENT '')
+  `idProfesion` INT(11) NOT NULL AUTO_INCREMENT,
+  `Profesion` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`idProfesion`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -32,16 +32,16 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `edusoft`.`catedraticos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`catedraticos` (
-  `idCatedratico` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
-  `codigoCatedratico` INT(11) NOT NULL COMMENT '',
-  `nombreCatedratico` VARCHAR(60) NOT NULL COMMENT '',
-  `domicilioCatedratico` VARCHAR(100) NOT NULL COMMENT '',
-  `telefonoCatedratico` VARCHAR(8) NOT NULL COMMENT '',
-  `emailCatedratico` VARCHAR(20) NULL DEFAULT NULL COMMENT '',
-  `Profesiones_idProfesion` INT(11) NOT NULL COMMENT '',
-  PRIMARY KEY (`idCatedratico`)  COMMENT '',
-  UNIQUE INDEX `codigoCatedratico_UNIQUE` (`codigoCatedratico` ASC)  COMMENT '',
-  INDEX `fk_Catedraticos_Profesiones1_idx` (`Profesiones_idProfesion` ASC)  COMMENT '',
+  `idCatedratico` INT(11) NOT NULL AUTO_INCREMENT,
+  `codigoCatedratico` INT(11) NOT NULL,
+  `nombreCatedratico` VARCHAR(60) NOT NULL,
+  `domicilioCatedratico` VARCHAR(100) NOT NULL,
+  `telefonoCatedratico` VARCHAR(8) NOT NULL,
+  `emailCatedratico` VARCHAR(20) NULL DEFAULT NULL,
+  `Profesiones_idProfesion` INT(11) NOT NULL,
+  PRIMARY KEY (`idCatedratico`),
+  UNIQUE INDEX `codigoCatedratico_UNIQUE` (`codigoCatedratico` ASC),
+  INDEX `fk_Catedraticos_Profesiones1_idx` (`Profesiones_idProfesion` ASC),
   CONSTRAINT `fk_Catedraticos_Profesiones1`
     FOREIGN KEY (`Profesiones_idProfesion`)
     REFERENCES `edusoft`.`profesiones` (`idProfesion`)
@@ -55,9 +55,9 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `edusoft`.`cursos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`cursos` (
-  `idCurso` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
-  `nombreCurso` VARCHAR(45) NOT NULL COMMENT '',
-  PRIMARY KEY (`idCurso`)  COMMENT '')
+  `idCurso` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombreCurso` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idCurso`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -66,9 +66,9 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `edusoft`.`grado`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`grado` (
-  `idGrado` INT(11) NOT NULL COMMENT '',
-  `Descripcion` VARCHAR(200) NOT NULL COMMENT '',
-  PRIMARY KEY (`idGrado`)  COMMENT '')
+  `idGrado` INT(11) NOT NULL AUTO_INCREMENT,
+  `Descripcion` VARCHAR(200) NOT NULL,
+  PRIMARY KEY (`idGrado`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -77,14 +77,14 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `edusoft`.`asignacioncursos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`asignacioncursos` (
-  `idAsignacionCursos` INT(11) NOT NULL COMMENT '',
-  `IdGrado` INT(11) NOT NULL COMMENT '',
-  `IdCurso` INT(11) NOT NULL COMMENT '',
-  `IdCatedratico` INT(11) NOT NULL COMMENT '',
-  PRIMARY KEY (`idAsignacionCursos`)  COMMENT '',
-  INDEX `GradosAsigCursos_idx` (`IdGrado` ASC)  COMMENT '',
-  INDEX `CursosAsigCursos_idx` (`IdCurso` ASC)  COMMENT '',
-  INDEX `AsigCurCate_idx` (`IdCatedratico` ASC)  COMMENT '',
+  `idAsignacionCursos` INT(11) NOT NULL,
+  `IdGrado` INT(11) NOT NULL,
+  `IdCurso` INT(11) NOT NULL,
+  `IdCatedratico` INT(11) NOT NULL,
+  PRIMARY KEY (`idAsignacionCursos`),
+  INDEX `GradosAsigCursos_idx` (`IdGrado` ASC),
+  INDEX `CursosAsigCursos_idx` (`IdCurso` ASC),
+  INDEX `AsigCurCate_idx` (`IdCatedratico` ASC),
   CONSTRAINT `AsigCurCate`
     FOREIGN KEY (`IdCatedratico`)
     REFERENCES `edusoft`.`catedraticos` (`idCatedratico`)
@@ -108,9 +108,9 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `edusoft`.`cicloescolar`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`cicloescolar` (
-  `idCicloEscolar` INT(11) NOT NULL COMMENT '',
-  `Año` INT(11) NOT NULL COMMENT '',
-  PRIMARY KEY (`idCicloEscolar`)  COMMENT '')
+  `idCicloEscolar` INT(11) NOT NULL,
+  `Año` INT(11) NOT NULL,
+  PRIMARY KEY (`idCicloEscolar`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -119,12 +119,12 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `edusoft`.`encargados`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`encargados` (
-  `idEncargado` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
-  `nombreEncargado` VARCHAR(60) NOT NULL COMMENT '',
-  `domicilioEncargado` VARCHAR(100) NOT NULL COMMENT '',
-  `numeroContacto` VARCHAR(8) NOT NULL COMMENT '',
-  `emailContacto` VARCHAR(20) NOT NULL COMMENT '',
-  PRIMARY KEY (`idEncargado`)  COMMENT '')
+  `idEncargado` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombreEncargado` VARCHAR(60) NOT NULL,
+  `domicilioEncargado` VARCHAR(100) NOT NULL,
+  `numeroContacto` VARCHAR(8) NOT NULL,
+  `emailContacto` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`idEncargado`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -133,9 +133,9 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `edusoft`.`estados`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`estados` (
-  `idEstado` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
-  `tipoEstado` VARCHAR(20) NOT NULL COMMENT '',
-  PRIMARY KEY (`idEstado`)  COMMENT '')
+  `idEstado` INT(11) NOT NULL AUTO_INCREMENT,
+  `tipoEstado` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`idEstado`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -144,18 +144,18 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `edusoft`.`estudiantes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`estudiantes` (
-  `idEstudiante` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
-  `numeroCarne` VARCHAR(200) NOT NULL COMMENT '',
-  `nombreEstudiante` VARCHAR(60) NOT NULL COMMENT '',
-  `direccionEstudiante` VARCHAR(100) NOT NULL COMMENT '',
-  `telefonoEstudiante` VARCHAR(8) NOT NULL COMMENT '',
-  `emailEstudiante` VARCHAR(20) NOT NULL COMMENT '',
-  `idEncargado` INT(11) NOT NULL COMMENT '',
-  `idEstado` INT(11) NOT NULL COMMENT '',
-  PRIMARY KEY (`idEstudiante`)  COMMENT '',
-  UNIQUE INDEX `numeroCarne_UNIQUE` (`numeroCarne` ASC)  COMMENT '',
-  INDEX `fk_Estudiantes_Encargados_idx` (`idEncargado` ASC)  COMMENT '',
-  INDEX `fk_Estudiantes_Estados1_idx` (`idEstado` ASC)  COMMENT '',
+  `idEstudiante` INT(11) NOT NULL AUTO_INCREMENT,
+  `numeroCarne` VARCHAR(200) NOT NULL,
+  `nombreEstudiante` VARCHAR(60) NOT NULL,
+  `direccionEstudiante` VARCHAR(100) NOT NULL,
+  `telefonoEstudiante` VARCHAR(8) NOT NULL,
+  `emailEstudiante` VARCHAR(20) NOT NULL,
+  `idEncargado` INT(11) NOT NULL,
+  `idEstado` INT(11) NOT NULL,
+  PRIMARY KEY (`idEstudiante`),
+  UNIQUE INDEX `numeroCarne_UNIQUE` (`numeroCarne` ASC),
+  INDEX `fk_Estudiantes_Encargados_idx` (`idEncargado` ASC),
+  INDEX `fk_Estudiantes_Estados1_idx` (`idEstado` ASC),
   CONSTRAINT `fk_Estudiantes_Encargados`
     FOREIGN KEY (`idEncargado`)
     REFERENCES `edusoft`.`encargados` (`idEncargado`)
@@ -174,9 +174,9 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `edusoft`.`Seccion`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`Seccion` (
-  `idSeccion` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `Descripcion` VARCHAR(145) NOT NULL COMMENT '',
-  PRIMARY KEY (`idSeccion`)  COMMENT '')
+  `idSeccion` INT NOT NULL AUTO_INCREMENT,
+  `Descripcion` VARCHAR(145) NOT NULL,
+  PRIMARY KEY (`idSeccion`))
 ENGINE = InnoDB;
 
 
@@ -184,12 +184,12 @@ ENGINE = InnoDB;
 -- Table `edusoft`.`AsignacionSeccion`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`AsignacionSeccion` (
-  `idAsignacionSeccion` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `idSeccion` INT NOT NULL COMMENT '',
-  `idGrado` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`idAsignacionSeccion`)  COMMENT '',
-  INDEX `fkasigseccysecc_idx` (`idSeccion` ASC)  COMMENT '',
-  INDEX `fkasiggradygrad_idx` (`idGrado` ASC)  COMMENT '',
+  `idAsignacionSeccion` INT NOT NULL AUTO_INCREMENT,
+  `idSeccion` INT NOT NULL,
+  `idGrado` INT NOT NULL,
+  PRIMARY KEY (`idAsignacionSeccion`),
+  INDEX `fkasigseccysecc_idx` (`idSeccion` ASC),
+  INDEX `fkasiggradygrad_idx` (`idGrado` ASC),
   CONSTRAINT `fkasigseccysecc`
     FOREIGN KEY (`idSeccion`)
     REFERENCES `edusoft`.`Seccion` (`idSeccion`)
@@ -207,14 +207,14 @@ ENGINE = InnoDB;
 -- Table `edusoft`.`asignaciongrados`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`asignaciongrados` (
-  `idAsignacionGrados` INT(11) NOT NULL COMMENT '',
-  `IdEstudiante` INT(11) NOT NULL COMMENT '',
-  `IdCicloEscolar` INT(11) NOT NULL COMMENT '',
-  `idAsignacionSeccion` INT(11) NOT NULL COMMENT '',
-  PRIMARY KEY (`idAsignacionGrados`)  COMMENT '',
-  INDEX `EstudianteAsigGrado_idx` (`IdEstudiante` ASC)  COMMENT '',
-  INDEX `AsigGraCiclo_idx` (`IdCicloEscolar` ASC)  COMMENT '',
-  INDEX `fkasiggrayasigsecc_idx` (`idAsignacionSeccion` ASC)  COMMENT '',
+  `idAsignacionGrados` INT(11) NOT NULL,
+  `IdEstudiante` INT(11) NOT NULL,
+  `IdCicloEscolar` INT(11) NOT NULL,
+  `idAsignacionSeccion` INT(11) NOT NULL,
+  PRIMARY KEY (`idAsignacionGrados`),
+  INDEX `EstudianteAsigGrado_idx` (`IdEstudiante` ASC),
+  INDEX `AsigGraCiclo_idx` (`IdCicloEscolar` ASC),
+  INDEX `fkasiggrayasigsecc_idx` (`idAsignacionSeccion` ASC),
   CONSTRAINT `AsigGraCiclo`
     FOREIGN KEY (`IdCicloEscolar`)
     REFERENCES `edusoft`.`cicloescolar` (`idCicloEscolar`)
@@ -238,9 +238,9 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `edusoft`.`tipotransacciones`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`tipotransacciones` (
-  `idtipoTransaccion` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
-  `tipoTransaccion` VARCHAR(50) NOT NULL COMMENT '',
-  PRIMARY KEY (`idtipoTransaccion`)  COMMENT '')
+  `idtipoTransaccion` INT(11) NOT NULL AUTO_INCREMENT,
+  `tipoTransaccion` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`idtipoTransaccion`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -249,11 +249,11 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `edusoft`.`nivelesacademicos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`nivelesacademicos` (
-  `idnivelAcademico` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
-  `nivelAcademico` VARCHAR(50) NOT NULL COMMENT '',
-  `valorInscripcion` DECIMAL(20,2) NOT NULL COMMENT '',
-  `valorColegiatura` DECIMAL(20,2) NOT NULL COMMENT '',
-  PRIMARY KEY (`idnivelAcademico`)  COMMENT '')
+  `idnivelAcademico` INT(11) NOT NULL AUTO_INCREMENT,
+  `nivelAcademico` VARCHAR(50) NOT NULL,
+  `valorInscripcion` DECIMAL(20,2) NOT NULL,
+  `valorColegiatura` DECIMAL(20,2) NOT NULL,
+  PRIMARY KEY (`idnivelAcademico`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -262,9 +262,9 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `edusoft`.`tipopago`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`tipopago` (
-  `idTipoPago` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
-  `Descripcion` VARCHAR(200) NOT NULL COMMENT '',
-  PRIMARY KEY (`idTipoPago`)  COMMENT '')
+  `idTipoPago` INT(11) NOT NULL AUTO_INCREMENT,
+  `Descripcion` VARCHAR(200) NOT NULL,
+  PRIMARY KEY (`idTipoPago`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -273,16 +273,16 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `edusoft`.`transacciones`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`transacciones` (
-  `idTransaccion` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
-  `idEstudiante` INT(11) NOT NULL COMMENT '',
-  `IdTipoPago` INT(11) NOT NULL COMMENT '',
-  `IdNivelAcademico` INT(11) NOT NULL COMMENT '',
-  `fechaTransaccion` DATE NOT NULL COMMENT '',
-  `montoTotal` DECIMAL(20,2) NOT NULL COMMENT '',
-  PRIMARY KEY (`idTransaccion`)  COMMENT '',
-  INDEX `fk_Transacciones_Estudiantes1_idx` (`idEstudiante` ASC)  COMMENT '',
-  INDEX `fk_trasacciontipop_idx` (`IdTipoPago` ASC)  COMMENT '',
-  INDEX `fk_trasaccionnivelAcad_idx` (`IdNivelAcademico` ASC)  COMMENT '',
+  `idTransaccion` INT(11) NOT NULL AUTO_INCREMENT,
+  `idEstudiante` INT(11) NOT NULL,
+  `IdTipoPago` INT(11) NOT NULL,
+  `IdNivelAcademico` INT(11) NOT NULL,
+  `fechaTransaccion` DATE NOT NULL,
+  `montoTotal` DECIMAL(20,2) NOT NULL,
+  PRIMARY KEY (`idTransaccion`),
+  INDEX `fk_Transacciones_Estudiantes1_idx` (`idEstudiante` ASC),
+  INDEX `fk_trasacciontipop_idx` (`IdTipoPago` ASC),
+  INDEX `fk_trasaccionnivelAcad_idx` (`IdNivelAcademico` ASC),
   CONSTRAINT `fk_Transacciones_Estudiantes1`
     FOREIGN KEY (`idEstudiante`)
     REFERENCES `edusoft`.`estudiantes` (`idEstudiante`)
@@ -306,9 +306,9 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `edusoft`.`mes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`mes` (
-  `idMes` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
-  `Descripcion` VARCHAR(45) NOT NULL COMMENT '',
-  PRIMARY KEY (`idMes`)  COMMENT '')
+  `idMes` INT(11) NOT NULL AUTO_INCREMENT,
+  `Descripcion` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idMes`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -317,17 +317,17 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `edusoft`.`detalletransacciones`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`detalletransacciones` (
-  `iddetalleTransaccion` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
-  `idTransaccion` INT(11) NOT NULL COMMENT '',
-  `idtipoTransaccion` INT(11) NOT NULL COMMENT '',
-  `IdMes` INT(11) NOT NULL COMMENT '',
-  `IdCicloEscolar` INT(11) NOT NULL COMMENT '',
-  `subTotal` DECIMAL(20,2) NOT NULL COMMENT '',
-  PRIMARY KEY (`iddetalleTransaccion`)  COMMENT '',
-  INDEX `fk_detalleTransaccion_Transacciones1_idx` (`idTransaccion` ASC)  COMMENT '',
-  INDEX `fk_detalleTransaccion_tipoTransacciones1_idx` (`idtipoTransaccion` ASC)  COMMENT '',
-  INDEX `fk_detalltransa_mes_idx` (`IdMes` ASC)  COMMENT '',
-  INDEX `fk_detalletransa_ciclo_idx` (`IdCicloEscolar` ASC)  COMMENT '',
+  `iddetalleTransaccion` INT(11) NOT NULL AUTO_INCREMENT,
+  `idTransaccion` INT(11) NOT NULL,
+  `idtipoTransaccion` INT(11) NOT NULL,
+  `IdMes` INT(11) NOT NULL,
+  `IdCicloEscolar` INT(11) NOT NULL,
+  `subTotal` DECIMAL(20,2) NOT NULL,
+  PRIMARY KEY (`iddetalleTransaccion`),
+  INDEX `fk_detalleTransaccion_Transacciones1_idx` (`idTransaccion` ASC),
+  INDEX `fk_detalleTransaccion_tipoTransacciones1_idx` (`idtipoTransaccion` ASC),
+  INDEX `fk_detalltransa_mes_idx` (`IdMes` ASC),
+  INDEX `fk_detalletransa_ciclo_idx` (`IdCicloEscolar` ASC),
   CONSTRAINT `fk_detalleTransaccion_tipoTransacciones1`
     FOREIGN KEY (`idtipoTransaccion`)
     REFERENCES `edusoft`.`tipotransacciones` (`idtipoTransaccion`)
@@ -356,9 +356,9 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `edusoft`.`tipousuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`tipousuario` (
-  `idTipoUsuario` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
-  `Descripcion` VARCHAR(100) NOT NULL COMMENT '',
-  PRIMARY KEY (`idTipoUsuario`)  COMMENT '')
+  `idTipoUsuario` INT(11) NOT NULL AUTO_INCREMENT,
+  `Descripcion` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`idTipoUsuario`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -367,14 +367,14 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `edusoft`.`usuarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`usuarios` (
-  `idUsuarios` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
-  `usuario` VARCHAR(100) NOT NULL COMMENT '',
-  `contraseña` VARCHAR(45) NOT NULL COMMENT '',
-  `IdTipoUsuario` INT(11) NOT NULL COMMENT '',
-  `IdEstudiante` INT(11) NULL DEFAULT NULL COMMENT '',
-  PRIMARY KEY (`idUsuarios`)  COMMENT '',
-  INDEX `fk_Usuario_tipousuario_idx` (`IdTipoUsuario` ASC)  COMMENT '',
-  INDEX `fk_Estudiante_Usuario_idx` (`IdEstudiante` ASC)  COMMENT '',
+  `idUsuarios` INT(11) NOT NULL AUTO_INCREMENT,
+  `usuario` VARCHAR(100) NOT NULL,
+  `contraseña` VARCHAR(45) NOT NULL,
+  `IdTipoUsuario` INT(11) NOT NULL,
+  `IdEstudiante` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`idUsuarios`),
+  INDEX `fk_Usuario_tipousuario_idx` (`IdTipoUsuario` ASC),
+  INDEX `fk_Estudiante_Usuario_idx` (`IdEstudiante` ASC),
   CONSTRAINT `fk_Estudiante_Usuario`
     FOREIGN KEY (`IdEstudiante`)
     REFERENCES `edusoft`.`estudiantes` (`idEstudiante`)
