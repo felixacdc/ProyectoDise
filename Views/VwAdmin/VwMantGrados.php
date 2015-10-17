@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-12">
          <h2>Mantenimiento de grados</h2>
-            <h5>Bienvenido director, el mantenimiento de grados. </h5>
+            <h5>Bienvenido director, al mantenimiento de grados. </h5>
 
         </div>
     </div>
@@ -40,7 +40,7 @@
                                 <div class="form-group" id="ErrorGradiv">
                                   <label class="control-label control-label-input-group" id="ErrorGralbl" for="ErrorGralbl"></label>
                                   <div class="input-group">
-                                      <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                      <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
                                       <input type="text" name="txtGradE" class="form-control" id="txtGrad" placeholder="Nombre Del Grado" autocomplete="off">
                                   </div>
                                 </div>
@@ -64,19 +64,56 @@
                     <div class="col-md-6">
                       <h3>Registro Secciones</h3>
                       <hr>
+
+                      <form method="POST" enctype="multipart/form-data" class="form-horizontal" id="frmSec">
                         <div class="form-group" id="ErrorSecdiv">
                           <label class="control-label control-label-input-group" id="ErrorSeclbl" for="ErrorSeclbl"></label>
                           <div class="input-group">
-                              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                              <span class="input-group-addon"><i class="fa fa-bell"></i></span>
                               <input type="text" name="NameS" class="form-control" id="txtSec" placeholder="Nombre De La Seccion" autocomplete="off">
                           </div>
                         </div>
                         <button type="button" class="btn btn-danger" id="buttonS" >Registrar</button>
+                      </form>
                     </div>
                   </div>
               </div>
               </div>
               <!-- End Form Elements SECCIONES -->
+
+              <!-- Form Elements Asginacion Seccion-->
+              <div class="panel panel-default tab-pane animated rollIn retraso-1 " id="tabAsig">
+              <div class="panel-body">
+                  <div class="row">
+                      <div class="col-md-3">
+                      </div>
+                      <div class="col-md-6">
+                        <h3>Asignacion de Secciones</h3>
+                        <hr>
+
+                        <form method="POST" enctype="multipart/form-data" class="form-horizontal" id="frmRegSec">
+                          <div class="form-group" id="ErrorCboGdiv">
+                            <label class="control-label control-label-input-group" id="ErrorCboGlbl" for="ErrorCboGlbl"></label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                                <SELECT NAME="cboGrado" class="form-control" SIZE=0 id="cboGrado" ></SELECT>
+                            </div>
+                          </div>
+
+                          <div class="form-group" id="ErrorCboSecdiv">
+                            <label class="control-label control-label-input-group" id="ErrorCboSeclbl" for="ErrorCboSeclbl"></label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-bell"></i></span>
+                                <SELECT NAME="cboseccion" class="form-control" SIZE=0 id="cboseccion"></SELECT>
+                            </div>
+                          </div>
+                          <button type="button" class="btn btn-danger" id="buttonS" >Registrar</button>
+                        </form>
+                      </div>
+                    </div>
+                </div>
+                </div>
+                <!-- End Form Elements Asignacion Seccion -->
           </div>
           <!-- END CONTENT-TABS -->
         </div>

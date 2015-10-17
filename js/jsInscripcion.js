@@ -33,7 +33,7 @@ function limpiarInput(){
 	$("#txtAddressE").val(direccionE);
 	$("#txtemailE").val(emailE);
 	$("#txtPhoneE").val(phoneE);
-  	$("#txtNameS").val(nombreE);
+  $("#txtNameS").val(nombreE);
 	$("#txtAddressS").val(direccionE);
 	$("#txtemailS").val(emailE);
 	$("#txtPhoneS").val(phoneE);
@@ -69,7 +69,7 @@ function fnvalidacion(){
 			$('#ErrorNomlbl').fadeIn();
 			ejecutar=false;
 		}
-    
+
 		if (direccionE==""){
 			$("#ErrorDirdiv").addClass("has-error has-feedback");
 			$("#ErrorDirlbl").text("Ingrese la Direccion");
@@ -83,7 +83,7 @@ function fnvalidacion(){
 			$('#ErrorDirlbl').fadeIn();
 			ejecutar=false;
 		}
-    
+
 		if (emailE==""){
 			$("#ErrorEmadiv").addClass("has-error has-feedback");
 			$("#ErrorEmalbl").text("Ingrese el correo electronico");
@@ -97,7 +97,7 @@ function fnvalidacion(){
 			$('#ErrorEmalbl').fadeIn();
 			ejecutar=false;
 		}
-    
+
 		if (phoneE==""){
 			$("#ErrorTeldiv").addClass("has-error has-feedback");
 			$("#ErrorTellbl").text("Ingrese el telefono");
@@ -133,7 +133,7 @@ function fnvalidacion(){
 			$('#ErrorNomSlbl').fadeIn();
 			ejecutar=false;
 		}
-    
+
 		if (direccionS==""){
 			$("#ErrorDirSdiv").addClass("has-error has-feedback");
 			$("#ErrorDirSlbl").text("Ingrese el Direccion");
@@ -147,7 +147,7 @@ function fnvalidacion(){
 			$('#ErrorDirSlbl').fadeIn();
 			ejecutar=false;
 		}
-    
+
 		if (emailS==""){
 			$("#ErrorEmaSdiv").addClass("has-error has-feedback");
 			$("#ErrorEmaSlbl").text("Ingrese el correo electronico");
@@ -161,7 +161,7 @@ function fnvalidacion(){
 			$('#ErrorEmaSlbl').fadeIn();
 			ejecutar=false;
 		}
-    
+
 		if (phoneS==""){
 			$("#ErrorTelSdiv").addClass("has-error has-feedback");
 			$("#ErrorTelSlbl").text("Ingrese el telefono");

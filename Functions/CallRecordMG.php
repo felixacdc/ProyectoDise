@@ -21,6 +21,12 @@ if (isset($_POST['rGrad'])) {
 	$fnGrad = new Record();
 
 	echo $fnGrad->rGrad($gradPost);
+} elseif (isset($_POST['NameS'])) {
+	$secPost = $_POST['NameS'];
+
+	$fnSec = new Record();
+
+	echo $fnSec->rSeccion($secPost);
 }
 
  ?>

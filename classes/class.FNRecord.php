@@ -41,6 +41,22 @@ class Record
 
     if ($sql) {
       return 'Grado Registrado Correctamente';
+    } else{
+      return 'Error en el Registro';
+    }
+  }
+
+  public function rSeccion($Seccion){
+    $db = new ConnectionClass();
+
+    $TSeccion = $db->real_escape_string(htmlspecialchars($Seccion));
+
+    $sql = $db->query("INSERT INTO Seccion (descripcion) VALUES ('$TSeccion')");
+
+    if ($sql) {
+      return 'Seccion Registrada Correctamente';
+    } else{
+      return 'Error en el Registro';
     }
   }
 }

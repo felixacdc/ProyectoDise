@@ -55,13 +55,13 @@
 
 
                     <li>
-                        <a id="op1"><i class="fa fa-dashboard fa-3x"></i>Inscripcion</a>
+                        <a id="op1"><i class="fa fa-odnoklassniki fa-3x"></i>Inscripcion</a>
                     </li>
                      <li>
-                        <a id="op2"><i class="fa fa-desktop fa-3x"></i>Mantenimiento Grados</a>
+                        <a id="op2"><i class="fa fa-graduation-cap fa-3x"></i>Mantenimiento Grados</a>
                     </li>
                     <li>
-                        <a  href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i>Registro Catedraticos</a>
+                        <a id="op3"><i class="fa fa-user-secret fa-3x"></i>Mantenimientos Catedraticos</a>
                     </li>
 						        <li>
                         <a   href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>
@@ -129,6 +129,8 @@
     <script src="../js/jsInscripcion.js"></script>
     <!-- JS Mantenimiento Grados -->
     <script src="../js/jsMantGrados.js"></script>
+    <!-- JS Mantenimiento Catedraticos -->
+    <script src="../js/jsMantCat.js"></script>
 
     <!-- *************** Fin JS personales ***************** -->
 

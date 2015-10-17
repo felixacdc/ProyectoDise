@@ -1,4 +1,4 @@
-  <div id="page-inner">
+  <div id="page-inner" class="animated zoomIn retraso-1">
     <div class="row">
         <div class="col-md-12">
          <h2>Inscripcion de alumnos</h2>
@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-md-12">
             <!-- Form Elements -->
-            <div class="panel panel-default">
+            <div class="panel panel-default animated rollIn retraso-1">
                 <div class="panel-heading">
                     Formulario de inscripcion
                 </div>
@@ -30,7 +30,7 @@
                               <div class="form-group" id="ErrorNomdiv">
                                 <label class="control-label control-label-input-group" id="ErrorNomlbl" for="inputError1"></label>
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-male"></i></span>
                                     <input type="text" name="NameE" class="form-control" id="txtNameE" placeholder="Nombre Encargado" autocomplete="off">
                                 </div>
                               </div>
@@ -39,7 +39,7 @@
                               <div class="form-group" id="ErrorDirdiv">
                                 <label class="control-label control-label-input-group" id="ErrorDirlbl" for="ErrorDirlbl"></label>
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
                                     <input type="text" name="AddressE" class="form-control" id="txtAddressE" placeholder="Direccion Encargado" autocomplete="off">
                                 </div>
                               </div>
@@ -78,7 +78,7 @@
                                   <div class="form-group" id="ErrorDirSdiv">
                                     <label class="control-label control-label-input-group" id="ErrorDirSlbl" for="ErrorDirSlbl"></label>
                                     <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                        <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
                                         <input type="text" name="AddressS" class="form-control" id="txtAddressS" placeholder="Direccion Estudiante" autocomplete="off">
                                     </div>
                                   </div>
@@ -123,5 +123,3 @@
     </div>
 </div>
 <!-- /. PAGE INNER  -->
-
-

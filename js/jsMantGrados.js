@@ -19,7 +19,11 @@ function limpiarInputMG(){
 }
 
 function vaciarInput(){
-	$("#txtGra").clear();
+	$('#txtGrad').val(' ');
+	$("#txtGrad").val($("#txtGrad").val().trim());
+
+	$('#txtSec').val(' ');
+	$("#txtSec").val($("#txtSec").val().trim());
 }
 
 /*--------------------------------------
@@ -124,7 +128,7 @@ function verifyS(Sec)
 			$("#ErrorSeclbl").addClass("animated bounceIn retraso-2");
 			$('#ErrorSeclbl').fadeIn();
 		} else {
-			/*REGISTRAR SECCION*/
+			registarSec();
 		}
 	});
 }
@@ -149,6 +153,24 @@ function registarGrad(){
 	  }
 	});
 }
+
+function registarSec(){
+	var url = "../Functions/CallRecordMG.php"; // El script a dónde se realizará la petición.
+
+	$.ajax({
+	  type: "POST",
+	  url: url,
+	  data: $("#frmSec").serialize(), // Adjuntar los campos del formulario enviado.
+	  success: function(data)
+	  {
+			$('#alert').text(data);
+			$('#alert').show();
+			$('#alert').delay(3000).hide(600);
+			vaciarInput();
+	  }
+	});
+}
+
 
 
 $(document).ready(function(){
