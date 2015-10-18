@@ -14,6 +14,8 @@ var nombreS;
 var direccionS;
 var emailS;
 var phoneS;
+var AsignacionG;
+var CicloE;
 
 
 /*--------------------------------------
@@ -26,8 +28,10 @@ function limpiarInput(){
 	phoneE=$("#txtPhoneE").val().trim();
 	nombreS=$("#txtNameS").val().trim();
 	direccionS=$("#txtAddressS").val();
-  	emailS=$("#txtemailS").val().trim();
-  	phoneS=$("#txtPhoneS").val().trim();
+  emailS=$("#txtemailS").val().trim();
+  phoneS=$("#txtPhoneS").val().trim();
+	AsignacionG = $("#cboAsiGR").val();
+	CicloE = $("#cboCE").val();
 
 	$("#txtNameE").val(nombreE);
 	$("#txtAddressE").val(direccionE);
@@ -181,28 +185,66 @@ function fnvalidacion(){
 			$('#ErrorTelSlbl').fadeIn();
 			ejecutar=false;
 		}
-    //
-		// if (plan==null){
-		// 	$("#helpplan").text("Seleccione su plan");
-		// 	$('#helpplan').fadeIn();
-		// 	ejecutar=false;
-		// }
-    //
-		// if (code==""){
-		// 	$("#helpcode").text("Ingrese su codigo");
-		// 	$('#helpcode').fadeIn();
-		// 	ejecutar=false;
-		// } else if (!verifyFore.test(code)){
-		// 	$("#helpcode").text("Caracteres invalidos");
-		// 	$('#helpcode').fadeIn();
-		// 	ejecutar=false;
-		// }
-    //
+
+		if (AsignacionG == 0){
+			$("#ErrorAsiGRdiv").addClass("has-error has-feedback");
+			$("#ErrorAsiGRlbl").text("Seleccione el Grado");
+			$("#ErrorAsiGRlbl").addClass("animated bounceIn retraso-2");
+			$('#ErrorAsiGRlbl').fadeIn();
+			ejecutar=false;
+		}
+
+		if (CicloE == null){
+			$("#ErrorCEdiv").addClass("has-error has-feedback");
+			$("#ErrorCElbl").text("Seleccione el Ciclo Escolar");
+			$("#ErrorCElbl").addClass("animated bounceIn retraso-2");
+			$('#ErrorCElbl').fadeIn();
+			ejecutar=false;
+		}
+
 		// if(ejecutar)
 		// {
 		// 	verifyCode(code);
 		// }
 
+}
+
+function CargarComboAsigG(){
+	$.ajax({
+		url: '../Functions/CallCombos.php',
+		type: 'POST',
+		dataType: "json",
+		data: {cboAsigG:'1'},
+		success: function(data){
+			$.each(data,function(index){
+				var campos = data[index];
+				if (index == 0) {
+					$("#cboAsiGR").append("<option value='" + campos.id +"' disabled selected>" + campos.descripcion + '</option>');
+				} else {
+					$("#cboAsiGR").append("<option value='" + campos.id +"'>" + campos.descripcion + '</option>');
+				}
+			});
+		}
+	});
+}
+
+function CargarComboCE(){
+	$.ajax({
+		url: '../Functions/CallCombos.php',
+		type: 'POST',
+		dataType: "json",
+		data: {cboCE:'1'},
+		success: function(data){
+			$.each(data,function(index){
+				var campos = data[index];
+				if (index == 0) {
+					$("#cboCE").append("<option value='" + campos.id +"' disabled selected>" + campos.descripcion + '</option>');
+				} else {
+					$("#cboCE").append("<option value='" + campos.id +"'>" + campos.descripcion + '</option>');
+				}
+			});
+		}
+	});
 }
 
 $(document).ready(function(){
@@ -217,6 +259,6 @@ $(document).ready(function(){
 				$(this).parent().parent().removeClass('has-error has-feedback');
 			});
 
-		$(document).delegate('#buttone','click',fnvalidacion);
+			$(document).delegate('#buttone','click',fnvalidacion);
 
 });

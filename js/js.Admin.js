@@ -1,3 +1,12 @@
+function fnInicio(){
+	$("#page-wrapper").load('VwAdmin/VwInscripcion.php');
+	$('select option').remove();
+	$('a').removeClass('active-menu');
+	$('#op1').addClass('active-menu');
+	$('select option').remove();
+	CargarComboAsigG();
+	CargarComboCE();
+}
 
 $(document).ready(function(){
 
@@ -5,10 +14,10 @@ $(document).ready(function(){
 		window.location.href = '../Functions/CallVwUsers.php?close=1';
 	});
 
+	fnInicio();
+
 	$('#op1').on('click',function(){
-		$("#page-wrapper").load('VwAdmin/VwInscripcion.php');
-		$('a').removeClass('active-menu');
-		$('#op1').addClass('active-menu');
+		fnInicio();
 	});
 
 	$('#op2').on('click',function(){

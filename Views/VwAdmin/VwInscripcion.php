@@ -10,11 +10,20 @@
      <hr />
     <div class="row">
         <div class="col-md-12">
+
+          <!-- TABS -->
+          <ul class="nav nav-tabs">
+            <li role="presentation" class="active" id="tab-I"><a href="#tabInsc" data-toggle="tab">Inscripcion</a></li>
+          </ul>
+          <!-- END TABS -->
+
+          <!-- BEGIN CONTENT-TABS -->
+          <div id="my-tab-content" class="tab-content">
             <!-- Form Elements -->
-            <div class="panel panel-default animated rollIn retraso-1">
-                <div class="panel-heading">
+            <div class="panel panel-default tab-pane in active animated rollIn retraso-1" id="tabInsc">
+                <!-- <div class="panel-heading">
                     Formulario de inscripcion
-                </div>
+                </div> -->
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-3">
@@ -102,15 +111,24 @@
                                   </div>
 
                                   <!-- Ingreso de Grado -->
-                                  <!-- <div class="form-group" id="ErrorPladiv">
-                                    <label class="control-label control-label-input-group" id="ErrorPlalbl" for="inputError2"></label>
+                                  <div class="form-group" id="ErrorAsiGRdiv">
+                                    <label class="control-label control-label-input-group" id="ErrorAsiGRlbl" for="ErrorAsiGRlbl"></label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-language"></i></span>
-                                        <SELECT NAME="cboGrado" class="form-control" SIZE=0 id="cboGrado" placeholder="Grado"></SELECT>
+                                        <SELECT NAME="cboAsiGR" class="form-control" multiple SIZE=0 id="cboAsiGR" ></SELECT>
                                     </div>
-                                  </div> -->
+                                  </div>
 
-                                  <button type="button" class="btn btn-success btn-lg" id="buttone" >Registrar</button>
+                                  <!-- Ingreso de ciclo escolar -->
+                                  <div class="form-group" id="ErrorCEdiv">
+                                    <label class="control-label control-label-input-group" id="ErrorCElbl" for="ErrorCElbl"></label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-sort-numeric-asc"></i></span>
+                                        <SELECT NAME="cboCE" class="form-control" SIZE=0 id="cboCE" ></SELECT>
+                                    </div>
+                                  </div>
+
+                                  <button type="button" class="btn btn-danger" id="buttone" >Registrar</button>
                             </form>
                         </div>
                         <div class="col-md-3">
@@ -119,6 +137,8 @@
                 </div>
             </div>
              <!-- End Form Elements -->
+          </div>
+          <!-- END CONTENT-TABS -->
         </div>
     </div>
 </div>

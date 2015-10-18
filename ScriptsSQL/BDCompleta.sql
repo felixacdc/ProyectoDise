@@ -108,7 +108,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `edusoft`.`cicloescolar`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`cicloescolar` (
-  `idCicloEscolar` INT(11) NOT NULL,
+  `idCicloEscolar` INT(11) NOT NULL AUTO_INCREMENT,
   `Año` INT(11) NOT NULL,
   PRIMARY KEY (`idCicloEscolar`))
 ENGINE = InnoDB

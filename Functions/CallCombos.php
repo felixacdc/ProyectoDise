@@ -11,6 +11,14 @@ if (isset($_POST['cboG'])) {
   $fnCombos = new Combos();
 
   echo $fnCombos->cboSeccion();
+} elseif (isset($_POST['cboAsigG'])) {
+  $fnCombos = new Combos();
+
+  echo $fnCombos->cboAsigG();
+} elseif (isset($_POST['cboCE'])) {
+  $fnCombos = new Combos();
+
+  echo $fnCombos->cboCE();
 }
 
  ?>
