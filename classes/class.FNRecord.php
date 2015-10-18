@@ -59,6 +59,31 @@ class Record
       return 'Error en el Registro';
     }
   }
+
+  public function rAsignacionGS($Seccion, $Grado){
+    $db = new ConnectionClass();
+
+    $sql = $db->query("INSERT INTO AsignacionSeccion (idGrado, idSeccion) VALUES ('$Grado', '$Seccion')");
+
+    if ($sql) {
+      return 'Seccion Asignada Correctamente';
+    } else{
+      return 'Error en el Registro';
+    }
+  }
+
+  public function vAsignacionGS($Seccion, $Grado){
+    $db = new ConnectionClass();
+
+    $sql = $db->query("SELECT * FROM AsignacionSeccion WHERE idSeccion = '$Seccion' and idGrado = '$Grado'");
+    $numberRecord = $sql->num_rows;
+
+    if ($numberRecord != 0) {
+      return 'Seccion Ya Asignada a ese grado';
+    }else {
+      return '';
+    }
+  }
 }
 
  ?>

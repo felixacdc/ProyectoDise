@@ -1,5 +1,8 @@
 <div id="page-inner" class="animated zoomIn retraso-1">
-  <div class="alert alert-info animated bounceIn retraso-2" role="alert" id="alert">asdfasd asdfasd</div>
+  <!-- Alertas -->
+  <div class="alert alert-info animated bounceIn retraso-2" role="alert" id="alert"></div>
+  <div class="alert alert-danger animated bounceIn retraso-2" role="alert" id="alertE"></div>
+  <!-- Fin de alertas -->
     <div class="row">
         <div class="col-md-12">
          <h2>Mantenimiento de grados</h2>
@@ -14,9 +17,9 @@
 
           <!-- TABS -->
           <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="#tabGrad" data-toggle="tab">Grados</a></li>
-            <li role="presentation"><a href="#tabSec" data-toggle="tab">Secciones</a></li>
-            <li role="presentation"><a href="#tabAsig" data-toggle="tab">Asignacion de Secciones</a></li>
+            <li role="presentation" class="active"><a href="#tabGrad" data-toggle="tab" id="tab-G">Grados</a></li>
+            <li role="presentation"><a href="#tabSec" data-toggle="tab" id="tab-S">Secciones</a></li>
+            <li role="presentation"><a href="#tabAsig" data-toggle="tab" id="tab-AGS">Asignacion de Secciones</a></li>
           </ul>
           <!-- END TABS -->
 
@@ -91,7 +94,7 @@
                         <h3>Asignacion de Secciones</h3>
                         <hr>
 
-                        <form method="POST" enctype="multipart/form-data" class="form-horizontal" id="frmRegSec">
+                        <form method="POST" enctype="multipart/form-data" class="form-horizontal" id="frmRegAsiGS">
                           <div class="form-group" id="ErrorCboGdiv">
                             <label class="control-label control-label-input-group" id="ErrorCboGlbl" for="ErrorCboGlbl"></label>
                             <div class="input-group">
@@ -107,7 +110,7 @@
                                 <SELECT NAME="cboseccion" class="form-control" SIZE=0 id="cboseccion"></SELECT>
                             </div>
                           </div>
-                          <button type="button" class="btn btn-danger" id="buttonS" >Registrar</button>
+                          <button type="button" class="btn btn-danger" id="buttonASG" >Registrar</button>
                         </form>
                       </div>
                     </div>

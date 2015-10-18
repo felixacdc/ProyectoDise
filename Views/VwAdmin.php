@@ -54,13 +54,13 @@
 					</li>
 
 
-                    <li>
+                    <li class="cursor">
                         <a id="op1"><i class="fa fa-odnoklassniki fa-3x"></i>Inscripcion</a>
                     </li>
-                     <li>
+                     <li class="cursor">
                         <a id="op2"><i class="fa fa-graduation-cap fa-3x"></i>Mantenimiento Grados</a>
                     </li>
-                    <li>
+                    <li class="cursor">
                         <a id="op3"><i class="fa fa-user-secret fa-3x"></i>Mantenimientos Catedraticos</a>
                     </li>
 						        <li>

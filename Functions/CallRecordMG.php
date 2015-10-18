@@ -27,6 +27,20 @@ if (isset($_POST['rGrad'])) {
 	$fnSec = new Record();
 
 	echo $fnSec->rSeccion($secPost);
+} elseif (isset($_POST['cboGrado']) and isset($_POST['cboseccion'])) {
+	$gradPost = $_POST['cboGrado'];
+	$secPost = $_POST['cboseccion'];
+
+	$fnSec = new Record();
+
+	echo $fnSec->rAsignacionGS($secPost, $gradPost);
+} elseif (isset($_POST['vGrad']) and isset($_POST['vSec'])) {
+	$gradPost = $_POST['vGrad'];
+	$secPost = $_POST['vSec'];
+
+	$fnSec = new Record();
+
+	echo $fnSec->vAsignacionGS($secPost, $gradPost);
 }
 
  ?>
