@@ -1,5 +1,7 @@
+<div class="alert alert-info animated bounceIn retraso-2" role="alert" id="alert"></div>
+<div class="alert alert-danger animated bounceIn retraso-2" role="alert" id="alertE"></div>
+
 <div id="page-inner" class="animated zoomIn retraso-1">
-  <div class="alert alert-info animated bounceIn retraso-2" role="alert" id="alert">asdfasd asdfasd</div>
     <div class="row">
         <div class="col-md-12">
          <h2>Mantenimiento de Catedraticos</h2>
@@ -15,7 +17,7 @@
           <!-- TABS -->
           <ul class="nav nav-tabs">
             <li role="presentation" class="active"><a href="#tabProfe" data-toggle="tab">Profeciones</a></li>
-            <li role="presentation"><a href="#tabCat" data-toggle="tab">Catedraticos</a></li>
+            <li role="presentation" id="tab-Cat"><a href="#tabCat" data-toggle="tab">Catedraticos</a></li>
           </ul>
           <!-- END TABS -->
 

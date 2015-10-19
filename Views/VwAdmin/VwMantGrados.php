@@ -1,7 +1,6 @@
 <div class="alert alert-info animated bounceIn retraso-2" role="alert" id="alert"></div>
 <div class="alert alert-danger animated bounceIn retraso-2" role="alert" id="alertE"></div>
 
-
 <div id="page-inner" class="animated zoomIn retraso-1">
   <!-- Alertas -->
 

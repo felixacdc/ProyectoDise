@@ -1,4 +1,7 @@
-  <div id="page-inner" class="animated zoomIn retraso-1">
+<div class="alert alert-info animated bounceIn retraso-2" role="alert" id="alert"></div>
+<div class="alert alert-danger animated bounceIn retraso-2" role="alert" id="alertE"></div>
+
+<div id="page-inner" class="animated zoomIn retraso-1">
     <div class="row">
         <div class="col-md-12">
          <h2>Inscripcion de alumnos</h2>
@@ -13,14 +16,15 @@
 
           <!-- TABS -->
           <ul class="nav nav-tabs">
-            <li role="presentation" class="active" id="tab-I"><a href="#tabInsc" data-toggle="tab">Inscripcion</a></li>
+            <li role="presentation" class="active"><a href="#tabEncar" data-toggle="tab">Encargado</a></li>
+            <li role="presentation" id="tab-I"><a href="#tabInsc" data-toggle="tab">Inscripcion</a></li>
           </ul>
           <!-- END TABS -->
 
           <!-- BEGIN CONTENT-TABS -->
           <div id="my-tab-content" class="tab-content">
-            <!-- Form Elements -->
-            <div class="panel panel-default tab-pane in active animated rollIn retraso-1" id="tabInsc">
+            <!-- Form Elements Inscripcion-->
+            <div class="panel panel-default tab-pane in active animated rollIn retraso-1" id="tabEncar">
                 <!-- <div class="panel-heading">
                     Formulario de inscripcion
                 </div> -->
@@ -30,9 +34,9 @@
                         </div>
                         <div class="col-md-6">
 
-                            <form action="actionrecord.php" name="Registro" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                            <form method="POST" enctype="multipart/form-data" class="form-horizontal" id="frmEncar">
 
-                            <!-- ******** Datos Estudiante ********* -->
+                            <!-- ******** Datos Encargado ********* -->
                             <h3>Datos Encargado</h3>
                             <hr>
                             <!-- Ingreso de Nombre Encargado -->
@@ -71,9 +75,43 @@
                                 </div>
                               </div>
 
+                              <button type="button" class="btn btn-danger" id="buttonEnc" >Registrar</button>
+
+                            </div>
+                            <div class="col-md-3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Form Elements Encargado-->
+
+                <!-- Form Elements Inscripcion-->
+                <div class="panel panel-default tab-pane animated rollIn retraso-1" id="tabInsc">
+                    <!-- <div class="panel-heading">
+                        Formulario de inscripcion
+                    </div> -->
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                            </div>
+                            <div class="col-md-6">
+
+                                <form method="POST" enctype="multipart/form-data" class="form-horizontal" id="frmInsc">
                               <!-- ******** Datos Estudiante ********* -->
                                 <h3>Datos Estudiantes</h3>
                                 <hr>
+
+                                <!-- Buscar de Nombre Estudiante -->
+                                  <div class="form-group" id="ErrorBEndiv">
+                                    <label class="control-label control-label-input-group" id="ErrorBEnlbl" for="ErrorBEnlbl"></label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                        <input type="text" name="BEn" class="form-control" id="txtBuscEn" placeholder="Buscar Encargado" autocomplete="off">
+                                    </div>
+                                    <div id="myDiv"></div>
+                                  </div>
+
+
                                 <!-- Ingreso de Nombre Estudiante -->
                                   <div class="form-group" id="ErrorNomSdiv">
                                     <label class="control-label control-label-input-group" id="ErrorNomSlbl" for="ErrorNomSlbl"></label>
@@ -136,7 +174,7 @@
                     </div>
                 </div>
             </div>
-             <!-- End Form Elements -->
+             <!-- End Form Elements Inscripcion-->
           </div>
           <!-- END CONTENT-TABS -->
         </div>

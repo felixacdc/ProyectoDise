@@ -11,7 +11,7 @@ class Combos
 			$dataArray = array();
 			$i = 0;
 
-      $dataArray[$i] = array("id" => '' , "descripcion" => 'Seleccione el Grado');
+      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Seleccione el Grado');
 
 			while($data = $sql->fetch_assoc()){
         $i++;
@@ -33,7 +33,7 @@ class Combos
 			$dataArray = array();
 			$i = 0;
 
-      $dataArray[$i] = array("id" => '' , "descripcion" => 'Seleccione el Seccion');
+      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Seleccione el Seccion');
 
 			while($data = $sql->fetch_assoc()){
         $i++;
@@ -58,7 +58,7 @@ class Combos
 			$dataArray = array();
 			$i = 0;
 
-      $dataArray[$i] = array("id" => '' , "descripcion" => 'Seleccione el Grado');
+      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Seleccione el Grado');
 
 			while($data = $sql->fetch_assoc()){
         $i++;
@@ -104,7 +104,7 @@ class Combos
 			$dataArray = array();
 			$i = 0;
 
-      $dataArray[$i] = array("id" => '' , "descripcion" => 'Seleccione el Ciclo Escolar');
+      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Seleccione el Ciclo Escolar');
 
 			while($data = $sql->fetch_assoc()){
         $i++;
@@ -117,6 +117,49 @@ class Combos
 		  $this->regCboCE($año, $numberRecord);
 		}
 	}
+
+  public function cboProfec(){
+		$db = new connectionClass();
+
+		$sql = $db->query("SELECT * FROM profesiones");
+		$numberRecord = $sql->num_rows;
+
+		if ($numberRecord != 0) {
+			$dataArray = array();
+			$i = 0;
+
+      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Seleccione La Profecion');
+
+			while($data = $sql->fetch_assoc()){
+        $i++;
+				$dataArray[$i] = array("id" => $data['idProfesion'], "descripcion" => $data['Profesion']);
+			}
+
+			header("Content-type: application/json");
+			return json_encode($dataArray);
+		}
+	}
+
+  public function buscarEncar($buscar){
+		$db = new connectionClass();
+
+		$sql = $db->query("SELECT idEncargado, nombreEncargado FROM encargados WHERE nombreEncargado LIKE '%$buscar%'");
+		$numberRecord = $sql->num_rows;
+
+		if ($numberRecord != 0) {
+			$dataArray = array();
+			$i = 0;
+
+			while($data = $sql->fetch_assoc()){
+				$dataArray[$i] = array("id" => $data['idEncargado'], "descripcion" => $data['nombreEncargado']);
+        $i++;
+			}
+
+			header("Content-type: application/json");
+			return json_encode($dataArray);
+		}
+	}
+
 }
 
  ?>

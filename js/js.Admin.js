@@ -3,9 +3,6 @@ function fnInicio(){
 	$('select option').remove();
 	$('a').removeClass('active-menu');
 	$('#op1').addClass('active-menu');
-	$('select option').remove();
-	CargarComboAsigG();
-	CargarComboCE();
 }
 
 $(document).ready(function(){

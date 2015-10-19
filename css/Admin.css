@@ -8,6 +8,7 @@
   right:0;
   margin-left:auto;
   margin-right:auto;
+  text-align: center;
 }
 
 #logo{
@@ -22,6 +23,31 @@
 
 .cursor{
   cursor: pointer;
+}
+
+#myDiv{
+  background-color: white;
+  position: absolute;
+  z-index: 20;
+  width: 87%;
+  left: 10%;
+  float: right;
+  border: 1px solid #1882A8;
+  box-sizing: border-box;
+  display: none;
+}
+
+#myDiv p{
+  width: 100%;
+  height: 34px;
+  float: right;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#myDiv p:hover{
+  background: #1882A8;
 }
 
 @media only screen and (max-width: 778px) {

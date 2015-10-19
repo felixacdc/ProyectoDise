@@ -1,6 +1,6 @@
 <?php
 
-require_once '../classes/class.FNRecord.php';
+require_once '../classes/class.FNRecordMG.php';
 require_once '../classes/class.Connection.php';
 
 if (isset($_POST['rGrad'])) {

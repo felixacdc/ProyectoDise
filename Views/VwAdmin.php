@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="../font-awesome-4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/animate.css">
      <!-- GOOGLE FONTS-->
-   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
 
 </head>
 <body>

@@ -4,8 +4,8 @@
 var ejecutar=true;
 var verifyOne = /^[a-zA-Z ñáéíóú]*$/;
 var verifyTwo = /^\d*$/;
-var verifyThree = /^([a-z]+[a-z0-9._-]*)@{1}([a-z1-9\.]{2,})\.([a-z]{2,3})$/;
-var verifyFore = /^[a-zA-Z0-9_-]+$/;
+var verifyThree = /^([a-zA-Z]+[a-zA-Z0-9._-]*)@{1}([a-z1-9\.]{2,})\.([a-z]{2,3})$/;
+var verifyFore = /^[a-zA-Z0-9. _-]*$/;
 var nombreE;
 var direccionE;
 var emailE;
@@ -16,7 +16,9 @@ var emailS;
 var phoneS;
 var AsignacionG;
 var CicloE;
-
+var hiBuscEn = 0;
+var BuscEn;
+var VeryBuscEn = '';
 
 /*--------------------------------------
 			LIMPIADO DE TEXT
@@ -32,7 +34,9 @@ function limpiarInput(){
   phoneS=$("#txtPhoneS").val().trim();
 	AsignacionG = $("#cboAsiGR").val();
 	CicloE = $("#cboCE").val();
+	BuscEn = $('#txtBuscEn').val().trim();
 
+	$('#txtBuscEn').val(BuscEn);
 	$("#txtNameE").val(nombreE);
 	$("#txtAddressE").val(direccionE);
 	$("#txtemailE").val(emailE);
@@ -41,6 +45,33 @@ function limpiarInput(){
 	$("#txtAddressS").val(direccionE);
 	$("#txtemailS").val(emailE);
 	$("#txtPhoneS").val(phoneE);
+}
+
+function vaciarInputIns(){
+	$("#txtNameE").val(' ');
+	$("#txtAddressE").val(' ');
+	$("#txtemailE").val(' ');
+	$("#txtPhoneE").val(' ');
+	$("#txtNameS").val(' ');
+	$("#txtAddressS").val(' ');
+	$("#txtemailS").val(' ');
+	$("#txtPhoneS").val(' ');
+	$('#txtBuscEn').val(' ');
+
+	$("#txtBuscEn").val($("#txtBuscEn").val().trim());
+	$("#txtNameE").val($("#txtNameE").val().trim());
+	$("#txtAddressE").val($("#txtAddressE").val().trim());
+	$("#txtemailE").val($("#txtemailE").val().trim());
+	$("#txtPhoneE").val($("#txtPhoneE").val().trim());
+  $("#txtNameS").val($("#txtNameS").val().trim());
+	$("#txtAddressS").val($("#txtAddressS").val().trim());
+	$("#txtemailS").val($("#txtemailS").val().trim());
+	$("#txtPhoneS").val($("#txtPhoneS").val().trim());
+
+	$("select#cboCE").val("0");
+	$("select#cboAsiGR").val("0");
+	hiBuscEn = 0;
+
 }
 
 /*--------------------------------------
@@ -54,14 +85,15 @@ function resetClass(){
 /*--------------------------------------
 					Funcion Validar
 -----------------------------------------*/
-
-function fnvalidacion(){
+function fnvalidacionEnc(){
 		ejecutar=true;
 		limpiarInput();
 		resetClass();
 
+		// ************ VALIDACION ENCARGADO ****************
+
 		if (nombreE==""){
-      		$("#ErrorNomdiv").addClass("has-error has-feedback");
+      $("#ErrorNomdiv").addClass("has-error has-feedback");
 			$("#ErrorNomlbl").text("Ingrese el nombres");
 			$("#ErrorNomlbl").addClass("animated bounceIn retraso-2");
 			$('#ErrorNomlbl').fadeIn();
@@ -80,9 +112,9 @@ function fnvalidacion(){
 			$("#ErrorDirlbl").addClass("animated bounceIn retraso-2");
 			$('#ErrorDirlbl').fadeIn();
 			ejecutar=false;
-		} else if (!verifyOne.test(direccionE)){
+		} else if (!verifyFore.test(direccionE)){
 			$("#ErrorDirdiv").addClass("has-error has-feedback");
-			$("#ErrorDirlbl").text("Ingrese solo letras");
+			$("#ErrorDirlbl").text("Caracteres Incorrectos");
 			$("#ErrorDirlbl").addClass("animated bounceIn retraso-2");
 			$('#ErrorDirlbl').fadeIn();
 			ejecutar=false;
@@ -122,10 +154,37 @@ function fnvalidacion(){
 			ejecutar=false;
 		}
 
-		// ************** ESTUDIANTE ************************+
+		if(ejecutar)
+		{
+			registarEnc();
+		}
+
+}
+
+function fnvalidacion(){
+		ejecutar=true;
+		limpiarInput();
+		resetClass();
+
+		// ************** ESTUDIANTE ************************
+
+		if (hiBuscEn == 0){
+      $("#ErrorBEndiv").addClass("has-error has-feedback");
+			$("#ErrorBEnlbl").text("Seleccione un Encargado");
+			$("#ErrorBEnlbl").addClass("animated bounceIn retraso-2");
+			$('#ErrorBEnlbl').fadeIn();
+			ejecutar=false;
+		}else if(BuscEn == '' || BuscEn != VeryBuscEn){
+			$("#ErrorBEndiv").addClass("has-error has-feedback");
+			$("#ErrorBEnlbl").text("Seleccione un Encargado");
+			$("#ErrorBEnlbl").addClass("animated bounceIn retraso-2");
+			$('#ErrorBEnlbl').fadeIn();
+			hiBuscEn = 0;
+			ejecutar=false;
+		}
 
 		if (nombreS==""){
-      		$("#ErrorNomSdiv").addClass("has-error has-feedback");
+      $("#ErrorNomSdiv").addClass("has-error has-feedback");
 			$("#ErrorNomSlbl").text("Ingrese el nombres");
 			$("#ErrorNomSlbl").addClass("animated bounceIn retraso-2");
 			$('#ErrorNomSlbl').fadeIn();
@@ -144,9 +203,9 @@ function fnvalidacion(){
 			$("#ErrorDirSlbl").addClass("animated bounceIn retraso-2");
 			$('#ErrorDirSlbl').fadeIn();
 			ejecutar=false;
-		} else if (!verifyOne.test(direccionS)){
+		} else if (!verifyFore.test(direccionS)){
 			$("#ErrorDirSdiv").addClass("has-error has-feedback");
-			$("#ErrorDirSlbl").text("Ingrese solo letras");
+			$("#ErrorDirSlbl").text("Caracteres Incorrectos");
 			$("#ErrorDirSlbl").addClass("animated bounceIn retraso-2");
 			$('#ErrorDirSlbl').fadeIn();
 			ejecutar=false;
@@ -209,6 +268,88 @@ function fnvalidacion(){
 
 }
 
+/*--------------------------------------
+			ENVIO DE FORMULARIOS PARA REGISTRO
+-----------------------------------------*/
+
+function registarEnc(){
+	var url = "../Functions/CallRecordInsc.php"; // El script a dónde se realizará la petición.
+
+	$.ajax({
+	  type: "POST",
+	  url: url,
+	  data: $("#frmEncar").serialize(), // Adjuntar los campos del formulario enviado.
+	  success: function(data)
+	  {
+			$('#alert').text(data);
+			$('#alert').show();
+			$('#alert').delay(3000).hide(600);
+			vaciarInputIns();
+	  }
+	});
+}
+
+
+$(document).ready(function(){
+
+	  	$(document).delegate('input','focus',function(){
+				$(this).parent().siblings('label').fadeOut().addClass('bounceOutLeft');
+				$(this).parent().parent().removeClass('has-error has-feedback');
+			});
+
+			$(document).delegate('select','focus',function(){
+				$(this).parent().siblings('label').fadeOut().addClass('bounceOutLeft');
+				$(this).parent().parent().removeClass('has-error has-feedback');
+			});
+
+			$(document).delegate('#tab-I','click',function(){
+				$('select option').remove();
+				CargarComboAsigG();
+				CargarComboCE();
+			});
+
+			$(document).delegate('#buttone','click',fnvalidacion);
+			$(document).delegate("#buttonEnc","click",fnvalidacionEnc);
+
+			$(document).delegate('#txtBuscEn','keypress',buscarEncargado);
+
+			$(document).delegate('#myDiv p','click',function(){
+				$("#txtBuscEn").val($(this).text());
+				VeryBuscEn = $(this).text();
+				hiBuscEn = $(this).children('input').val();
+				$('#myDiv').fadeOut();
+				$('#myDiv').html(' ');
+			});
+
+			$(document).delegate('#txtBuscEn','focusout',function(){
+				$('#myDiv').fadeOut();
+				$('#myDiv').html(' ');
+			});
+
+});
+
+function buscarEncargado(){
+	hiBuscEn = 0;
+	$('#myDiv').fadeIn();
+	$.ajax({
+		url: '../Functions/CallCombos.php',
+		type: 'POST',
+		dataType: "json",
+		data: {buscarEncar: $('#txtBuscEn').val()},
+		success: function(data){
+			$('#myDiv').html('');
+			$.each(data,function(index){
+				var campos = data[index];
+
+				$("#myDiv").append("<p>" + campos.descripcion + "<input type='hidden' name='ID' value=" + campos.id + "></p>");
+
+			});
+		}
+	});
+}
+
+// *************** CARGAR COMBOS *******************
+
 function CargarComboAsigG(){
 	$.ajax({
 		url: '../Functions/CallCombos.php',
@@ -246,19 +387,3 @@ function CargarComboCE(){
 		}
 	});
 }
-
-$(document).ready(function(){
-
-	  	$(document).delegate('input','click',function(){
-				$(this).parent().siblings('label').fadeOut().addClass('bounceOutLeft');
-				$(this).parent().parent().removeClass('has-error has-feedback');
-			});
-
-			$(document).delegate('select','focus',function(){
-				$(this).parent().siblings('label').fadeOut().addClass('bounceOutLeft');
-				$(this).parent().parent().removeClass('has-error has-feedback');
-			});
-
-			$(document).delegate('#buttone','click',fnvalidacion);
-
-});
