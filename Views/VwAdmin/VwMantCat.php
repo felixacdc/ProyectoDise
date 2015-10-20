@@ -45,7 +45,10 @@
                                       <input type="text" name="NomPro" class="form-control" id="txtPro" placeholder="Nombre de la Profecion" autocomplete="off">
                                   </div>
                                 </div>
-                              <button type="button" class="btn btn-danger" id="buttonPro" >Registrar</button>
+
+                                <input type="hidden" name="frm" value="frmProfecion"/>
+
+                                <button type="button" class="btn btn-danger" id="buttonPro" >Registrar</button>
                             </form>
 
                         </div>

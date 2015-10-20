@@ -50,7 +50,10 @@
                                       <input type="text" name="txtGradE" class="form-control" id="txtGrad" placeholder="Nombre Del Grado" autocomplete="off">
                                   </div>
                                 </div>
-                              <button type="button" class="btn btn-danger" id="buttonG" >Registrar</button>
+
+                                <input type="hidden" name="frm" value="frmGrado"/>
+
+                                <button type="button" class="btn btn-danger" id="buttonG" >Registrar</button>
                             </form>
 
                         </div>
@@ -79,6 +82,9 @@
                               <input type="text" name="NameS" class="form-control" id="txtSec" placeholder="Nombre De La Seccion" autocomplete="off">
                           </div>
                         </div>
+
+                        <input type="hidden" name="frm" value="frmSeccion"/>
+
                         <button type="button" class="btn btn-danger" id="buttonS" >Registrar</button>
                       </form>
                     </div>
@@ -113,6 +119,9 @@
                                 <SELECT NAME="cboseccion" class="form-control" SIZE=0 id="cboseccion"></SELECT>
                             </div>
                           </div>
+
+                          <input type="hidden" name="frm" value="frmAsignacionSeccion"/>
+
                           <button type="button" class="btn btn-danger" id="buttonASG" >Registrar</button>
                         </form>
                       </div>

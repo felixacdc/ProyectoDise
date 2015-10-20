@@ -33,7 +33,7 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`catedraticos` (
   `idCatedratico` INT(11) NOT NULL AUTO_INCREMENT,
-  `codigoCatedratico` INT(11) NOT NULL,
+  `codigoCatedratico` VARCHAR(50) NOT NULL,
   `nombreCatedratico` VARCHAR(60) NOT NULL,
   `domicilioCatedratico` VARCHAR(100) NOT NULL,
   `telefonoCatedratico` VARCHAR(8) NOT NULL,
@@ -207,7 +207,7 @@ ENGINE = InnoDB;
 -- Table `edusoft`.`asignaciongrados`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`asignaciongrados` (
-  `idAsignacionGrados` INT(11) NOT NULL,
+  `idAsignacionGrados` INT(11) NOT NULL AUTO_INCREMENT,
   `IdEstudiante` INT(11) NOT NULL,
   `IdCicloEscolar` INT(11) NOT NULL,
   `idAsignacionSeccion` INT(11) NOT NULL,
@@ -372,9 +372,11 @@ CREATE TABLE IF NOT EXISTS `edusoft`.`usuarios` (
   `contraseña` VARCHAR(45) NOT NULL,
   `IdTipoUsuario` INT(11) NOT NULL,
   `IdEstudiante` INT(11) NULL DEFAULT NULL,
+  `idCatedratico` INT(11) NULL,
   PRIMARY KEY (`idUsuarios`),
   INDEX `fk_Usuario_tipousuario_idx` (`IdTipoUsuario` ASC),
   INDEX `fk_Estudiante_Usuario_idx` (`IdEstudiante` ASC),
+  INDEX `fk_usuarios_catedratico_idx` (`idCatedratico` ASC),
   CONSTRAINT `fk_Estudiante_Usuario`
     FOREIGN KEY (`IdEstudiante`)
     REFERENCES `edusoft`.`estudiantes` (`idEstudiante`)
@@ -383,6 +385,11 @@ CREATE TABLE IF NOT EXISTS `edusoft`.`usuarios` (
   CONSTRAINT `fk_Usuario_tipousuario`
     FOREIGN KEY (`IdTipoUsuario`)
     REFERENCES `edusoft`.`tipousuario` (`idTipoUsuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuarios_catedratico`
+    FOREIGN KEY (`idCatedratico`)
+    REFERENCES `edusoft`.`catedraticos` (`idCatedratico`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -443,11 +450,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `edusoft`;
-INSERT INTO `edusoft`.`usuarios` (`idUsuarios`, `usuario`, `contraseña`, `IdTipoUsuario`, `IdEstudiante`) VALUES (1, 'admin01', '12345', 1, NULL);
-INSERT INTO `edusoft`.`usuarios` (`idUsuarios`, `usuario`, `contraseña`, `IdTipoUsuario`, `IdEstudiante`) VALUES (2, 'secre01', 'abcde', 2, NULL);
-INSERT INTO `edusoft`.`usuarios` (`idUsuarios`, `usuario`, `contraseña`, `IdTipoUsuario`, `IdEstudiante`) VALUES (3, 'master01', '12345', 3, NULL);
-INSERT INTO `edusoft`.`usuarios` (`idUsuarios`, `usuario`, `contraseña`, `IdTipoUsuario`, `IdEstudiante`) VALUES (4, 'alum01', 'abcde', 4, 1);
-INSERT INTO `edusoft`.`usuarios` (`idUsuarios`, `usuario`, `contraseña`, `IdTipoUsuario`, `IdEstudiante`) VALUES (5, 'alum02', '12345', 4, 2);
+INSERT INTO `edusoft`.`usuarios` (`idUsuarios`, `usuario`, `contraseña`, `IdTipoUsuario`, `IdEstudiante`, `idCatedratico`) VALUES (1, 'admin01', '12345', 1, NULL, NULL);
+INSERT INTO `edusoft`.`usuarios` (`idUsuarios`, `usuario`, `contraseña`, `IdTipoUsuario`, `IdEstudiante`, `idCatedratico`) VALUES (2, 'secre01', 'abcde', 2, NULL, NULL);
+INSERT INTO `edusoft`.`usuarios` (`idUsuarios`, `usuario`, `contraseña`, `IdTipoUsuario`, `IdEstudiante`, `idCatedratico`) VALUES (3, 'master01', '12345', 3, NULL, NULL);
+INSERT INTO `edusoft`.`usuarios` (`idUsuarios`, `usuario`, `contraseña`, `IdTipoUsuario`, `IdEstudiante`, `idCatedratico`) VALUES (4, 'alum01', 'abcde', 4, 1, NULL);
+INSERT INTO `edusoft`.`usuarios` (`idUsuarios`, `usuario`, `contraseña`, `IdTipoUsuario`, `IdEstudiante`, `idCatedratico`) VALUES (5, 'alum02', '12345', 4, 2, NULL);
 
 COMMIT;
 

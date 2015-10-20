@@ -3,7 +3,6 @@
 -----------------------------------------*/
 var ejecutar=true;
 var verifyOneMG = /^[a-zA-Z0-9. ñáéíóú]*$/;
-
 var Grado;
 var Seccion;
 var ComG;

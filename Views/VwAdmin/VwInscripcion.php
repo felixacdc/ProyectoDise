@@ -75,8 +75,10 @@
                                 </div>
                               </div>
 
-                              <button type="button" class="btn btn-danger" id="buttonEnc" >Registrar</button>
+                              <input type="hidden" name="frm" value="frmEncargado"/>
 
+                              <button type="button" class="btn btn-danger" id="buttonEnc" >Registrar</button>
+                              </form>
                             </div>
                             <div class="col-md-3">
                             </div>
@@ -107,6 +109,7 @@
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                         <input type="text" name="BEn" class="form-control" id="txtBuscEn" placeholder="Buscar Encargado" autocomplete="off">
+                                        <input type="hidden" name="valEncargado" value="" id="valEncargado">
                                     </div>
                                     <div id="myDiv"></div>
                                   </div>
@@ -165,6 +168,8 @@
                                         <SELECT NAME="cboCE" class="form-control" SIZE=0 id="cboCE" ></SELECT>
                                     </div>
                                   </div>
+
+                                  <input type="hidden" name="frm" value="frmInscripcion"/>
 
                                   <button type="button" class="btn btn-danger" id="buttone" >Registrar</button>
                             </form>

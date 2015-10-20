@@ -29,7 +29,7 @@ function limpiarInput(){
 	emailE=$("#txtemailE").val().trim();
 	phoneE=$("#txtPhoneE").val().trim();
 	nombreS=$("#txtNameS").val().trim();
-	direccionS=$("#txtAddressS").val();
+	direccionS=$("#txtAddressS").val().trim();
   emailS=$("#txtemailS").val().trim();
   phoneS=$("#txtPhoneS").val().trim();
 	AsignacionG = $("#cboAsiGR").val();
@@ -41,10 +41,10 @@ function limpiarInput(){
 	$("#txtAddressE").val(direccionE);
 	$("#txtemailE").val(emailE);
 	$("#txtPhoneE").val(phoneE);
-  $("#txtNameS").val(nombreE);
-	$("#txtAddressS").val(direccionE);
-	$("#txtemailS").val(emailE);
-	$("#txtPhoneS").val(phoneE);
+  $("#txtNameS").val(nombreS);
+	$("#txtAddressS").val(direccionS);
+	$("#txtemailS").val(emailS);
+	$("#txtPhoneS").val(phoneS);
 }
 
 function vaciarInputIns(){
@@ -182,10 +182,14 @@ function fnvalidacion(){
 			generalValidacion('#ErrorCEdiv', '#ErrorCElbl', 'Seleccione el Ciclo Escolar');
 		}
 
-		// if(ejecutar)
-		// {
-		// 	verifyCode(code);
-		// }
+		if(ejecutar)
+		{
+			$('#valEncargado').val(hiBuscEn);
+			alert($('#valEncargado').val());
+			generarRegistroTwo('CallRecordInsc.php', "#frmInsc");
+			// vaciarInputIns();
+			alert('Si se registro');
+		}
 
 }
 
@@ -208,22 +212,25 @@ function generarRegistro(nameArchivo, identificador){
 	});
 }
 
-// function registarStudent(){
-// 	var url = "../Functions/CallRecordInsc.php"; // El script a dónde se realizará la petición.
-//
-// 	$.ajax({
-// 	  type: "POST",
-// 	  url: url,
-// 	  data: $("#frmEncar").serialize(), // Adjuntar los campos del formulario enviado.
-// 	  success: function(data)
-// 	  {
-// 			$('#alert').text(data);
-// 			$('#alert').show();
-// 			$('#alert').delay(3000).hide(600);
-// 			vaciarInputIns();
-// 	  }
-// 	});
-// }
+function generarRegistroTwo(nameArchivo, identificador){
+	var url = "../Functions/" + nameArchivo;
+	$.ajax({
+		dataType: "json",
+	  type: "POST",
+	  url: url,
+	  data: $(identificador).serialize(),
+	  success: function(data)
+	  {
+			// $('#alert').text(data);
+			// $('#alert').show();
+			// $('#alert').delay(3000).hide(600);
+			$.each(data,function(index){
+					var campos = data[index];
+						alert(campos.mensaje + campos.carnet + campos.usuario + campos.contraseña);
+			});
+	  }
+	});
+}
 
 
 $(document).ready(function(){
