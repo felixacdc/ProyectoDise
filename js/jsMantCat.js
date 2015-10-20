@@ -56,22 +56,15 @@ function fnvaliPro(){
 		resetClass();
 
 		if (Profecion==""){
-      $("#ErrorProdiv").addClass("has-error has-feedback");
-			$("#ErrorProlbl").text("Ingrese la Profecion");
-			$("#ErrorProlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorProlbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorProdiv', '#ErrorProlbl', 'Ingrese la Profecion');
 		} else if (!verifyOne.test(Profecion)){
-			$("#ErrorProdiv").addClass("has-error has-feedback");
-			$("#ErrorProlbl").text("Caractires invalidos");
-			$("#ErrorProlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorProlbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorProdiv', '#ErrorProlbl', 'Caractires invalidos');
 		}
 
 		if(ejecutar)
 		{
-			registarProfec();
+			generarRegistro('CallRecordMCat.php', "#frmProfe");
+			vaciarInputMCat();
 		}
 
 }
@@ -85,73 +78,33 @@ function fnvalidacionCat(){
 		// ************ VALIDACION CATEDRATICO ****************
 
 		if (nombreCat==""){
-      $("#ErrorCatdiv").addClass("has-error has-feedback");
-			$("#ErrorCatlbl").text("Ingrese el nombres");
-			$("#ErrorCatlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorCatlbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorCatdiv', '#ErrorCatlbl', 'Ingrese el nombre');
 		} else if (!verifyOne.test(nombreCat)){
-			$("#ErrorCatdiv").addClass("has-error has-feedback");
-			$("#ErrorCatlbl").text("Ingrese solo letras");
-			$("#ErrorCatlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorCatlbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorCatdiv', '#ErrorCatlbl', 'Ingrese solo letras');
 		}
 
 		if (direccionCat==""){
-			$("#ErrorDirCadiv").addClass("has-error has-feedback");
-			$("#ErrorDirCalbl").text("Ingrese la Direccion");
-			$("#ErrorDirCalbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorDirCalbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorDirCadiv', '#ErrorDirCalbl', 'Ingrese la Direccion');
 		} else if (!verifyFore.test(direccionCat)){
-			$("#ErrorDirCadiv").addClass("has-error has-feedback");
-			$("#ErrorDirCalbl").text("Caracteres Incorrectos");
-			$("#ErrorDirCalbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorDirCalbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorDirCadiv', '#ErrorDirCalbl', 'Caracteres Incorrectos');
 		}
 
 		if (emailCat==""){
-			$("#ErrorEmaCadiv").addClass("has-error has-feedback");
-			$("#ErrorEmaCalbl").text("Ingrese el correo electronico");
-			$("#ErrorEmaCalbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorEmaCalbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorEmaCadiv', '#ErrorEmaCalbl', 'Ingrese el correo electronico');
 		} else if (!verifyThree.test(emailCat)){
-			$("#ErrorEmaCadiv").addClass("has-error has-feedback");
-			$("#ErrorEmaCalbl").text("Correo Electronico invalido");
-			$("#ErrorEmaCalbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorEmaCalbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorEmaCadiv', '#ErrorEmaCalbl', 'Correo Electronico invalido');
 		}
 
 		if (phoneCat==""){
-			$("#ErrorTelCadiv").addClass("has-error has-feedback");
-			$("#ErrorTelCalbl").text("Ingrese el telefono");
-			$("#ErrorTelCalbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorTelCalbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorTelCadiv', '#ErrorTelCalbl', 'Ingrese el telefono');
 		} else if (!verifyTwo.test(phoneCat)){
-			$("#ErrorTelCadiv").addClass("has-error has-feedback");
-			$("#ErrorTelCalbl").text("Ingrese solo numeros");
-			$("#ErrorTelCalbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorTelCalbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorTelCadiv', '#ErrorTelCalbl', 'Ingrese solo numeros');
 		} else if (phoneCat.length != 8){
-			$("#ErrorTelCadiv").addClass("has-error has-feedback");
-			$("#ErrorTelCalbl").text("Ingrese un numero con 8 digitos");
-			$("#ErrorTelCalbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorTelCalbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorTelCadiv', '#ErrorTelCalbl', 'Ingrese un numero con 8 digitos');
 		}
 
 		if (cboProf == null){
-			$("#ErrorCprodiv").addClass("has-error has-feedback");
-			$("#ErrorCprolbl").text("Seleccione la Profecion");
-			$("#ErrorCprolbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorCprolbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorCprodiv', '#ErrorCprolbl', 'Seleccione la Profecion');
 		}
 
 		if(ejecutar)
@@ -161,54 +114,15 @@ function fnvalidacionCat(){
 
 }
 
-/*--------------------------------------
-			ENVIO DE FORMULARIOS PARA REGISTRO
------------------------------------------*/
-
-function registarProfec(){
-	var url = "../Functions/CallRecordMCat.php"; // El script a dónde se realizará la petición.
-
-	$.ajax({
-	  type: "POST",
-	  url: url,
-	  data: $("#frmProfe").serialize(), // Adjuntar los campos del formulario enviado.
-	  success: function(data)
-	  {
-			$('#alert').text(data);
-			$('#alert').show();
-			$('#alert').delay(3000).hide(600);
-			vaciarInputMCat();
-	  }
-	});
-}
 
 $(document).ready(function(){
 
 			$(document).delegate('#tab-Cat','click',function(){
 				$('select option').remove();
-				CargarComboProfec();
+				generarCargaCombos('cboProfec', '#cbopro');
 			});
 
 			$(document).delegate('#buttonPro','click',fnvaliPro);
 			$(document).delegate("#buttonCat","click",fnvalidacionCat);
 
 });
-
-function CargarComboProfec(){
-	$.ajax({
-		url: '../Functions/CallCombos.php',
-		type: 'POST',
-		dataType: "json",
-		data: {cboProfec:'1'},
-		success: function(data){
-			$.each(data,function(index){
-				var campos = data[index];
-				if (index == 0) {
-					$("#cbopro").append("<option value='" + campos.id +"' disabled selected>" + campos.descripcion + '</option>');
-				} else {
-					$("#cbopro").append("<option value='" + campos.id +"'>" + campos.descripcion + '</option>');
-				}
-			});
-		}
-	});
-}

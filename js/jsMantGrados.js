@@ -53,17 +53,9 @@ function fnvaliGMG(){
 		resetClassMG();
 
 		if (Grado==""){
-      $("#ErrorGradiv").addClass("has-error has-feedback");
-			$("#ErrorGralbl").text("Ingrese el Grado");
-			$("#ErrorGralbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorGralbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorGradiv', '#ErrorGralbl', 'Ingrese el Grado');
 		} else if (!verifyOneMG.test(Grado)){
-			$("#ErrorGradiv").addClass("has-error has-feedback");
-			$("#ErrorGralbl").text("Caractires invalidos");
-			$("#ErrorGralbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorGralbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorGradiv', '#ErrorGralbl', 'Caractires invalidos');
 		}
 
 		if(ejecutar)
@@ -79,17 +71,9 @@ function fnvaliSMG(){
 		resetClassMG();
 
 		if (Seccion==""){
-      $("#ErrorSecdiv").addClass("has-error has-feedback");
-			$("#ErrorSeclbl").text("Ingrese el nombres");
-			$("#ErrorSeclbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorSeclbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorSecdiv', '#ErrorSeclbl', 'Ingrese la seccion');
 		} else if (!verifyOneMG.test(Seccion)){
-			$("#ErrorSecdiv").addClass("has-error has-feedback");
-			$("#ErrorSeclbl").text("Ingrese solo letras");
-			$("#ErrorSeclbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorSeclbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorSecdiv', '#ErrorSeclbl', 'Ingrese solo letras');
 		}
 
 		if(ejecutar)
@@ -104,19 +88,11 @@ function fnvaliAsecMG(){
 		resetClassMG();
 
 		if (ComG == null){
-      $("#ErrorCboGdiv").addClass("has-error has-feedback");
-			$("#ErrorCboGlbl").text("Seleccione el Grado");
-			$("#ErrorCboGlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorCboGlbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorCboGdiv', '#ErrorCboGlbl', 'Seleccione el Grado');
 		}
 
 		if (ComS == null){
-			$("#ErrorCboSecdiv").addClass("has-error has-feedback");
-			$("#ErrorCboSeclbl").text("Seleccione la Seccion");
-			$("#ErrorCboSeclbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorCboSeclbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorCboSecdiv', '#ErrorCboSeclbl', 'Seleccione la Seccion');
 		}
 
 		if(ejecutar)
@@ -144,7 +120,8 @@ function verifyG(Grad)
 			$("#ErrorGralbl").addClass("animated bounceIn retraso-2");
 			$('#ErrorGralbl').fadeIn();
 		} else {
-			registarGrad();
+			generarRegistro('CallRecordMG.php', "#frmGrado");
+			vaciarInput();
 		}
 	});
 }
@@ -164,7 +141,8 @@ function verifyS(Sec)
 			$("#ErrorSeclbl").addClass("animated bounceIn retraso-2");
 			$('#ErrorSeclbl').fadeIn();
 		} else {
-			registarSec();
+			generarRegistro('CallRecordMG.php', "#frmSec");
+			vaciarInput();
 		}
 	});
 }
@@ -184,65 +162,13 @@ function verifyAsiGS(Grad, Sec)
 			$('#alertE').show();
 			$('#alertE').delay(3000).hide(600);
 		} else {
-			registarAsigSG();
+			generarRegistro('CallRecordMG.php', "#frmRegAsiGS");
+			vaciarInput();
 		}
 	});
 }
 
-/*--------------------------------------
-			ENVIO DE FORMULARIOS PARA REGISTRO
------------------------------------------*/
 
-function registarGrad(){
-	var url = "../Functions/CallRecordMG.php"; // El script a dónde se realizará la petición.
-
-	$.ajax({
-	  type: "POST",
-	  url: url,
-	  data: $("#frmGrado").serialize(), // Adjuntar los campos del formulario enviado.
-	  success: function(data)
-	  {
-			$('#alert').text(data);
-			$('#alert').show();
-			$('#alert').delay(3000).hide(600);
-			vaciarInput();
-	  }
-	});
-}
-
-function registarSec(){
-	var url = "../Functions/CallRecordMG.php"; // El script a dónde se realizará la petición.
-
-	$.ajax({
-	  type: "POST",
-	  url: url,
-	  data: $("#frmSec").serialize(), // Adjuntar los campos del formulario enviado.
-	  success: function(data)
-	  {
-			$('#alert').text(data);
-			$('#alert').show();
-			$('#alert').delay(3000).hide(600);
-			vaciarInput();
-	  }
-	});
-}
-
-function registarAsigSG(){
-	var url = "../Functions/CallRecordMG.php"; // El script a dónde se realizará la petición.
-
-	$.ajax({
-	  type: "POST",
-	  url: url,
-	  data: $("#frmRegAsiGS").serialize(), // Adjuntar los campos del formulario enviado.
-	  success: function(data)
-	  {
-			$('#alert').text(data);
-			$('#alert').show();
-			$('#alert').delay(3000).hide(600);
-			vaciarInput();
-	  }
-	});
-}
 
 $(document).ready(function(){
 
@@ -252,60 +178,8 @@ $(document).ready(function(){
 
 		$(document).delegate('#tab-AGS','click',function(){
 			$('select option').remove();
-			CargarComboGrado();
-			CargarComboSeccion();
+			generarCargaCombos('cboG', '#cboGrado');
+			generarCargaCombos('cboS', '#cboseccion');
 		});
 
 });
-
-/*--------------------------------------
-						Cargar Combos
------------------------------------------*/
-
-function CargarComboGrado(){
-	$.ajax({
-		url: '../Functions/CallCombos.php',
-		type: 'POST',
-		dataType: "json",
-		data: {cboG:'1'},
-		success: function(data){
-			$.each(data,function(index){
-				var campos = data[index];
-				// var id;
-				if (index == 0) {
-					$("#cboGrado").append("<option value='" + campos.id +"' disabled selected>" + campos.descripcion + '</option>');
-				} else {
-					$("#cboGrado").append("<option value='" + campos.id +"'>" + campos.descripcion + '</option>');
-				}
-
-				// $.each(campos,function(_index){
-					// if (_index == 'idGrado') {
-						// $("#cboGrado").append("<option value='" + campos[_index] +"'>");
-						// id = campos[_index];
-					// } else {
-						// $("#cboGrado").append("<option value='" + id +"'>" + campos[_index] + '</option>');
-					// }
-				// });
-			});
-		}
-	});
-}
-
-function CargarComboSeccion(){
-	$.ajax({
-		url: '../Functions/CallCombos.php',
-		type: 'POST',
-		dataType: "json",
-		data: {cboS:'1'},
-		success: function(data){
-			$.each(data,function(index){
-				var campos = data[index];
-				if (index == 0) {
-					$("#cboseccion").append("<option value='" + campos.id +"' disabled selected>" + campos.descripcion + '</option>');
-				} else {
-					$("#cboseccion").append("<option value='" + campos.id +"'>" + campos.descripcion + '</option>');
-				}
-			});
-		}
-	});
-}

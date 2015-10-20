@@ -85,6 +85,14 @@ function resetClass(){
 /*--------------------------------------
 					Funcion Validar
 -----------------------------------------*/
+function generalValidacion(identificador1, identificador2, msm){
+	$(identificador1).addClass("has-error has-feedback");
+	$(identificador2).text(msm);
+	$(identificador2).addClass("animated bounceIn retraso-2");
+	$(identificador2).fadeIn();
+	ejecutar=false;
+}
+
 function fnvalidacionEnc(){
 		ejecutar=true;
 		limpiarInput();
@@ -93,70 +101,35 @@ function fnvalidacionEnc(){
 		// ************ VALIDACION ENCARGADO ****************
 
 		if (nombreE==""){
-      $("#ErrorNomdiv").addClass("has-error has-feedback");
-			$("#ErrorNomlbl").text("Ingrese el nombres");
-			$("#ErrorNomlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorNomlbl').fadeIn();
-			ejecutar=false;
+      generalValidacion('#ErrorNomdiv', '#ErrorNomlbl', 'Ingrese el nombre');
 		} else if (!verifyOne.test(nombreE)){
-			$("#ErrorNomdiv").addClass("has-error has-feedback");
-			$("#ErrorNomlbl").text("Ingrese solo letras");
-			$("#ErrorNomlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorNomlbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorNomdiv', '#ErrorNomlbl', 'Ingrese solo letras');
 		}
 
 		if (direccionE==""){
-			$("#ErrorDirdiv").addClass("has-error has-feedback");
-			$("#ErrorDirlbl").text("Ingrese la Direccion");
-			$("#ErrorDirlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorDirlbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorDirdiv', '#ErrorDirlbl', 'Ingrese la Direccion');
 		} else if (!verifyFore.test(direccionE)){
-			$("#ErrorDirdiv").addClass("has-error has-feedback");
-			$("#ErrorDirlbl").text("Caracteres Incorrectos");
-			$("#ErrorDirlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorDirlbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorDirdiv', '#ErrorDirlbl', 'Caracteres Incorrectos');
 		}
 
 		if (emailE==""){
-			$("#ErrorEmadiv").addClass("has-error has-feedback");
-			$("#ErrorEmalbl").text("Ingrese el correo electronico");
-			$("#ErrorEmalbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorEmalbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorEmadiv', '#ErrorEmalbl', 'Ingrese el correo electronico');
 		} else if (!verifyThree.test(emailE)){
-			$("#ErrorEmadiv").addClass("has-error has-feedback");
-			$("#ErrorEmalbl").text("Correo Electronico invalido");
-			$("#ErrorEmalbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorEmalbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorEmadiv', '#ErrorEmalbl', 'Correo Electronico invalido');
 		}
 
 		if (phoneE==""){
-			$("#ErrorTeldiv").addClass("has-error has-feedback");
-			$("#ErrorTellbl").text("Ingrese el telefono");
-			$("#ErrorTellbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorTellbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorTeldiv', '#ErrorTellbl', 'Ingrese el telefono');
 		} else if (!verifyTwo.test(phoneE)){
-			$("#ErrorTeldiv").addClass("has-error has-feedback");
-			$("#ErrorTellbl").text("Ingrese solo numeros");
-			$("#ErrorTellbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorTellbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorTeldiv', '#ErrorTellbl', 'Ingrese solo numeros');
 		} else if (phoneE.length != 8){
-			$("#ErrorTeldiv").addClass("has-error has-feedback");
-			$("#ErrorTellbl").text("Ingrese un numero con 8 digitos");
-			$("#ErrorTellbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorTellbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorTeldiv', '#ErrorTellbl', 'Ingrese un numero con 8 digitos');
 		}
 
 		if(ejecutar)
 		{
-			registarEnc();
+			generarRegistro('CallRecordInsc.php', "#frmEncar");
+			vaciarInputIns();
 		}
 
 }
@@ -169,96 +142,44 @@ function fnvalidacion(){
 		// ************** ESTUDIANTE ************************
 
 		if (hiBuscEn == 0){
-      $("#ErrorBEndiv").addClass("has-error has-feedback");
-			$("#ErrorBEnlbl").text("Seleccione un Encargado");
-			$("#ErrorBEnlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorBEnlbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorBEndiv', '#ErrorBEnlbl', 'Seleccione un Encargado');
 		}else if(BuscEn == '' || BuscEn != VeryBuscEn){
-			$("#ErrorBEndiv").addClass("has-error has-feedback");
-			$("#ErrorBEnlbl").text("Seleccione un Encargado");
-			$("#ErrorBEnlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorBEnlbl').fadeIn();
+			generalValidacion('#ErrorBEndiv', '#ErrorBEnlbl', 'Seleccione un Encargado');
 			hiBuscEn = 0;
-			ejecutar=false;
 		}
 
 		if (nombreS==""){
-      $("#ErrorNomSdiv").addClass("has-error has-feedback");
-			$("#ErrorNomSlbl").text("Ingrese el nombres");
-			$("#ErrorNomSlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorNomSlbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorNomSdiv', '#ErrorNomSlbl', 'Ingrese el nombre');
 		} else if (!verifyOne.test(nombreS)){
-			$("#ErrorNomSdiv").addClass("has-error has-feedback");
-			$("#ErrorNomSlbl").text("Ingrese solo letras");
-			$("#ErrorNomSlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorNomSlbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorNomSdiv', '#ErrorNomSlbl', 'Ingrese solo letras');
 		}
 
 		if (direccionS==""){
-			$("#ErrorDirSdiv").addClass("has-error has-feedback");
-			$("#ErrorDirSlbl").text("Ingrese el Direccion");
-			$("#ErrorDirSlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorDirSlbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorDirSdiv', '#ErrorDirSlbl', 'Ingrese la Direccion');
 		} else if (!verifyFore.test(direccionS)){
-			$("#ErrorDirSdiv").addClass("has-error has-feedback");
-			$("#ErrorDirSlbl").text("Caracteres Incorrectos");
-			$("#ErrorDirSlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorDirSlbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorDirSdiv', '#ErrorDirSlbl', 'Caracteres Incorrectos');
 		}
 
 		if (emailS==""){
-			$("#ErrorEmaSdiv").addClass("has-error has-feedback");
-			$("#ErrorEmaSlbl").text("Ingrese el correo electronico");
-			$("#ErrorEmaSlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorEmaSlbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorEmaSdiv', '#ErrorEmaSlbl', 'Ingrese el correo electronico');
 		} else if (!verifyThree.test(emailS)){
-			$("#ErrorEmaSdiv").addClass("has-error has-feedback");
-			$("#ErrorEmaSlbl").text("Correo Electronico invalido");
-			$("#ErrorEmaSlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorEmaSlbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorEmaSdiv', '#ErrorEmaSlbl', 'Correo Electronico invalido');
 		}
 
 		if (phoneS==""){
-			$("#ErrorTelSdiv").addClass("has-error has-feedback");
-			$("#ErrorTelSlbl").text("Ingrese el telefono");
-			$("#ErrorTelSlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorTelSlbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorTelSdiv', '#ErrorTelSlbl', 'Ingrese el telefono');
 		} else if (!verifyTwo.test(phoneS)){
-			$("#ErrorTelSdiv").addClass("has-error has-feedback");
-			$("#ErrorTelSlbl").text("Ingrese solo numeros");
-			$("#ErrorTelSlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorTelSlbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorTelSdiv', '#ErrorTelSlbl', 'Ingrese solo numeros');
 		} else if (phoneS.length != 8){
-			$("#ErrorTelSdiv").addClass("has-error has-feedback");
-			$("#ErrorTelSlbl").text("Ingrese un numero con 8 digitos");
-			$("#ErrorTelSlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorTelSlbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorTelSdiv', '#ErrorTelSlbl', 'Ingrese un numero con 8 digitos');
 		}
 
 		if (AsignacionG == 0){
-			$("#ErrorAsiGRdiv").addClass("has-error has-feedback");
-			$("#ErrorAsiGRlbl").text("Seleccione el Grado");
-			$("#ErrorAsiGRlbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorAsiGRlbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorAsiGRdiv', '#ErrorAsiGRlbl', 'Seleccione el Grado');
 		}
 
 		if (CicloE == null){
-			$("#ErrorCEdiv").addClass("has-error has-feedback");
-			$("#ErrorCElbl").text("Seleccione el Ciclo Escolar");
-			$("#ErrorCElbl").addClass("animated bounceIn retraso-2");
-			$('#ErrorCElbl').fadeIn();
-			ejecutar=false;
+			generalValidacion('#ErrorCEdiv', '#ErrorCElbl', 'Seleccione el Ciclo Escolar');
 		}
 
 		// if(ejecutar)
@@ -272,22 +193,37 @@ function fnvalidacion(){
 			ENVIO DE FORMULARIOS PARA REGISTRO
 -----------------------------------------*/
 
-function registarEnc(){
-	var url = "../Functions/CallRecordInsc.php"; // El script a dónde se realizará la petición.
-
+function generarRegistro(nameArchivo, identificador){
+	var url = "../Functions/" + nameArchivo; // El script a dónde se realizará la petición.
 	$.ajax({
 	  type: "POST",
 	  url: url,
-	  data: $("#frmEncar").serialize(), // Adjuntar los campos del formulario enviado.
+	  data: $(identificador).serialize(), // Adjuntar los campos del formulario enviado.
 	  success: function(data)
 	  {
 			$('#alert').text(data);
 			$('#alert').show();
 			$('#alert').delay(3000).hide(600);
-			vaciarInputIns();
 	  }
 	});
 }
+
+// function registarStudent(){
+// 	var url = "../Functions/CallRecordInsc.php"; // El script a dónde se realizará la petición.
+//
+// 	$.ajax({
+// 	  type: "POST",
+// 	  url: url,
+// 	  data: $("#frmEncar").serialize(), // Adjuntar los campos del formulario enviado.
+// 	  success: function(data)
+// 	  {
+// 			$('#alert').text(data);
+// 			$('#alert').show();
+// 			$('#alert').delay(3000).hide(600);
+// 			vaciarInputIns();
+// 	  }
+// 	});
+// }
 
 
 $(document).ready(function(){
@@ -304,8 +240,8 @@ $(document).ready(function(){
 
 			$(document).delegate('#tab-I','click',function(){
 				$('select option').remove();
-				CargarComboAsigG();
-				CargarComboCE();
+				generarCargaCombos('cboAsigG', '#cboAsiGR');
+				generarCargaCombos('cboCE', '#cboCE');
 			});
 
 			$(document).delegate('#buttone','click',fnvalidacion);
@@ -322,11 +258,34 @@ $(document).ready(function(){
 			});
 
 			$(document).delegate('#txtBuscEn','focusout',function(){
-				$('#myDiv').fadeOut();
-				$('#myDiv').html(' ');
+					$('#myDiv').fadeOut();
 			});
 
 });
+
+// *************** CARGAR COMBOS *******************
+
+function generarCargaCombos(cboPost, identificador)
+{
+	$.ajax({
+		url: '../Functions/CallCombos.php',
+		type: 'POST',
+		dataType: "json",
+		data: {cboPost:cboPost},
+		success: function(data){
+			$.each(data,function(index){
+				var campos = data[index];
+				if (index == 0) {
+					$(identificador).append("<option value='" + campos.id +"' disabled selected>" + campos.descripcion + '</option>');
+				} else {
+					$(identificador).append("<option value='" + campos.id +"'>" + campos.descripcion + '</option>');
+				}
+			});
+		}
+	});
+}
+
+// ************************ FUNCION BUSCAR ENCARGADO *******************************
 
 function buscarEncargado(){
 	hiBuscEn = 0;
@@ -343,46 +302,6 @@ function buscarEncargado(){
 
 				$("#myDiv").append("<p>" + campos.descripcion + "<input type='hidden' name='ID' value=" + campos.id + "></p>");
 
-			});
-		}
-	});
-}
-
-// *************** CARGAR COMBOS *******************
-
-function CargarComboAsigG(){
-	$.ajax({
-		url: '../Functions/CallCombos.php',
-		type: 'POST',
-		dataType: "json",
-		data: {cboAsigG:'1'},
-		success: function(data){
-			$.each(data,function(index){
-				var campos = data[index];
-				if (index == 0) {
-					$("#cboAsiGR").append("<option value='" + campos.id +"' disabled selected>" + campos.descripcion + '</option>');
-				} else {
-					$("#cboAsiGR").append("<option value='" + campos.id +"'>" + campos.descripcion + '</option>');
-				}
-			});
-		}
-	});
-}
-
-function CargarComboCE(){
-	$.ajax({
-		url: '../Functions/CallCombos.php',
-		type: 'POST',
-		dataType: "json",
-		data: {cboCE:'1'},
-		success: function(data){
-			$.each(data,function(index){
-				var campos = data[index];
-				if (index == 0) {
-					$("#cboCE").append("<option value='" + campos.id +"' disabled selected>" + campos.descripcion + '</option>');
-				} else {
-					$("#cboCE").append("<option value='" + campos.id +"'>" + campos.descripcion + '</option>');
-				}
 			});
 		}
 	});
