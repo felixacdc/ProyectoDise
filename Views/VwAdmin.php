@@ -64,7 +64,7 @@
                         <a id="op3"><i class="fa fa-user-secret fa-3x"></i>Mantenimientos Catedraticos</a>
                     </li>
 						        <li>
-                        <a   href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>
+                        <a id="op4"><i class="fa fa-money fa-3x"></i>Pagos</a>
                     </li>
                       <li  >
                         <a  href="table.html"><i class="fa fa-table fa-3x"></i> Table Examples</a>
@@ -131,7 +131,8 @@
     <script src="../js/jsMantGrados.js"></script>
     <!-- JS Mantenimiento Catedraticos -->
     <script src="../js/jsMantCat.js"></script>
-
+    <!-- JS Mantenimiento Pagos -->
+    <script src="../js/jsPagos.js"></script>
     <!-- *************** Fin JS personales ***************** -->
 
       <!-- BOOTSTRAP SCRIPTS -->

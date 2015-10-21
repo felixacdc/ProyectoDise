@@ -29,5 +29,11 @@ $(document).ready(function(){
 		$('#op3').addClass('active-menu');
 	});
 
+	$('#op4').on('click',function(){
+		$("#page-wrapper").load('VwAdmin/VwPagos.php');
+		$('a').removeClass('active-menu');
+		$('#op4').addClass('active-menu');
+	});
+
 
 });

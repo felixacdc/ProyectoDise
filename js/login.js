@@ -2,7 +2,7 @@
 		DECLARACION DE VARIABLES
 -----------------------------------------*/
 var ejecutar=true;
-var us = /^[a-z ñáéíóú\d_]{4,15}$/i;
+var us = /^[a-z ñáéíóú-\d_]{4,15}$/i;
 var pa = /^[a-z ñáéíóú\d_]{4,10}$/i;
 var user;
 var password;

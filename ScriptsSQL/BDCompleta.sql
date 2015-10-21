@@ -433,6 +433,49 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `edusoft`.`nivelesacademicos`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `edusoft`;
+INSERT INTO `edusoft`.`nivelesacademicos` (`idnivelAcademico`, `nivelAcademico`, `valorInscripcion`, `valorColegiatura`) VALUES (1, 'Basico', 150, 250);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `edusoft`.`tipopago`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `edusoft`;
+INSERT INTO `edusoft`.`tipopago` (`idTipoPago`, `Descripcion`) VALUES (1, 'Efectivo');
+INSERT INTO `edusoft`.`tipopago` (`idTipoPago`, `Descripcion`) VALUES (2, 'Cheque');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `edusoft`.`mes`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `edusoft`;
+INSERT INTO `edusoft`.`mes` (`idMes`, `Descripcion`) VALUES (1, 'Inscripcion');
+INSERT INTO `edusoft`.`mes` (`idMes`, `Descripcion`) VALUES (2, 'Enero');
+INSERT INTO `edusoft`.`mes` (`idMes`, `Descripcion`) VALUES (3, 'Febrero');
+INSERT INTO `edusoft`.`mes` (`idMes`, `Descripcion`) VALUES (4, 'Marzo');
+INSERT INTO `edusoft`.`mes` (`idMes`, `Descripcion`) VALUES (5, 'Abril');
+INSERT INTO `edusoft`.`mes` (`idMes`, `Descripcion`) VALUES (6, 'Mayo');
+INSERT INTO `edusoft`.`mes` (`idMes`, `Descripcion`) VALUES (7, 'Junio');
+INSERT INTO `edusoft`.`mes` (`idMes`, `Descripcion`) VALUES (8, 'Julio');
+INSERT INTO `edusoft`.`mes` (`idMes`, `Descripcion`) VALUES (9, 'Agosto');
+INSERT INTO `edusoft`.`mes` (`idMes`, `Descripcion`) VALUES (10, 'Septiembre');
+INSERT INTO `edusoft`.`mes` (`idMes`, `Descripcion`) VALUES (11, 'Octubre');
+INSERT INTO `edusoft`.`mes` (`idMes`, `Descripcion`) VALUES (12, 'Noviembre');
+INSERT INTO `edusoft`.`mes` (`idMes`, `Descripcion`) VALUES (13, 'Diciembre');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `edusoft`.`tipousuario`
 -- -----------------------------------------------------
 START TRANSACTION;

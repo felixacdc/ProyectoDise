@@ -160,6 +160,50 @@ class Combos
 		}
 	}
 
+  public function cboTipoPago(){
+		$db = new connectionClass();
+
+		$sql = $db->query("SELECT * FROM tipopago");
+		$numberRecord = $sql->num_rows;
+
+		if ($numberRecord != 0) {
+			$dataArray = array();
+			$i = 0;
+
+      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Seleccione el Tipo de Pago');
+
+			while($data = $sql->fetch_assoc()){
+        $i++;
+				$dataArray[$i] = array("id" => $data['idTipoPago'], "descripcion" => $data['Descripcion']);
+			}
+
+			header("Content-type: application/json");
+			return json_encode($dataArray);
+		}
+	}
+
+  public function cboNivelAcademico(){
+		$db = new connectionClass();
+
+		$sql = $db->query("SELECT * FROM nivelesacademicos");
+		$numberRecord = $sql->num_rows;
+
+		if ($numberRecord != 0) {
+			$dataArray = array();
+			$i = 0;
+
+      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Seleccione el Nivel Academico');
+
+			while($data = $sql->fetch_assoc()){
+        $i++;
+				$dataArray[$i] = array("id" => $data['idnivelAcademico'], "descripcion" => $data['nivelAcademico']);
+			}
+
+			header("Content-type: application/json");
+			return json_encode($dataArray);
+		}
+	}
+
 }
 
  ?>
