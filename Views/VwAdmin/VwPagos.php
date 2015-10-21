@@ -91,7 +91,7 @@
 
                                 <input type="hidden" name="frm" value="frmTransacciones"/>
 
-                                <button type="button" class="btn btn-danger" id="buttonTransac" >Registrar</button>
+                                <button type="button" class="btn btn-danger" id="buttonTransac" >Realizar Transaccion</button>
                               </form>
                             </div>
 
@@ -133,7 +133,7 @@
 
                                 <input type="hidden" name="frm" value="frmDetTransacciones"/>
 
-                                <button type="button" class="btn btn-danger" id="buttonASG" >Registrar</button>
+                                <button type="button" class="btn btn-danger" id="buttonDtransac" >Pagar</button>
                               </form>
                             </div>
 
