@@ -71,7 +71,7 @@ function fnvalidacionTransaccion(){
 
 		if(ejecutar)
 		{
-			almacenamientoTemporal();
+			generarDetalleTransaccion();
 		}
 
 }
@@ -81,6 +81,26 @@ $(document).ready(function(){
   $(document).delegate("#buttonPago","click",fnvalidacionCarnet);
   $(document).delegate("#buttonTransac","click",fnvalidacionTransaccion);
 });
+
+function generarDetalleTransaccion(){
+	$.ajax({
+		url: '../Functions/CallPagos.php',
+    dataType: 'json',
+		type: 'POST',
+		data:{
+			estudiante: idEstudiante,
+      nivelAcademico: nivelAcademico
+		},
+	}).done(function(data){
+    $.each(data,function(index){
+      var campos = data[index];
+      $("#txtMes").val(campos.valorMes);
+			$("#txtCicloE").val(campos.valorCicloE);
+			$("#txtSubTotal").val(campos.valorMensual);
+			almacenamientoTemporal();
+    });
+	});
+}
 
 function almacenamientoTemporal(){
   localStorage.idEstudiante = idEstudiante;
@@ -109,12 +129,14 @@ function searchCarnet(value, file, instruction){
 	}).done(function(data){
     $.each(data,function(index){
       var campos = data[index];
-      if (index == 0) {
+      if (campos.id != 0) {
         $("#txtPstudy").val(campos.descripcion);
         idEstudiante = campos.id;
         $('select option').remove();
         generarCargaCombos('CboTipoP', '#CboTipoP');
 				generarCargaCombos('CboNivelA', '#CboNivelA');
+      }else {
+      	generalValidacion('#ErrorCarnetdiv', '#ErrorCarnetlbl', campos.descripcion);
       }
     });
 	});

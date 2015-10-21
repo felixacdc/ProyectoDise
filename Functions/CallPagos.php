@@ -17,8 +17,12 @@ if (isset($_POST['instruction'])) {
 				echo 'no se encontro el valor';
 				break;
 	}
-}else {
-	echo 'no existe la variable';
+}elseif (isset($_POST['estudiante'])) {
+	$fnPagos= new Record();
+
+	$estudiantePost = $_POST['estudiante'];
+	$nivelAcademicoPost = $_POST['nivelAcademico'];
+	echo $fnPagos->generarDetalleTransaccion($estudiantePost, $nivelAcademicoPost);
 }
 
 
