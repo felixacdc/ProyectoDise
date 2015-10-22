@@ -7,6 +7,8 @@ var idEstudiante;
 var tipoPago;
 var nivelAcademico;
 var fecha;
+var ronda = 0;
+var totalT = 0;
 
 /*--------------------------------------
 			LIMPIADO DE TEXT
@@ -16,6 +18,8 @@ function limpiarInputPagos(){
   tipoPago = $("#CboTipoP").val();
   nivelAcademico = $("#CboNivelA").val();
   fecha = $("#txtDateT").val();
+	totalT = 0;
+	ronda = 0;
 
 	$('#txtCarnet').val(carnet);
 }
@@ -56,6 +60,13 @@ function fnvalidacionCarnet(){
 
 }
 
+function cargarPaginaPagos(){
+	$("#page-wrapper").load('VwAdmin/VwPagos.php');
+	$('a').removeClass('active-menu');
+	$('#op4').addClass('active-menu');
+	borrarTemporal();
+}
+
 function fnvalidacionTransaccion(){
 		ejecutar=true;
 		limpiarInputPagos();
@@ -77,6 +88,7 @@ function fnvalidacionTransaccion(){
 
 		if(ejecutar)
 		{
+			almacenamientoTemporal();
 			generarDetalleTransaccion();
 		}
 
@@ -86,11 +98,22 @@ $(document).ready(function(){
 
   $(document).delegate("#buttonPago","click",fnvalidacionCarnet);
   $(document).delegate("#buttonTransac","click",fnvalidacionTransaccion);
-	$(document).delegate("#btnCanP","click",function () {
-		$("#page-wrapper").load('VwAdmin/VwPagos.php');
-		$('a').removeClass('active-menu');
-		$('#op4').addClass('active-menu');
+	$(document).delegate("#buttonDtransac","click",realizarDetalleT);
+	$(document).delegate("#btnNuevoDT","click",function(){
+		$('#myModal').modal('hide');
+		generarDetalleTransaccion();
 	});
+
+	$(document).delegate("#btnCerrarFT","click",function(){
+		$('#myModal').modal('hide');
+		cargarPaginaPagos();
+	});
+
+	$(document).delegate("#btnCanP","click",function () {
+		cargarPaginaPagos();
+	});
+
+	borrarTemporal();
 });
 
 function generarDetalleTransaccion(){
@@ -109,13 +132,61 @@ function generarDetalleTransaccion(){
 				$("#txtMes").val(campos.valorMes);
 				$("#txtCicloE").val(campos.valorCicloE);
 				$("#txtSubTotal").val(campos.valorMensual);
-				almacenamientoTemporal();
 				$("#Transacciones").fadeOut().addClass('bounceOutLeft');
 				$("#DetalleTransaccion").fadeIn();
+
+				localStorage.idMes = campos.idMes;
+			  localStorage.idCicloE = campos.idCicloE;
+			  localStorage.valorMensual =  campos.valorMensual;
+
+				if (!localStorage.idTransaccion) {
+					localStorage.idTransaccion = 0;
+				}
+
+				ronda = parseInt(ronda) + 1;
 			}else {
 				alert(campos.mensaje);
+				cargarPaginaPagos();
+
 			}
     });
+	});
+}
+
+
+function realizarDetalleT(){
+	totalT = parseInt(totalT) + parseInt(localStorage.valorMensual);
+	alert(totalT);
+	$.ajax({
+		dataType: "json",
+	  type: "POST",
+	  url: "../Functions/CallPagos.php",
+	  data: {
+			idEstudiante:localStorage.idEstudiante,
+			idTipoPago:localStorage.idTipoPago,
+			idNivelAcademico:localStorage.idNivelAcademico,
+			fecha:localStorage.fechaTransaccion,
+			idMes:localStorage.idMes,
+			idCicloEscolar:localStorage.idCicloE,
+			subTotal:localStorage.valorMensual,
+			idTransaccion:localStorage.idTransaccion,
+			total:totalT,
+			ronda: ronda
+		},
+	  success: function(data)
+	  {
+			$.each(data,function(index){
+					var campos = data[index];
+					if (index == 0) {
+						alert(campos.idT);
+						localStorage.idTransaccion = campos.idT;
+						$('#myModal').modal('show');
+					}else {
+						alert(campos.error);
+					}
+
+			});
+	  }
 	});
 }
 
@@ -124,14 +195,20 @@ function almacenamientoTemporal(){
   localStorage.idTipoPago = tipoPago;
   localStorage.idNivelAcademico = nivelAcademico;
   localStorage.fechaTransaccion =  fecha;
-  // borrarTemporal();
 }
 
 function borrarTemporal(){
+
   localStorage.removeItem('idEstudiante');
   localStorage.removeItem('idTipoPago');
   localStorage.removeItem('idNivelAcademico');
   localStorage.removeItem('fechaTransaccion');
+
+	localStorage.removeItem('idMes');
+  localStorage.removeItem('idCicloE');
+  localStorage.removeItem('valorMensual');
+	localStorage.removeItem('idTransaccion');
+
 }
 
 function searchCarnet(value, file, instruction){

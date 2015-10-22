@@ -117,6 +117,29 @@
         <!-- /. PAGE WRAPPER  -->
         </div>
      <!-- /. WRAPPER  -->
+
+     <!-- Modal -->
+     	<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     		<div class="modal-dialog modal-lg">
+     		   <div class="modal-content">
+     		     <div class="modal-header">
+     		       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+     		       <h3 class="modal-title" id="myModalLabel">Pago Realizado Correctamente</h3>
+     		    </div>
+     		    <div  >
+     			    <div class="modal-body scrollit" id="contdiv">
+     			        <!-- contenido modal -->
+
+     			    </div>
+     			    <div class="modal-footer">
+                 <button type="button" class="btn btn-danger" id="btnNuevoDT">Aceptar</button>
+     			    	<button type="button" class="btn btn-primary" data-toggle="modal" id="btnCerrarFT">Cancelar</button>
+     			    </div>
+     		   </div>
+     		   </div>
+     		 </div>
+     	</div>
+
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     <script src="../assets/js/jquery-1.10.2.js"></script>

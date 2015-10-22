@@ -116,14 +116,6 @@
                                   </div>
                                 </div>
 
-                                <!-- <div class="form-group" id="ErrorCboNivelAdiv">
-                                  <label class="control-label control-label-input-group" id="ErrorCboNivelAlbl" for="ErrorCboNivelAlbl"></label>
-                                  <div class="input-group">
-                                      <span class="input-group-addon"><i class="fa fa-battery-half"></i></span>
-                                      <SELECT NAME="CboNivelA" class="form-control" SIZE=0 id="CboNivelA"></SELECT>
-                                  </div>
-                                </div> -->
-
                                 <div class="form-group" id="ErrorSubTotaldiv">
                                   <label class="control-label control-label-input-group" id="ErrorSubTotallbl" for="ErrorSubTotallbl"></label>
                                   <div class="input-group">

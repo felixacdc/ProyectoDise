@@ -114,6 +114,57 @@ class Record
   		}
 		}
   }
+
+  public function insertarDetalleT($idEstudiantePost, $idTipoPagoPost, $idNivelAcademicoPost, $fechaPost, $idMesPost, $idCicloEscolarPost, $subTotalPost,$idTransaccionPost, $rondaPost, $totalPost){
+    $db = new connectionClass();
+
+    if($rondaPost > 1){
+
+      $sql = $db->query("UPDATE transacciones SET montoTotal = '$totalPost' WHERE idTransaccion = '$idTransaccionPost'");
+
+      if ($sql) {
+
+        $sql = $db->query("INSERT INTO detalletransacciones (idTransaccion, IdMes, IdCicloEscolar, subTotal) VALUES ('$idTransaccionPost', '$idMesPost', '$idCicloEscolarPost', '$subTotalPost')");
+
+        if ($sql) {
+          $dataArray[0] = array("idT" => $idTransaccionPost);
+        }else {
+          $dataArray[1] = array("error" => 'Error en la Transaccion1' . $idTransaccionPost);
+        }
+
+        header("Content-type: application/json");
+        return json_encode($dataArray);
+
+      } else{
+        $dataArray[1] = array("error" => 'Error en la Transaccion');
+        header("Content-type: application/json");
+        return json_encode($dataArray);
+      }
+
+    }else {
+      $sql = $db->query("INSERT INTO transacciones (idEstudiante, IdTipoPago, IdNivelAcademico, fechaTransaccion, montoTotal) VALUES ('$idEstudiantePost', '$idTipoPagoPost', '$idNivelAcademicoPost', '$fechaPost', '$totalPost')");
+
+      if ($sql) {
+        $idTransaccionPost = $db->insert_id;
+
+        $sql = $db->query("INSERT INTO detalletransacciones (idTransaccion, IdMes, IdCicloEscolar, subTotal) VALUES ('$idTransaccionPost', '$idMesPost', '$idCicloEscolarPost', '$subTotalPost')");
+
+        if ($sql) {
+          $dataArray[0] = array("idT" => $idTransaccionPost);
+        }else {
+          $dataArray[1] = array("error" => 'Error en la Transaccion');
+        }
+
+        header("Content-type: application/json");
+        return json_encode($dataArray);
+
+      } else{
+        $dataArray[1] = array("error" => 'Error en la Transaccion');
+        header("Content-type: application/json");
+        return json_encode($dataArray);
+      }
+    }
+  }
 }
 
  ?>

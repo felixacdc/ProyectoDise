@@ -235,17 +235,6 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `edusoft`.`tipotransacciones`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `edusoft`.`tipotransacciones` (
-  `idtipoTransaccion` INT(11) NOT NULL AUTO_INCREMENT,
-  `tipoTransaccion` VARCHAR(50) NOT NULL,
-  PRIMARY KEY (`idtipoTransaccion`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
 -- Table `edusoft`.`nivelesacademicos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`nivelesacademicos` (
@@ -319,20 +308,13 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `edusoft`.`detalletransacciones` (
   `iddetalleTransaccion` INT(11) NOT NULL AUTO_INCREMENT,
   `idTransaccion` INT(11) NOT NULL,
-  `idtipoTransaccion` INT(11) NOT NULL,
   `IdMes` INT(11) NOT NULL,
   `IdCicloEscolar` INT(11) NOT NULL,
   `subTotal` DECIMAL(20,2) NOT NULL,
   PRIMARY KEY (`iddetalleTransaccion`),
   INDEX `fk_detalleTransaccion_Transacciones1_idx` (`idTransaccion` ASC),
-  INDEX `fk_detalleTransaccion_tipoTransacciones1_idx` (`idtipoTransaccion` ASC),
   INDEX `fk_detalltransa_mes_idx` (`IdMes` ASC),
   INDEX `fk_detalletransa_ciclo_idx` (`IdCicloEscolar` ASC),
-  CONSTRAINT `fk_detalleTransaccion_tipoTransacciones1`
-    FOREIGN KEY (`idtipoTransaccion`)
-    REFERENCES `edusoft`.`tipotransacciones` (`idtipoTransaccion`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_detalleTransaccion_Transacciones1`
     FOREIGN KEY (`idTransaccion`)
     REFERENCES `edusoft`.`transacciones` (`idTransaccion`)
