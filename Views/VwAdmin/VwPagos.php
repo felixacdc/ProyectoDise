@@ -54,7 +54,7 @@
                             </form>
 
                             <!-- *************** FORMULARIO TRANSACCION *********************** -->
-                            <div id="Transacciones">
+                            <div id="Transacciones" class="oculto-T animated bounceInDown">
                               <form method="POST" enctype="multipart/form-data" class="form-horizontal" id="frmTransacciones">
 
                                 <div class="form-group" id="ErrorPstuddiv">
@@ -92,11 +92,12 @@
                                 <input type="hidden" name="frm" value="frmTransacciones"/>
 
                                 <button type="button" class="btn btn-danger" id="buttonTransac" >Realizar Transaccion</button>
+                                <button type="button" class="btn btn-default" id="btnCanP">Cancelar</button>
                               </form>
                             </div>
 
                             <!-- **************** FORMULARIO DETALLE TRANSACCION ************** -->
-                            <div id="DetalleTransaccion">
+                            <div id="DetalleTransaccion" class="oculto-T animated bounceInDown">
                               <form method="POST" enctype="multipart/form-data" class="form-horizontal" id="frmDetTransacciones">
 
                                 <div class="form-group" id="ErrorMesdiv">
@@ -134,6 +135,7 @@
                                 <input type="hidden" name="frm" value="frmDetTransacciones"/>
 
                                 <button type="button" class="btn btn-danger" id="buttonDtransac" >Pagar</button>
+                                <button type="button" class="btn btn-default" id="btnCanP">Cancelar</button>
                               </form>
                             </div>
 

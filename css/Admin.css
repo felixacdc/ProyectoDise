@@ -50,6 +50,10 @@
   background: #1882A8;
 }
 
+.oculto-T{
+  display: none;
+}
+
 @media only screen and (max-width: 778px) {
   .alert{
     left: 0;

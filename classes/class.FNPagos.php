@@ -85,14 +85,19 @@ class Record
                               FROM mes WHERE idMes='$idMes'");
       		$numberRecord = $sql->num_rows;
 
-          while($data = $sql->fetch_assoc()){
-    				$idMes = $data['idMes'];
-            $valorMes = $data['Descripcion'];
-    		  }
+          if ($numberRecord != 0) {
+            while($data = $sql->fetch_assoc()){
+      				$idMes = $data['idMes'];
+              $valorMes = $data['Descripcion'];
+      		  }
 
-          $dataArray[0] = array("idMes" => $idMes, "valorMes" => $valorMes,
-                                  "idCicloE" => $idCicloE, "valorCicloE" => $valorCicloE,
-                                  "valorMensual" => $valorMensual);
+            $dataArray[0] = array("idMes" => $idMes, "valorMes" => $valorMes,
+                                    "idCicloE" => $idCicloE, "valorCicloE" => $valorCicloE,
+                                    "valorMensual" => $valorMensual);
+          }else {
+            $dataArray[1] = array("mensaje" => 'Inscribase en el ciclo escolar actual');
+          }
+
         }else {
           $dataArray[0] = array("idMes" => 0, "valorMes" => 'Inscripcion',
                                   "idCicloE" => $idCicloE, "valorCicloE" => $valorCicloE,

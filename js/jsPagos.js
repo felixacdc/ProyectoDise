@@ -26,6 +26,11 @@ function vaciarInputPagos(){
   $("#txtCarnet").val($("#txtCarnet").val().trim());
 }
 
+function ocultoT(){
+	$('.oculto-T').fadeOut(2);
+	$('.oculto-T').removeClass('bounceOutLeft');
+}
+
 /*--------------------------------------
 					     VALIDACION
 -----------------------------------------*/
@@ -34,6 +39,7 @@ function fnvalidacionCarnet(){
 		ejecutar=true;
 		limpiarInputPagos();
 		resetClass();
+		ocultoT();
 
 		// ************ VALIDACION ENCARGADO ****************
 
@@ -80,6 +86,11 @@ $(document).ready(function(){
 
   $(document).delegate("#buttonPago","click",fnvalidacionCarnet);
   $(document).delegate("#buttonTransac","click",fnvalidacionTransaccion);
+	$(document).delegate("#btnCanP","click",function () {
+		$("#page-wrapper").load('VwAdmin/VwPagos.php');
+		$('a').removeClass('active-menu');
+		$('#op4').addClass('active-menu');
+	});
 });
 
 function generarDetalleTransaccion(){
@@ -88,16 +99,22 @@ function generarDetalleTransaccion(){
     dataType: 'json',
 		type: 'POST',
 		data:{
-			estudiante: idEstudiante,
-      nivelAcademico: nivelAcademico
+			estudiante: localStorage.idEstudiante,
+      nivelAcademico: localStorage.idNivelAcademico
 		},
 	}).done(function(data){
     $.each(data,function(index){
       var campos = data[index];
-      $("#txtMes").val(campos.valorMes);
-			$("#txtCicloE").val(campos.valorCicloE);
-			$("#txtSubTotal").val(campos.valorMensual);
-			almacenamientoTemporal();
+			if (index == 0) {
+				$("#txtMes").val(campos.valorMes);
+				$("#txtCicloE").val(campos.valorCicloE);
+				$("#txtSubTotal").val(campos.valorMensual);
+				almacenamientoTemporal();
+				$("#Transacciones").fadeOut().addClass('bounceOutLeft');
+				$("#DetalleTransaccion").fadeIn();
+			}else {
+				alert(campos.mensaje);
+			}
     });
 	});
 }
@@ -135,6 +152,9 @@ function searchCarnet(value, file, instruction){
         $('select option').remove();
         generarCargaCombos('CboTipoP', '#CboTipoP');
 				generarCargaCombos('CboNivelA', '#CboNivelA');
+				$("#Transacciones").fadeIn();
+				$("#txtCarnet").prop('disabled', true);
+				$("#buttonPago").prop('disabled', true);
       }else {
       	generalValidacion('#ErrorCarnetdiv', '#ErrorCarnetlbl', campos.descripcion);
       }
