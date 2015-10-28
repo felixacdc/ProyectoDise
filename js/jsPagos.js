@@ -145,9 +145,10 @@ function generarDetalleTransaccion(){
 
 				ronda = parseInt(ronda) + 1;
 			}else {
-				alert(campos.mensaje);
 				cargarPaginaPagos();
-
+				$('#alert').text(campos.mensaje);
+				$('#alert').show();
+				$('#alert').delay(3000).hide(800);
 			}
     });
 	});
@@ -156,7 +157,6 @@ function generarDetalleTransaccion(){
 
 function realizarDetalleT(){
 	totalT = parseInt(totalT) + parseInt(localStorage.valorMensual);
-	alert(totalT);
 	$.ajax({
 		dataType: "json",
 	  type: "POST",
@@ -178,9 +178,10 @@ function realizarDetalleT(){
 			$.each(data,function(index){
 					var campos = data[index];
 					if (index == 0) {
-						alert(campos.idT);
 						localStorage.idTransaccion = campos.idT;
 						$('#myModal').modal('show');
+						$('#myModalLabel').text('Pago Realizado Correctamente');
+						$('#myModalContenido').text('¿Desea Realizar Otro Pago?');
 					}else {
 						alert(campos.error);
 					}
