@@ -13,6 +13,16 @@ if (isset($_POST['frm'])) {
 			echo $fnProfec->rProfecion($namePost);
 			break;
 
+		case 'frmCatedratico':
+			$namePost = $_POST['NomCat'];
+			$addressPost = $_POST['AddressCat'];
+			$phonePost = $_POST['PhoneCat'];
+			$emailPost = $_POST['EmailCat'];
+			$profetionPost = $_POST['cbopro'];
+
+			echo $fnProfec->rCatedratico($namePost, $addressPost, $phonePost, $emailPost, $profetionPost);
+			break;
+
 		default:
 			echo 'No se encontro el valor';
 			break;

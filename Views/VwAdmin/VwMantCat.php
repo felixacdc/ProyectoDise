@@ -114,6 +114,8 @@
                           </div>
                         </div>
 
+                        <input type="hidden" name="frm" value="frmCatedratico"/>
+
                         <button type="button" class="btn btn-danger" id="buttonCat" >Registrar</button>
                       </form>
                     </div>

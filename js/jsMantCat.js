@@ -109,7 +109,7 @@ function fnvalidacionCat(){
 
 		if(ejecutar)
 		{
-			// registarEnc();
+			generarRegistro('CallRecordMCat.php', "#frmCat");
 		}
 
 }
