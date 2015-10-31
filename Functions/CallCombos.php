@@ -29,6 +29,12 @@ if (isset($_POST['cboPost'])) {
     case 'CboNivelA':
       echo $fnCombos->cboNivelAcademico();
       break;
+    case 'CboCourse':
+      echo $fnCombos->cboCourse();
+      break;
+    case 'CboTeacher':
+      echo $fnCombos->cboTeacher();
+      break;
   }
 
 } elseif (isset($_POST['buscarEncar'])) {

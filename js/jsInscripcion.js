@@ -20,6 +20,35 @@ var hiBuscEn = 0;
 var BuscEn;
 var VeryBuscEn = '';
 
+
+$(document).ready(function(){
+
+	$(document).delegate('#buttone','click',fnvalidacion);
+	$(document).delegate("#buttonEnc","click",fnvalidacionEnc);
+	$(document).delegate('#tab-I','click',fnLoadInscription);
+	$(document).delegate('#txtBuscEn','keypress',buscarEncargado);
+	$(document).delegate('#txtBuscEn','focusout',function(){ $('#myDiv').fadeOut(); });
+	$(document).delegate('#btnAceptarIncripcion','click',fnAcceptingRegistration);
+
+	$(document).delegate('input','focus',function(){
+		$(this).parent().siblings('label').fadeOut().addClass('bounceOutLeft');
+		$(this).parent().parent().removeClass('has-error has-feedback');
+	});
+
+	$(document).delegate('select','focus',function(){
+		$(this).parent().siblings('label').fadeOut().addClass('bounceOutLeft');
+		$(this).parent().parent().removeClass('has-error has-feedback');
+	});
+
+	$(document).delegate('#myDiv p','click',function(){
+		$("#txtBuscEn").val($(this).text());
+		VeryBuscEn = $(this).text();
+		hiBuscEn = $(this).children('input').val();
+		$('#myDiv').fadeOut();
+		$('#myDiv').html(' ');
+	});
+});
+
 /*--------------------------------------
 			LIMPIADO DE TEXT
 -----------------------------------------*/
@@ -93,12 +122,14 @@ function generalValidacion(identificador1, identificador2, msm){
 	ejecutar=false;
 }
 
+/*--------------------------------------
+					Funcion Validar
+-----------------------------------------*/
+
 function fnvalidacionEnc(){
 		ejecutar=true;
 		limpiarInput();
 		resetClass();
-
-		// ************ VALIDACION ENCARGADO ****************
 
 		if (nombreE==""){
       generalValidacion('#ErrorNomdiv', '#ErrorNomlbl', 'Ingrese el nombre');
@@ -134,12 +165,14 @@ function fnvalidacionEnc(){
 
 }
 
+/*--------------------------------------
+					Funcion Validar
+-----------------------------------------*/
+
 function fnvalidacion(){
 		ejecutar=true;
 		limpiarInput();
 		resetClass();
-
-		// ************** ESTUDIANTE ************************
 
 		if (hiBuscEn == 0){
 			generalValidacion('#ErrorBEndiv', '#ErrorBEnlbl', 'Seleccione un Encargado');
@@ -185,10 +218,7 @@ function fnvalidacion(){
 		if(ejecutar)
 		{
 			$('#valEncargado').val(hiBuscEn);
-			// alert($('#valEncargado').val());
 			generarRegistroTwo('CallRecordInsc.php', "#frmInsc");
-			// vaciarInputIns();
-			// alert('Si se registro');
 		}
 
 }
@@ -198,11 +228,11 @@ function fnvalidacion(){
 -----------------------------------------*/
 
 function generarRegistro(nameArchivo, identificador){
-	var url = "../Functions/" + nameArchivo; // El script a dónde se realizará la petición.
+	var url = "../Functions/" + nameArchivo;
 	$.ajax({
 	  type: "POST",
 	  url: url,
-	  data: $(identificador).serialize(), // Adjuntar los campos del formulario enviado.
+	  data: $(identificador).serialize(),
 	  success: function(data)
 	  {
 			$('#alert').text(data);
@@ -211,6 +241,10 @@ function generarRegistro(nameArchivo, identificador){
 	  }
 	});
 }
+
+/*-----------------------------------------------------
+			ENVIO DE FORMULARIOS PARA REGISTRO INSCRIPCION
+----------------------------------------------------------*/
 
 function generarRegistroTwo(nameArchivo, identificador){
 	var url = "../Functions/" + nameArchivo;
@@ -234,54 +268,9 @@ function generarRegistroTwo(nameArchivo, identificador){
 	});
 }
 
-
-$(document).ready(function(){
-
-	  	$(document).delegate('input','focus',function(){
-				$(this).parent().siblings('label').fadeOut().addClass('bounceOutLeft');
-				$(this).parent().parent().removeClass('has-error has-feedback');
-			});
-
-			$(document).delegate('select','focus',function(){
-				$(this).parent().siblings('label').fadeOut().addClass('bounceOutLeft');
-				$(this).parent().parent().removeClass('has-error has-feedback');
-			});
-
-			$(document).delegate('#tab-I','click',function(){
-				$('select option').remove();
-				generarCargaCombos('cboAsigG', '#cboAsiGR');
-				generarCargaCombos('cboCE', '#cboCE');
-			});
-
-			$(document).delegate('#buttone','click',fnvalidacion);
-			$(document).delegate("#buttonEnc","click",fnvalidacionEnc);
-
-			$(document).delegate('#txtBuscEn','keypress',buscarEncargado);
-
-			$(document).delegate('#myDiv p','click',function(){
-				$("#txtBuscEn").val($(this).text());
-				VeryBuscEn = $(this).text();
-				hiBuscEn = $(this).children('input').val();
-				$('#myDiv').fadeOut();
-				$('#myDiv').html(' ');
-			});
-
-			$(document).delegate('#txtBuscEn','focusout',function(){
-					$('#myDiv').fadeOut();
-			});
-
-			$(document).delegate('#btnAceptarIncripcion','click',function(){
-					$('#myModal').modal('hide');
-					document.getElementById('btnAceptarIncripcion').id = "btnModalA";
-					$('#btnModalC').fadeIn(2000);
-					$('#myModalLabel').text(' ');
-					document.getElementById('myModalContenido').innerHTML = ' ';
-					vaciarInputIns();
-			});
-
-});
-
-// *************** CARGAR COMBOS *******************
+/*-----------------------------
+			CARGAR COMBOS
+---------------------------------*/
 
 function generarCargaCombos(cboPost, identificador)
 {
@@ -303,7 +292,10 @@ function generarCargaCombos(cboPost, identificador)
 	});
 }
 
-// ************************ FUNCION BUSCAR ENCARGADO *******************************
+/*-----------------------------
+			BUSCAR ENCARGADO
+---------------------------------*/
+
 
 function buscarEncargado(){
 	hiBuscEn = 0;
@@ -323,4 +315,27 @@ function buscarEncargado(){
 			});
 		}
 	});
+}
+
+/*-----------------------------
+			CARGAR COMBOS INSCRIPCION
+---------------------------------*/
+
+function fnLoadInscription(){
+	$('select option').remove();
+	generarCargaCombos('cboAsigG', '#cboAsiGR');
+	generarCargaCombos('cboCE', '#cboCE');
+}
+
+/*-----------------------------
+			ACEPTACION DE INSCRIPCION
+---------------------------------*/
+
+function fnAcceptingRegistration(){
+	$('#myModal').modal('hide');
+	document.getElementById('btnAceptarIncripcion').id = "btnModalA";
+	$('#btnModalC').fadeIn(2000);
+	$('#myModalLabel').text(' ');
+	document.getElementById('myModalContenido').innerHTML = ' ';
+	vaciarInputIns();
 }

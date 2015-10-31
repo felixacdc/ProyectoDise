@@ -1,6 +1,10 @@
 <?php
 class Combos
 {
+
+  /*-----------------------------------------------------
+  			LLENADO DE COMBOS REFERIDOS A GRADOS
+  ----------------------------------------------------------*/
   public function cboGrados(){
 		$db = new connectionClass();
 
@@ -70,6 +74,9 @@ class Combos
 		}
 	}
 
+  /*-----------------------------------------------------
+  			LLENADO DE COMBOS REFERIDOS A INSCRIPCION
+  ----------------------------------------------------------*/
   public function regCboCE($año, $numberRecord){
     $db = new ConnectionClass();
 
@@ -118,6 +125,31 @@ class Combos
 		}
 	}
 
+
+  public function buscarEncar($buscar){
+  		$db = new connectionClass();
+
+  		$sql = $db->query("SELECT idEncargado, nombreEncargado FROM encargados WHERE nombreEncargado LIKE '%$buscar%'");
+  		$numberRecord = $sql->num_rows;
+
+  		if ($numberRecord != 0) {
+  			$dataArray = array();
+  			$i = 0;
+
+  			while($data = $sql->fetch_assoc()){
+  				$dataArray[$i] = array("id" => $data['idEncargado'], "descripcion" => $data['nombreEncargado']);
+          $i++;
+  			}
+
+  			header("Content-type: application/json");
+  			return json_encode($dataArray);
+  		}
+  	}
+
+  /*-----------------------------------------------------
+        LLENADO DE COMBOS REFERIDOS A CATEDRATICOS
+  ----------------------------------------------------------*/
+
   public function cboProfec(){
 		$db = new connectionClass();
 
@@ -140,25 +172,9 @@ class Combos
 		}
 	}
 
-  public function buscarEncar($buscar){
-		$db = new connectionClass();
-
-		$sql = $db->query("SELECT idEncargado, nombreEncargado FROM encargados WHERE nombreEncargado LIKE '%$buscar%'");
-		$numberRecord = $sql->num_rows;
-
-		if ($numberRecord != 0) {
-			$dataArray = array();
-			$i = 0;
-
-			while($data = $sql->fetch_assoc()){
-				$dataArray[$i] = array("id" => $data['idEncargado'], "descripcion" => $data['nombreEncargado']);
-        $i++;
-			}
-
-			header("Content-type: application/json");
-			return json_encode($dataArray);
-		}
-	}
+  /*-----------------------------------------------------
+        LLENADO DE COMBOS REFERIDOS A PAGOS
+  ----------------------------------------------------------*/
 
   public function cboTipoPago(){
 		$db = new connectionClass();
@@ -197,6 +213,54 @@ class Combos
 			while($data = $sql->fetch_assoc()){
         $i++;
 				$dataArray[$i] = array("id" => $data['idnivelAcademico'], "descripcion" => $data['nivelAcademico']);
+			}
+
+			header("Content-type: application/json");
+			return json_encode($dataArray);
+		}
+	}
+
+  /*-----------------------------------------------------
+        LLENADO DE COMBOS REFERIDOS A CURSOS
+  ----------------------------------------------------------*/
+
+  public function cboCourse(){
+		$db = new connectionClass();
+
+		$sql = $db->query("SELECT * FROM cursos");
+		$numberRecord = $sql->num_rows;
+
+		if ($numberRecord != 0) {
+			$dataArray = array();
+			$i = 0;
+
+      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Seleccione el Curso');
+
+			while($data = $sql->fetch_assoc()){
+        $i++;
+				$dataArray[$i] = array("id" => $data['idCurso'], "descripcion" => $data['nombreCurso']);
+			}
+
+			header("Content-type: application/json");
+			return json_encode($dataArray);
+		}
+	}
+
+  public function cboTeacher(){
+		$db = new connectionClass();
+
+		$sql = $db->query("SELECT idCatedratico, nombreCatedratico FROM catedraticos");
+		$numberRecord = $sql->num_rows;
+
+		if ($numberRecord != 0) {
+			$dataArray = array();
+			$i = 0;
+
+      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Seleccione el Catedratico');
+
+			while($data = $sql->fetch_assoc()){
+        $i++;
+				$dataArray[$i] = array("id" => $data['idCatedratico'], "descripcion" => $data['nombreCatedratico']);
 			}
 
 			header("Content-type: application/json");

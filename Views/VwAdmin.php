@@ -58,16 +58,16 @@
                         <a id="op1"><i class="fa fa-odnoklassniki fa-3x"></i>Inscripcion</a>
                     </li>
                      <li class="cursor">
-                        <a id="op2"><i class="fa fa-graduation-cap fa-3x"></i>Mantenimiento Grados</a>
+                        <a id="op2"><i class="fa fa-graduation-cap fa-3x"></i>Grados</a>
                     </li>
                     <li class="cursor">
-                        <a id="op3"><i class="fa fa-user-secret fa-3x"></i>Mantenimientos Catedraticos</a>
+                        <a id="op3"><i class="fa fa-user-secret fa-3x"></i>Catedraticos</a>
                     </li>
 						        <li>
                         <a id="op4"><i class="fa fa-money fa-3x"></i>Pagos</a>
                     </li>
                       <li  >
-                        <a  href="table.html"><i class="fa fa-table fa-3x"></i> Table Examples</a>
+                        <a  id="op5"><i class="fa fa-clone fa-3x"></i>Cursos</a>
                     </li>
                     <li  >
                         <a  href="form.html"><i class="fa fa-edit fa-3x"></i> Forms </a>
@@ -158,6 +158,9 @@
     <script src="../js/jsMantCat.js"></script>
     <!-- JS Mantenimiento Pagos -->
     <script src="../js/jsPagos.js"></script>
+    <!-- JS Mantenimiento Cursos -->
+    <script src="../js/jsCourse.js"></script>
+
     <!-- *************** Fin JS personales ***************** -->
 
       <!-- BOOTSTRAP SCRIPTS -->

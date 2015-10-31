@@ -33,14 +33,12 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`catedraticos` (
   `idCatedratico` INT(11) NOT NULL AUTO_INCREMENT,
-  `codigoCatedratico` VARCHAR(50) NOT NULL,
   `nombreCatedratico` VARCHAR(60) NOT NULL,
   `domicilioCatedratico` VARCHAR(100) NOT NULL,
   `telefonoCatedratico` VARCHAR(8) NOT NULL,
   `emailCatedratico` VARCHAR(20) NULL DEFAULT NULL,
   `Profesiones_idProfesion` INT(11) NOT NULL,
   PRIMARY KEY (`idCatedratico`),
-  UNIQUE INDEX `codigoCatedratico_UNIQUE` (`codigoCatedratico` ASC),
   INDEX `fk_Catedraticos_Profesiones1_idx` (`Profesiones_idProfesion` ASC),
   CONSTRAINT `fk_Catedraticos_Profesiones1`
     FOREIGN KEY (`Profesiones_idProfesion`)
@@ -74,6 +72,17 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
+-- Table `edusoft`.`cicloescolar`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `edusoft`.`cicloescolar` (
+  `idCicloEscolar` INT(11) NOT NULL AUTO_INCREMENT,
+  `Año` INT(11) NOT NULL,
+  PRIMARY KEY (`idCicloEscolar`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
 -- Table `edusoft`.`asignacioncursos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`asignacioncursos` (
@@ -81,10 +90,12 @@ CREATE TABLE IF NOT EXISTS `edusoft`.`asignacioncursos` (
   `IdGrado` INT(11) NOT NULL,
   `IdCurso` INT(11) NOT NULL,
   `IdCatedratico` INT(11) NOT NULL,
+  `idCicloEscolar` INT(11) NOT NULL,
   PRIMARY KEY (`idAsignacionCursos`),
   INDEX `GradosAsigCursos_idx` (`IdGrado` ASC),
   INDEX `CursosAsigCursos_idx` (`IdCurso` ASC),
   INDEX `AsigCurCate_idx` (`IdCatedratico` ASC),
+  INDEX `fk_asignacioncursos_ciclo_idx` (`idCicloEscolar` ASC),
   CONSTRAINT `AsigCurCate`
     FOREIGN KEY (`IdCatedratico`)
     REFERENCES `edusoft`.`catedraticos` (`idCatedratico`)
@@ -99,18 +110,12 @@ CREATE TABLE IF NOT EXISTS `edusoft`.`asignacioncursos` (
     FOREIGN KEY (`IdGrado`)
     REFERENCES `edusoft`.`grado` (`idGrado`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_asignacioncursos_ciclo`
+    FOREIGN KEY (`idCicloEscolar`)
+    REFERENCES `edusoft`.`cicloescolar` (`idCicloEscolar`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `edusoft`.`cicloescolar`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `edusoft`.`cicloescolar` (
-  `idCicloEscolar` INT(11) NOT NULL AUTO_INCREMENT,
-  `Año` INT(11) NOT NULL,
-  PRIMARY KEY (`idCicloEscolar`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 

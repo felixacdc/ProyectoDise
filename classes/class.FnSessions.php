@@ -2,8 +2,7 @@
 
 class SessionClass
 {
-  public function manageSession($paramId, $paramUser)
-  {
+  public function manageSession($paramId, $paramUser){
     switch ($paramId) {
       case '1':
         session_start();
@@ -36,8 +35,7 @@ class SessionClass
     }
   }
 
-  public function addressSession($paramId, $typeUser)
-  {
+  public function addressSession($paramId, $typeUser){
     if ($paramId != $typeUser) {
       if ($typeUser == 'i') {
         $advance = 'Views/';
@@ -61,8 +59,7 @@ class SessionClass
     }
   }
 
-  public function verifySession($typeUser)
-  {
+  public function verifySession($typeUser){
     session_start();
     if (isset($_SESSION['activado'])) {
       if (!$_SESSION['activado']) {

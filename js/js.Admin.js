@@ -33,5 +33,11 @@ $(document).ready(function(){
 		cargarPaginaPagos();
 	});
 
+	$('#op5').on('click',function(){
+		$("#page-wrapper").load('VwAdmin/VwCursos.php');
+		$('a').removeClass('active-menu');
+		$('#op5').addClass('active-menu');
+	});
+
 
 });
