@@ -110,6 +110,7 @@ function fnvalidacionCat(){
 		if(ejecutar)
 		{
 			generarRegistro('CallRecordMCat.php', "#frmCat");
+			vaciarInputMCat();
 		}
 
 }

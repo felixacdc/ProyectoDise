@@ -28,10 +28,10 @@ class Record
     $tPhone = $this::depurar($phonePost, $db);
     $tEmail = $this::depurar($emailPost, $db);
 
-    $sql = $db->query("INSERT INTO catedraticos (nombreCatedratico, domicilioCatedratico, telefonoCatedratico) VALUES ('$TName')");
+    $sql = $db->query("INSERT INTO catedraticos (nombreCatedratico, domicilioCatedratico, telefonoCatedratico, emailCatedratico, Profesiones_idProfesion) VALUES ('$tName', '$tAddress', '$tPhone', '$tEmail', '$profetionPost')");
 
     if ($sql) {
-      return 'Catedratico RegistradO';
+      return 'Catedratico Registrado';
     } else{
       return 'Error en el Registro';
     }

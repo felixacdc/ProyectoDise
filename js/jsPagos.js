@@ -99,13 +99,14 @@ $(document).ready(function(){
   $(document).delegate("#buttonPago","click",fnvalidacionCarnet);
   $(document).delegate("#buttonTransac","click",fnvalidacionTransaccion);
 	$(document).delegate("#buttonDtransac","click",realizarDetalleT);
+
 	$(document).delegate("#btnNuevoDT","click",function(){
-		$('#myModal').modal('hide');
+		ResetModalPagos();
 		generarDetalleTransaccion();
 	});
 
 	$(document).delegate("#btnCerrarFT","click",function(){
-		$('#myModal').modal('hide');
+		ResetModalPagos();
 		cargarPaginaPagos();
 	});
 
@@ -180,6 +181,8 @@ function realizarDetalleT(){
 					if (index == 0) {
 						localStorage.idTransaccion = campos.idT;
 						$('#myModal').modal('show');
+						document.getElementById('btnModalA').id = "btnNuevoDT";
+						document.getElementById('btnModalC').id = 'btnCerrarFT';
 						$('#myModalLabel').text('Pago Realizado Correctamente');
 						$('#myModalContenido').text('¿Desea Realizar Otro Pago?');
 					}else {
@@ -189,6 +192,12 @@ function realizarDetalleT(){
 			});
 	  }
 	});
+}
+
+function ResetModalPagos(){
+	$('#myModal').modal('hide');
+	document.getElementById('btnNuevoDT').id = "btnModalA";
+	document.getElementById('btnCerrarFT').id = 'btnModalC';
 }
 
 function almacenamientoTemporal(){

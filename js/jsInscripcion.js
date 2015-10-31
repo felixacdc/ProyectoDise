@@ -185,10 +185,10 @@ function fnvalidacion(){
 		if(ejecutar)
 		{
 			$('#valEncargado').val(hiBuscEn);
-			alert($('#valEncargado').val());
+			// alert($('#valEncargado').val());
 			generarRegistroTwo('CallRecordInsc.php', "#frmInsc");
 			// vaciarInputIns();
-			alert('Si se registro');
+			// alert('Si se registro');
 		}
 
 }
@@ -221,12 +221,14 @@ function generarRegistroTwo(nameArchivo, identificador){
 	  data: $(identificador).serialize(),
 	  success: function(data)
 	  {
-			// $('#alert').text(data);
-			// $('#alert').show();
-			// $('#alert').delay(3000).hide(600);
 			$.each(data,function(index){
 					var campos = data[index];
-						alert(campos.mensaje + campos.carnet + campos.usuario + campos.contraseña);
+					document.getElementById('btnModalA').id = "btnAceptarIncripcion";
+					$('#btnModalC').fadeOut(1);
+					$('#myModalLabel').text('Inscripcion Realizado Correctamente');
+					content = '<p>Su Carnet es: <strong>' + campos.carnet + '</strong></p><p>Su Usuario es: <strong>' + campos.usuario + '</strong></p><p>Su Contraseña es: <strong>' + campos.contraseña + '</strong></p>';
+					document.getElementById('myModalContenido').innerHTML = content;
+					$('#myModal').modal('show');
 			});
 	  }
 	});
@@ -266,6 +268,15 @@ $(document).ready(function(){
 
 			$(document).delegate('#txtBuscEn','focusout',function(){
 					$('#myDiv').fadeOut();
+			});
+
+			$(document).delegate('#btnAceptarIncripcion','click',function(){
+					$('#myModal').modal('hide');
+					document.getElementById('btnAceptarIncripcion').id = "btnModalA";
+					$('#btnModalC').fadeIn(2000);
+					$('#myModalLabel').text(' ');
+					document.getElementById('myModalContenido').innerHTML = ' ';
+					vaciarInputIns();
 			});
 
 });

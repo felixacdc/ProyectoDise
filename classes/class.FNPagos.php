@@ -99,7 +99,7 @@ class Record
           }
 
         }else {
-          $dataArray[0] = array("idMes" => 0, "valorMes" => 'Inscripcion',
+          $dataArray[0] = array("idMes" => 1, "valorMes" => 'Inscripcion',
                                   "idCicloE" => $idCicloE, "valorCicloE" => $valorCicloE,
                                   "valorMensual" => $valorInscrip);
         }
@@ -136,7 +136,7 @@ class Record
         return json_encode($dataArray);
 
       } else{
-        $dataArray[1] = array("error" => 'Error en la Transaccion');
+        $dataArray[1] = array("error" => 'Error en la Transaccion2');
         header("Content-type: application/json");
         return json_encode($dataArray);
       }
@@ -152,14 +152,14 @@ class Record
         if ($sql) {
           $dataArray[0] = array("idT" => $idTransaccionPost);
         }else {
-          $dataArray[1] = array("error" => 'Error en la Transaccion');
+          $dataArray[1] = array("error" => 'Error en la Transaccion3 - ' . $subTotalPost);
         }
 
         header("Content-type: application/json");
         return json_encode($dataArray);
 
       } else{
-        $dataArray[1] = array("error" => 'Error en la Transaccion');
+        $dataArray[1] = array("error" => 'Error en la Transaccion4');
         header("Content-type: application/json");
         return json_encode($dataArray);
       }

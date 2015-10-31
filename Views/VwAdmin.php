@@ -134,8 +134,8 @@
      			        <!-- contenido modal -->
      			    </div>
      			    <div class="modal-footer">
-                <button type="button" class="btn btn-danger" id="btnNuevoDT">Aceptar</button>
-     			    	<button type="button" class="btn btn-primary" data-toggle="modal" id="btnCerrarFT">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="btnModalA">Aceptar</button>
+     			    	<button type="button" class="btn btn-primary" data-toggle="modal" id="btnModalC">Cancelar</button>
      			    </div>
      		   </div>
      		   </div>
