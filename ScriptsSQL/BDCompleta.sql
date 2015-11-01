@@ -86,7 +86,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `edusoft`.`asignacioncursos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `edusoft`.`asignacioncursos` (
-  `idAsignacionCursos` INT(11) NOT NULL,
+  `idAsignacionCursos` INT(11) NOT NULL AUTO_INCREMENT,
   `IdGrado` INT(11) NOT NULL,
   `IdCurso` INT(11) NOT NULL,
   `IdCatedratico` INT(11) NOT NULL,
@@ -383,6 +383,44 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
+-- -----------------------------------------------------
+-- Table `edusoft`.`Bimester`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `edusoft`.`Bimester` (
+  `idBimester` INT NOT NULL AUTO_INCREMENT,
+  `Description` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idBimester`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `edusoft`.`Ratings`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `edusoft`.`Ratings` (
+  `idRatings` INT NOT NULL AUTO_INCREMENT,
+  `idBimester` INT NOT NULL,
+  `idAssignCourses` INT NOT NULL,
+  `idStudent` INT NOT NULL,
+  `Procedural` DECIMAL(20,2) NOT NULL,
+  `Actitudinal` DECIMAL(20,2) NOT NULL,
+  `Exam` DECIMAL(20,2) NOT NULL,
+  `TotalScore` DECIMAL(20,2) NOT NULL,
+  PRIMARY KEY (`idRatings`),
+  INDEX `fk_Ratings_AssignCourse_idx` (`idAssignCourses` ASC),
+  INDEX `fk_Ratings_Bimester_idx` (`idBimester` ASC),
+  CONSTRAINT `fk_Ratings_AssignCourse`
+    FOREIGN KEY (`idAssignCourses`)
+    REFERENCES `edusoft`.`asignacioncursos` (`idAsignacionCursos`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Ratings_Bimester`
+    FOREIGN KEY (`idBimester`)
+    REFERENCES `edusoft`.`Bimester` (`idBimester`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
@@ -485,6 +523,19 @@ INSERT INTO `edusoft`.`usuarios` (`idUsuarios`, `usuario`, `contraseña`, `IdTip
 INSERT INTO `edusoft`.`usuarios` (`idUsuarios`, `usuario`, `contraseña`, `IdTipoUsuario`, `IdEstudiante`, `idCatedratico`) VALUES (3, 'master01', '12345', 3, NULL, NULL);
 INSERT INTO `edusoft`.`usuarios` (`idUsuarios`, `usuario`, `contraseña`, `IdTipoUsuario`, `IdEstudiante`, `idCatedratico`) VALUES (4, 'alum01', 'abcde', 4, 1, NULL);
 INSERT INTO `edusoft`.`usuarios` (`idUsuarios`, `usuario`, `contraseña`, `IdTipoUsuario`, `IdEstudiante`, `idCatedratico`) VALUES (5, 'alum02', '12345', 4, 2, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `edusoft`.`Bimester`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `edusoft`;
+INSERT INTO `edusoft`.`Bimester` (`idBimester`, `Description`) VALUES (1, 'Primer');
+INSERT INTO `edusoft`.`Bimester` (`idBimester`, `Description`) VALUES (2, 'Segundo');
+INSERT INTO `edusoft`.`Bimester` (`idBimester`, `Description`) VALUES (3, 'Tercer');
+INSERT INTO `edusoft`.`Bimester` (`idBimester`, `Description`) VALUES (4, 'Cuarto');
 
 COMMIT;
 
