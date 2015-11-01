@@ -69,11 +69,11 @@
                       <form method="POST" enctype="multipart/form-data" class="form-horizontal" id="frmAssignCourses">
 
                         <!-- Ingreso de Grado -->
-                        <div class="form-group" id="ErrorAsiGRdiv">
-                          <label class="control-label control-label-input-group" id="ErrorAsiGRlbl" for="ErrorAsiGRlbl"></label>
+                        <div class="form-group" id="ErrorCboGdiv">
+                          <label class="control-label control-label-input-group" id="ErrorCboGlbl" for="ErrorCboGlbl"></label>
                           <div class="input-group">
-                              <span class="input-group-addon"><i class="fa fa-language"></i></span>
-                              <SELECT NAME="cboAsiGR" class="form-control" multiple SIZE=0 id="cboAsiGR" ></SELECT>
+                              <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                              <SELECT NAME="cboGrado" class="form-control" SIZE=0 id="cboGrado" ></SELECT>
                           </div>
                         </div>
 
@@ -104,9 +104,9 @@
                           </div>
                         </div>
 
-                        <input type="hidden" name="frm" value="frmCatedratico"/>
+                        <input type="hidden" name="frm" value="frmAssignCourses"/>
 
-                        <button type="button" class="btn btn-danger" id="buttonCat" >Registrar</button>
+                        <button type="button" class="btn btn-danger" id="btnAssignCourses">Registrar</button>
                       </form>
                     </div>
                   </div>

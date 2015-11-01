@@ -7,11 +7,11 @@ var Course;
 
 
 $(document).ready(function(){
-  $(document).delegate('#btnCourse', 'click', fnValidateCourse);
 
-  $(document).delegate('#tab-AssignCourses','click',function(){
-    fnLoadAssignCourses();
-  });
+  $(document).delegate('#btnCourse', 'click', fnValidateCourse);
+  $(document).delegate('#tab-AssignCourses','click',fnLoadAssignCourses);
+  $(document).delegate('#btnAssignCourses', 'click', fnValidateAssignCourse);
+
 });
 
 /*--------------------------------------
@@ -28,10 +28,15 @@ function fnEmptyCourse(){
 	$("#txtCourse").val(' ');
 
 	$("#txtCourse").val($("#txtCourse").val().trim());
+
+  $("select#cboGrado").val("0");
+  $("select#CboCourse").val("0");
+  $("select#CboTeacher").val("0");
+  $("select#cboCE").val("0");
 }
 
 /*--------------------------------------
-					Funcion Validar
+					Funciones Validar
 -----------------------------------------*/
 
 function fnValidateCourse(){
@@ -53,6 +58,35 @@ function fnValidateCourse(){
 
 }
 
+function fnValidateAssignCourse(){
+  ejecutar=true;
+  fnCleanCourse();
+  resetClass();
+
+  if ($("#cboGrado").val()== null){
+    generalValidacion('#ErrorCboGdiv', '#ErrorCboGlbl', 'Seleccione el Grado');
+  }
+
+  if ($("#CboCourse").val() == 0){
+    generalValidacion('#ErrorCboCoursediv', '#ErrorCboCourselbl', 'Seleccione el Curso');
+  }
+
+  if ($("#CboTeacher").val() == 0){
+    generalValidacion('#ErrorCboTeacherdiv', '#ErrorCboTeacherlbl', 'Seleccione el Catedratico');
+  }
+
+  if ($("#cboCE").val() == null){
+    generalValidacion('#ErrorCEdiv', '#ErrorCElbl', 'Seleccione el Ciclo Escolar');
+  }
+
+  if(ejecutar)
+  {
+    generarRegistro('CallRecordCourse.php', "#frmAssignCourses");
+    fnEmptyCourse();
+  }
+
+}
+
 /*--------------------------------------
 					Funciones Funcionamiento
 -----------------------------------------*/
@@ -60,7 +94,7 @@ function fnValidateCourse(){
 function fnLoadAssignCourses(){
 
     $('select option').remove();
-    generarCargaCombos('cboAsigG', '#cboAsiGR');
+    generarCargaCombos('cboG', '#cboGrado');
     generarCargaCombos('cboCE', '#cboCE');
     generarCargaCombos('CboCourse', '#CboCourse');
     generarCargaCombos('CboTeacher', '#CboTeacher');

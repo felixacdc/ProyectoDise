@@ -2,16 +2,19 @@
 
 class Record
 {
-  public static function depurar($dato, $db){
+  public static function depurar($dato, $db)
+  {
     return $db->real_escape_string(htmlspecialchars($dato));
   }
 
-  public function fnRegisterCourse($Name){
+  public function fnRegisterCourse($Name)
+  {
     $db = new ConnectionClass();
 
     $TName = $db->real_escape_string(htmlspecialchars($Name));
 
-    $sql = $db->query("INSERT INTO cursos (nombreCurso) VALUES ('$TName')");
+    $sql = $db->query("INSERT INTO cursos (nombreCurso)
+                        VALUES ('$TName')");
 
     if ($sql) {
       return 'Curso Registrado';
@@ -19,6 +22,18 @@ class Record
       return 'Error en el Registro';
     }
   }
-}
 
- ?>
+  public function fnRegisterAssignCourse($degreePost, $coursePost, $teacherPost, $schoolYearPost)
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("INSERT INTO asignacioncursos (IdGrado, IdCurso, IdCatedratico, idCicloEscolar)
+                        VALUES ('$degreePost', '$coursePost', '$teacherPost', '$schoolYearPost')");
+
+    if ($sql) {
+      return 'Asigancion de Curso Registrada';
+    } else{
+      return 'Error en el Registro';
+    }
+  }
+}
