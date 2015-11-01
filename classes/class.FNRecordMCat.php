@@ -31,11 +31,38 @@ class Record
     $sql = $db->query("INSERT INTO catedraticos (nombreCatedratico, domicilioCatedratico, telefonoCatedratico, emailCatedratico, Profesiones_idProfesion) VALUES ('$tName', '$tAddress', '$tPhone', '$tEmail', '$profetionPost')");
 
     if ($sql) {
-      return 'Catedratico Registrado';
+      $id = $db->insert_id;
+
+      $tuser= $this::fnGenerarUser($tName, 1) . '-t' . rand(1, 50) . date('d') . date('s')  ;
+      $tcontra = 'teacher' . rand(1, 100);
+
+      $sqlUser = $db->query("INSERT INTO usuarios (usuario, contraseña, idTipoUsuario, idCatedratico)
+                                        VALUES ('$tuser', '$tcontra', '3', '$id')");
+
+      if ($sqlUser) {
+        $dataArray[0] = array("mensaje" => 'Catedratico Registrado', "usuario" => $tuser, "contraseña" => $tcontra);
+
+        header("Content-type: application/json");
+        return json_encode($dataArray);
+      }else{
+        #
+      }
     } else{
-      return 'Error en el Registro';
+      #
     }
 
+  }
+
+  public static function fnGenerarUser($string ,$number){
+    $subString = explode(" ", $string);
+
+    $unionString = '';
+
+    foreach ($subString as $valor) {
+        $unionString.= substr(strtolower($valor), 0, $number);
+    }
+
+    return $unionString;
   }
 
 }

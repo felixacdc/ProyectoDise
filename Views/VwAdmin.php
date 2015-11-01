@@ -41,7 +41,7 @@
                 <!-- <a class="navbar-brand" href="VwAdmin.php" style="color: write; font-size:25px; background-color: #202020">Bienvenido</a> -->
             </div>
             <div style="color: white; padding: 15px 50px 5px 50px; float:right; font-size: 16px;">
-                <img src="../assets/img/LogoProyecto.png" id="CloseSession">
+                <img src="../assets/img/LogoProyecto.png">
                 <!-- <?php echo '<strong style="color: black">Fecha: </strong>', date('d-M-Y',time()); ?> &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> -->
             </div>
         </nav>
@@ -50,7 +50,7 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 				<li class="text-center">
-                    <img src="../assets/img/userFem.png" class="user-image img-responsive"/>
+                    <img src="../assets/img/find_user.png" class="user-image img-responsive"/>
 					</li>
 
 
@@ -69,40 +69,8 @@
                       <li  >
                         <a  id="op5"><i class="fa fa-clone fa-3x"></i>Cursos</a>
                     </li>
-                    <li  >
-                        <a  href="form.html"><i class="fa fa-edit fa-3x"></i> Forms </a>
-                    </li>
-
-
                     <li>
-                        <a href="#"><i class="fa fa-sitemap fa-3x"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">Second Level Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-
-                                </ul>
-
-                            </li>
-                        </ul>
-                      </li>
-                  <li  >
-                        <a  href="blank.html"><i class="fa fa-square-o fa-3x"></i> Blank Page</a>
+                        <a id="CloseSession"><i class="fa fa-sign-out fa-3x"></i>cerrar sesión</a>
                     </li>
                 </ul>
 

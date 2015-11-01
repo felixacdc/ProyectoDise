@@ -109,8 +109,7 @@ function fnvalidacionCat(){
 
 		if(ejecutar)
 		{
-			generarRegistro('CallRecordMCat.php', "#frmCat");
-			vaciarInputMCat();
+			fnMasterRecord('CallRecordMCat.php', "#frmCat");
 		}
 
 }
@@ -125,5 +124,45 @@ $(document).ready(function(){
 
 			$(document).delegate('#buttonPro','click',fnvaliPro);
 			$(document).delegate("#buttonCat","click",fnvalidacionCat);
+			$(document).delegate('#btnAcceptMaster','click',fnAcceptingRegistrationMaster);
 
 });
+
+/*-----------------------------------------------------
+			ENVIO DE FORMULARIOS PARA REGISTRO INSCRIPCION
+----------------------------------------------------------*/
+
+function fnMasterRecord(nameArchivo, identificador){
+	var url = "../Functions/" + nameArchivo;
+	$.ajax({
+		dataType: "json",
+	  type: "POST",
+	  url: url,
+	  data: $(identificador).serialize(),
+	  success: function(data)
+	  {
+			$.each(data,function(index){
+					var campos = data[index];
+					document.getElementById('btnModalA').id = "btnAcceptMaster";
+					$('#btnModalC').fadeOut(1);
+					$('#myModalLabel').text('Catedratico Registrado Correctamente');
+					content = '<p>Su Usuario es: <strong>' + campos.usuario + '</strong></p><p>Su Contraseña es: <strong>' + campos.contraseña + '</strong></p>';
+					document.getElementById('myModalContenido').innerHTML = content;
+					$('#myModal').modal('show');
+			});
+	  }
+	});
+}
+
+/*-----------------------------
+			ACEPTACION DE INSCRIPCION
+---------------------------------*/
+
+function fnAcceptingRegistrationMaster(){
+	$('#myModal').modal('hide');
+	document.getElementById('btnAcceptMaster').id = "btnModalA";
+	$('#btnModalC').fadeIn(2000);
+	$('#myModalLabel').text(' ');
+	document.getElementById('myModalContenido').innerHTML = ' ';
+	vaciarInputMCat();
+}
