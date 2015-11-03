@@ -68,6 +68,12 @@
 
         <div class="alert alert-info animated bounceIn retraso-2" role="alert" id="alert"></div>
         <div class="alert alert-danger animated bounceIn retraso-2" role="alert" id="alertE"></div>
+
+        <div class="fnIdTeacher">
+          <input type="hidden" name="idUser" value="<?php echo $_SESSION['user']; ?>" id="idUser">
+          <input type="hidden" name="idTeacher" value="" id="idTeacher">
+        </div>
+
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
 
@@ -103,18 +109,10 @@
 
     <!-- *************** JS personales ********************* -->
 
-    <!-- JS Admin -->
-    <script src="../js/js.Admin.js"></script>
-    <!-- JS Inscripcion -->
-    <script src="../js/jsInscripcion.js"></script>
-    <!-- JS Mantenimiento Grados -->
-    <script src="../js/jsMantGrados.js"></script>
-    <!-- JS Mantenimiento Catedraticos -->
-    <script src="../js/jsMantCat.js"></script>
-    <!-- JS Mantenimiento Pagos -->
-    <script src="../js/jsPagos.js"></script>
-    <!-- JS Mantenimiento Cursos -->
-    <script src="../js/jsCourse.js"></script>
+    <!-- JS Global -->
+    <script src="../js/jsGlobal.js"></script>
+    <!-- JS Teachers -->
+    <script src="../js/jsTeacher.js"></script>
 
     <!-- *************** Fin JS personales ***************** -->
 
