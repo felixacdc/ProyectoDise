@@ -61,8 +61,70 @@ function generarCargaCombos(cboPost, identificador)
 }
 
 /*-----------------------------
+			CARGAR COMBOS TWO
+---------------------------------*/
+
+function fnLoadCombosTwo(cboPost, identificador, idCiclo, idTeacher)
+{
+	$.ajax({
+		url: '../Functions/CallCombos.php',
+		type: 'POST',
+		dataType: "json",
+		data: {
+			cboPost:cboPost,
+			idCiclo : idCiclo,
+			idTeacher : idTeacher
+		},
+		success: function(data){
+			$.each(data,function(index){
+				var campos = data[index];
+				if (index == 0) {
+					$(identificador).append("<option value='" + campos.id +"' disabled selected>" + campos.descripcion + '</option>');
+				} else {
+					$(identificador).append("<option value='" + campos.id +"'>" + campos.descripcion + '</option>');
+				}
+			});
+		}
+	});
+}
+
+/*-----------------------------
+			CARGAR COMBOS TRES
+---------------------------------*/
+
+function fnLoadCombosThree(cboPost, identificador, idCiclo, idTeacher, idAssign)
+{
+	$.ajax({
+		url: '../Functions/CallCombos.php',
+		type: 'POST',
+		dataType: "json",
+		data: {
+			cboPost:cboPost,
+			idCiclo : idCiclo,
+			idTeacher : idTeacher,
+			idAssign : idAssign 
+		},
+		success: function(data){
+			$.each(data,function(index){
+				var campos = data[index];
+				if (index == 0) {
+					$(identificador).append("<option value='" + campos.id +"' disabled selected>" + campos.descripcion + '</option>');
+				} else {
+					$(identificador).append("<option value='" + campos.id +"'>" + campos.descripcion + '</option>');
+				}
+			});
+		}
+	});
+}
+
+/*-----------------------------
 			FUNCION CERRAR SECION
 ---------------------------------*/
 function fnSignOut() {
   window.location.href = '../Functions/CallVwUsers.php?close=1';
+}
+
+function ocultoT(){
+	$('.oculto-T').fadeOut(2);
+	$('.oculto-T').removeClass('bounceOutLeft');
 }

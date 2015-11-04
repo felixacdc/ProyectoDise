@@ -71,7 +71,6 @@
 
         <div class="fnIdTeacher">
           <input type="hidden" name="idUser" value="<?php echo $_SESSION['user']; ?>" id="idUser">
-          <input type="hidden" name="idTeacher" value="" id="idTeacher">
         </div>
 
         <!-- /. NAV SIDE  -->
@@ -113,6 +112,8 @@
     <script src="../js/jsGlobal.js"></script>
     <!-- JS Teachers -->
     <script src="../js/jsTeacher.js"></script>
+    <!-- JS Notas -->
+    <script src="../js/jsAddRatings.js"></script>
 
     <!-- *************** Fin JS personales ***************** -->
 

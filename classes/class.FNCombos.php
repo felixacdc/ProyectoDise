@@ -268,6 +268,59 @@ class Combos
 		}
 	}
 
+  /*-----------------------------------------------------
+        LLENADO DE COMBOS INGRESO DE NOTAS
+  ----------------------------------------------------------*/
+  public function cboAsiGgRatings($idCicloPOST, $idTeacherPOST){
+    $db = new connectionClass();
+
+		$sql = $db->query("SELECT AGC.IdGrado, G.descripcion, AGS.idAsignacionSeccion, S.descripcion as descriptionS
+                        FROM asignacioncursos as AGC
+                        INNER JOIN grado as G on AGC.idGrado = G.idGrado
+                        INNER JOIN AsignacionSeccion as AGS on AGS.idGrado = G.idGrado
+                        inner join Seccion as S on S.idSeccion = AGS.idSeccion
+                        WHERE idCicloEscolar = '$idCicloPOST' AND idCatedratico = '$idTeacherPOST'
+                        GROUP BY AGC.IdGrado, G.descripcion, AGS.idAsignacionSeccion, S.idSeccion");
+
+		$numberRecord = $sql->num_rows;
+
+		if ($numberRecord != 0) {
+			$dataArray = array();
+			$i = 0;
+
+      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Seleccione el Grado');
+
+			while($data = $sql->fetch_assoc()){
+        $i++;
+				$dataArray[$i] = array("id" => $data['idAsignacionSeccion'], "descripcion" => $data['descripcion'] . " | " . $data['descriptionS']);
+			}
+
+			header("Content-type: application/json");
+			return json_encode($dataArray);
+		}
+	}
+
+  public function CboCourseRatings($idCicloPOST, $idTeacherPOST, $idAssign){
+		$db = new connectionClass();
+
+		$sql = $db->query("SELECT * FROM cursos");
+		$numberRecord = $sql->num_rows;
+
+		if ($numberRecord != 0) {
+			$dataArray = array();
+			$i = 0;
+
+      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Seleccione el Curso');
+
+			while($data = $sql->fetch_assoc()){
+        $i++;
+				$dataArray[$i] = array("id" => $data['idCurso'], "descripcion" => $data['nombreCurso']);
+			}
+
+			header("Content-type: application/json");
+			return json_encode($dataArray);
+		}
+	}
 }
 
  ?>
