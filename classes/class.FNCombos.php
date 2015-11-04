@@ -303,7 +303,12 @@ class Combos
   public function CboCourseRatings($idCicloPOST, $idTeacherPOST, $idAssign){
 		$db = new connectionClass();
 
-		$sql = $db->query("SELECT * FROM cursos");
+		$sql = $db->query("SELECT AGC.idAsignacionCursos, C.nombreCurso
+                        FROM AsignacionSeccion AS AGS
+                        INNER JOIN grado AS G ON AGS.idGrado = G.idGrado
+                        INNER JOIN asignacioncursos AS AGC ON G.idGrado = AGC.idGrado
+                        INNER JOIN cursos AS C ON AGC.idCurso = C.idCurso
+                        WHERE AGS.idAsignacionSeccion = '$idAssign' AND AGC.idCicloEscolar = '$idCicloPOST' AND AGC.idCatedratico = '$idTeacherPOST'");
 		$numberRecord = $sql->num_rows;
 
 		if ($numberRecord != 0) {
@@ -314,7 +319,7 @@ class Combos
 
 			while($data = $sql->fetch_assoc()){
         $i++;
-				$dataArray[$i] = array("id" => $data['idCurso'], "descripcion" => $data['nombreCurso']);
+				$dataArray[$i] = array("id" => $data['idAsignacionCursos'], "descripcion" => $data['nombreCurso']);
 			}
 
 			header("Content-type: application/json");

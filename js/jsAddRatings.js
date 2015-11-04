@@ -4,6 +4,7 @@ $(document).ready(function(){
 
   $(document).delegate('#btnSearchCe','click',fnValidateCe);
   $(document).delegate('#btnSearchTwo','click',fnValidateSearchTwo);
+  $(document).delegate('#btnSearchThree', 'click',fnValidateSearchThree);
 
 });
 
@@ -49,6 +50,26 @@ function fnValidateSearchTwo(){
 		{
 			frmSearchThree();
       fnEmptyRatings();
+		}
+
+}
+
+/*--------------------------------------
+					Funciones Validar
+-----------------------------------------*/
+
+function fnValidateSearchThree(){
+		ejecutar=true;
+		resetClass();
+
+		if (document.getElementById('CboCourse').value == '0'){
+			generalValidacion('#ErrorCboCoursediv', '#ErrorCboCourselbl', 'Seleccione el Curso');
+		}
+
+		if(ejecutar)
+		{
+			// frmSearchThree();
+      // fnEmptyRatings();
 		}
 
 }

@@ -41,3 +41,35 @@ $(document).ready(function(){
 
 
 });
+
+/*--------------------------------------
+			Verificacion de datos
+-----------------------------------------*/
+
+function verifyData(register, idLabel, idDiv, fileRegister, idForm)
+{
+	$.ajax({
+		url: '../Functions/CallVerifyData.php',
+		type: 'POST',
+		data:{
+			data: register,
+			conditional: idForm
+		},
+	}).done(function(answer){
+		if (answer != '') {
+			$(idDiv).addClass("has-error has-feedback");
+			$(idLabel).text(answer);
+			$(idLabel).addClass("animated bounceIn retraso-2");
+			$(idLabel).fadeIn();
+		} else {
+
+			switch (idForm) {
+				case '#frmProfe':
+					generarRegistro(fileRegister, idForm);
+					vaciarInputMCat();
+					break;
+			}
+
+		}
+	});
+}

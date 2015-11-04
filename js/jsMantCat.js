@@ -63,8 +63,7 @@ function fnvaliPro(){
 
 		if(ejecutar)
 		{
-			generarRegistro('CallRecordMCat.php', "#frmProfe");
-			vaciarInputMCat();
+			verifyData(Profecion, '#ErrorProlbl', "#ErrorProdiv", 'CallRecordMCat.php', "#frmProfe");
 		}
 
 }
