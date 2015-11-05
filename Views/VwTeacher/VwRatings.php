@@ -84,6 +84,29 @@
 
                     </div>
                   </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <!-- *************** Notas *********************** -->
+                      <div id="frmAddRatings" class="oculto-T animated bounceInDown">
+                        <table class="table table-striped table-bordered table-hover dataTable no-footer" id="tableRatings">
+                          <thead>
+                            <tr>
+                              <th class="sorting">Estudiante</th>
+                              <th class="sorting">Procedimental</th>
+                              <th class="sorting">Actitudinal</th>
+                              <th class="sorting">Examen</th>
+                              <th class="sorting">Total</th>
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                          </tbody>
+                        </table>
+                        <button type="button" class="btn btn-danger" id="btnAddRatings">Ingresar Notas</button>
+                      </div>
+                    </div>
+                  </div>
               </div>
               </div>
               <!-- End Form Elements Catedraticos -->
