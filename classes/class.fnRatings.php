@@ -30,9 +30,36 @@ class Ratings
     }
   }
 
-  public function fnRecordRatings($value)
+  public function fnRecordRatings($value, $rating)
   {
-    
-    echo 'SIIIIIIIII';
+    $db = new ConnectionClass();
+
+    $idBimester = $rating['bimester'];
+    $idAssignCourses = $rating['assign'];
+    $sql = $db->query("INSERT INTO Ratings (idBimester, idAssignCourses) VALUES ('$idBimester','$idAssignCourses')");
+
+    if ($sql) {
+
+      $idRating = $db->insert_id;
+      $verify = '0';
+      foreach ($value as list($idStudent, $procedural, $actitudinal, $exam, $totalScore)) {
+        $sql = $db->query("INSERT INTO DetailedRatings (idRatigns, idStudent, Procedural, Actitudinal, Exam, TotalScore)
+                            VALUES ('$idRating', '$idStudent', '$procedural', '$actitudinal', '$exam', '$totalScore')");
+
+        if (!$sql) {
+          $verify = '1';
+        }
+      }
+
+      if ($verify == '0') {
+        return 'Notas Registradas';
+      }else {
+        return 'Error en el Registro';
+      }
+    } else{
+      return 'Error en el Registro';
+    }
+
+
   }
 }

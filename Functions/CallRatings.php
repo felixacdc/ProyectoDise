@@ -12,7 +12,7 @@ if (isset($_POST['conditional'])) {
       echo $fnRatings->fnLoadStudents($_POST['idAssign'], $_POST['idciclo']);
       break;
     case 'frmRatings':
-      echo $fnRatings->fnRecordRatings($_POST['array']);
+      echo $fnRatings->fnRecordRatings($_POST['array'], $_POST['rating']);
       break;
   }
 

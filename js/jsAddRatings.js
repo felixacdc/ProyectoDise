@@ -175,8 +175,6 @@ function fnCreateArray() {
     OneRegister[3] = OneData[2].value;
     OneRegister[4] = OneData[3].value;
 
-
-
     fullRegister[i] = OneRegister;
   });
 
@@ -187,6 +185,7 @@ function fnRecordData(fullRegister, fileName){
   for (var i = 0; i < fullRegister.length; i++) {
     alert(fullRegister[i][0] + " - " + fullRegister[i][1] + " - " + fullRegister[i][2] + " - "+ fullRegister[i][3] + " - " + fullRegister[i][4]);
   }
+  dataArray = {bimester: localStorage.idBimester, assign: localStorage.idAssignCourses};
 
   var url = "../Functions/" + fileName;
 	$.ajax({
@@ -194,6 +193,7 @@ function fnRecordData(fullRegister, fileName){
 	  url: url,
 	  data: {
       array : fullRegister,
+      rating : dataArray,
       conditional: 'frmRatings'
     },
 	  success: function(data)
