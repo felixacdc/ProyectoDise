@@ -43,6 +43,9 @@ if (isset($_POST['cboPost'])) {
       $arrayPost = $_POST['data'];
       echo $fnCombos->CboCourseRatings($arrayPost['ciclo'], $arrayPost['teacher'], $arrayPost['assign']);
       break;
+    case 'cboBimester':
+      echo $fnCombos->cboBimester();
+      break;
   }
 
 } elseif (isset($_POST['buscarEncar'])) {

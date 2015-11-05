@@ -70,6 +70,15 @@
                           </div>
                         </div>
 
+                        <!-- Ingreso de ciclo escolar -->
+                        <div class="form-group" id="ErrorBimesterdiv">
+                          <label class="control-label control-label-input-group" id="ErrorBimesterlbl" for="ErrorBimesterlbl"></label>
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="fa fa-sort-numeric-asc"></i></span>
+                              <SELECT NAME="cboBimester" class="form-control" SIZE=0 id="cboBimester" ></SELECT>
+                          </div>
+                        </div>
+
                         <button type="button" class="btn btn-danger" id="btnSearchThree">Buscar</button>
                       </div>
 

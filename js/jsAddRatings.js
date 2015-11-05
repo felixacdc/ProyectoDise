@@ -12,6 +12,7 @@ function fnEmptyRatings(){
   $("select#cboCE").val("0");
   $("select#cboAsiGR").val("0");
   $("select#CboCourse").val("0");
+  $("select#cboBimester").val("0");
 }
 
 /*--------------------------------------
@@ -28,7 +29,9 @@ function fnValidateCe(){
 
 		if(ejecutar)
 		{
-			frmSearch2();
+      localStorage.idCicloEscolar = $("#cboCE").val();
+      dataArray = {ciclo: localStorage.idCicloEscolar, teacher: localStorage.idTeacher};
+			frmSearch(dataArray, 'cboAsiGgRatings', '#cboAsiGR', "#frmSearchTwo", "#frmSearchOne");
       fnEmptyRatings();
 		}
 
@@ -48,7 +51,10 @@ function fnValidateSearchTwo(){
 
 		if(ejecutar)
 		{
-			frmSearchThree();
+      localStorage.idAssignSection = $("#cboAsiGR").val();
+      dataArray = {ciclo: localStorage.idCicloEscolar, teacher: localStorage.idTeacher, assign: localStorage.idAssignSection};
+      frmSearch(dataArray, 'CboCourseRatings', '#CboCourse', "#frmSearchThree", "#frmSearchTwo");
+      generarCargaCombos("cboBimester","#cboBimester");
       fnEmptyRatings();
 		}
 
@@ -66,26 +72,35 @@ function fnValidateSearchThree(){
 			generalValidacion('#ErrorCboCoursediv', '#ErrorCboCourselbl', 'Seleccione el Curso');
 		}
 
+    if (document.getElementById('cboBimester').value == '0'){
+			generalValidacion('#ErrorBimesterdiv', '#ErrorBimesterlbl', 'Seleccione el Curso');
+		}
+
 		if(ejecutar)
 		{
-			// frmSearchThree();
-      // fnEmptyRatings();
+			
 		}
 
 }
 
-function frmSearch2() {
-  localStorage.idCicloEscolar = $("#cboCE").val();
-  dataArray = {ciclo: localStorage.idCicloEscolar, teacher: localStorage.idTeacher};
-  fnLoadCombosMore('cboAsiGgRatings', '#cboAsiGR', dataArray);
-  $("#frmSearchTwo").fadeIn();
-  $("#frmSearchOne").fadeOut();
+function frmSearch(dataArray, conditional, idcbo, divIn, divOut){
+  fnLoadCombosMore(conditional, idcbo, dataArray);
+  $(divIn).fadeIn();
+  $(divOut).fadeOut();
 }
 
-function frmSearchThree() {
-  localStorage.idAssignSection = $("#cboAsiGR").val();
-  dataArray = {ciclo: localStorage.idCicloEscolar, teacher: localStorage.idTeacher, assign: localStorage.idAssignSection};
-  fnLoadCombosMore('CboCourseRatings', '#CboCourse', dataArray);
-  $("#frmSearchThree").fadeIn();
-  $("#frmSearchTwo").fadeOut();
-}
+// function frmSearch2() {
+//   localStorage.idCicloEscolar = $("#cboCE").val();
+//   dataArray = {ciclo: localStorage.idCicloEscolar, teacher: localStorage.idTeacher};
+//   fnLoadCombosMore('cboAsiGgRatings', '#cboAsiGR', dataArray);
+//   $("#frmSearchTwo").fadeIn();
+//   $("#frmSearchOne").fadeOut();
+// }
+
+// function frmSearchThree() {
+//   localStorage.idAssignSection = $("#cboAsiGR").val();
+//   dataArray = {ciclo: localStorage.idCicloEscolar, teacher: localStorage.idTeacher, assign: localStorage.idAssignSection};
+//   fnLoadCombosMore('CboCourseRatings', '#CboCourse', dataArray);
+//   $("#frmSearchThree").fadeIn();
+//   $("#frmSearchTwo").fadeOut();
+// }

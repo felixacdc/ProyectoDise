@@ -326,6 +326,28 @@ class Combos
 			return json_encode($dataArray);
 		}
 	}
+
+  public function cboBimester(){
+		$db = new connectionClass();
+
+		$sql = $db->query("SELECT idBimester, Description FROM Bimester");
+		$numberRecord = $sql->num_rows;
+
+		if ($numberRecord != 0) {
+			$dataArray = array();
+			$i = 0;
+
+      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Seleccione el Catedratico');
+
+			while($data = $sql->fetch_assoc()){
+        $i++;
+				$dataArray[$i] = array("id" => $data['idBimester'], "descripcion" => $data['Description']);
+			}
+
+			header("Content-type: application/json");
+			return json_encode($dataArray);
+		}
+	}
 }
 
  ?>
