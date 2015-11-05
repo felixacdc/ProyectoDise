@@ -17,6 +17,7 @@ function generalValidacion(identificador1, identificador2, msm){
 	ejecutar=false;
 }
 
+
 /*--------------------------------------
 			ENVIO DE FORMULARIOS PARA REGISTRO
 -----------------------------------------*/

@@ -6,7 +6,7 @@
 class Ratings
 {
 
-  function fnLoadStudents($idAssign, $idCiclo)
+  public function fnLoadStudents($idAssign, $idCiclo)
   {
     $db = new ConnectionClass();
 
@@ -28,5 +28,11 @@ class Ratings
       header("Content-type: application/json");
       return json_encode($dataArray);
     }
+  }
+
+  public function fnRecordRatings($value)
+  {
+    
+    echo 'SIIIIIIIII';
   }
 }

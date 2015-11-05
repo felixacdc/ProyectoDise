@@ -103,21 +103,23 @@ function fnValidateSearchThree(){
 function fnValidateAddRatings(){
 		ejecutar=true;
 		resetClass();
+    $(".has-error").removeClass("has-error has-feedback");
 
-    var totales = $('.total');
+    var totales = $('.total').find('.form-control');
 
-    alert(totales);
-		// if (document.getElementById('CboCourse').value == '0'){
-		// 	generalValidacion('#ErrorCboCoursediv', '#ErrorCboCourselbl', 'Seleccione el Curso');
-		// }
-    //
-    // if (document.getElementById('cboBimester').value == '0'){
-		// 	generalValidacion('#ErrorBimesterdiv', '#ErrorBimesterlbl', 'Seleccione el Curso');
-		// }
+    $('.total .form-control').each(function(i, element) {
+      if (parseFloat($(element).val()) < 0 || parseFloat($(element).val()) > 100) {
+        $(element).parent('div').addClass("has-error has-feedback");
+        $('#alertE').text('Datos Incorrectos');
+  			$('#alertE').show();
+  			$('#alertE').delay(3000).hide(600);
+        ejecutar = false;
+      }
+    });
 
 		if(ejecutar)
 		{
-			// fnLoadStudents();
+      fnCreateArray();
 		}
 
 }
@@ -151,12 +153,55 @@ function fnLoadStudents() {
                   '<td><input type="text" class="form-control sum" placeholder="Nota"></td>' +
                   '<td><input type="text" class="form-control sum" placeholder="Nota"></td>' +
                   '<td><input type="text" class="form-control sum" placeholder="Nota"></td>' +
-                  '<td class="total"><div class="form-group" id="ErrorBimesterdiv"><input type="text" class="form-control" placeholder="Nota" value="0.00" disabled="true"></div></td>' +
+                  '<td class="total"><div class="form-group"><input type="text" class="form-control" placeholder="Nota" value="0" disabled="true"></div></td>' +
                   '</tr>';
         $('#tableRatings').children('tbody').append(content);
 
 			});
 		}
+	});
+}
+
+function fnCreateArray() {
+  var fullRegister = new Array();
+
+  $('tbody tr').each(function(i, element) {
+    OneData = $(element).find('td').find('.form-control');
+
+    var OneRegister = new Array();
+    OneRegister[0] = $(element).attr("id");
+    OneRegister[1] = OneData[0].value;
+    OneRegister[2] = OneData[1].value;
+    OneRegister[3] = OneData[2].value;
+    OneRegister[4] = OneData[3].value;
+
+
+
+    fullRegister[i] = OneRegister;
+  });
+
+  fnRecordData(fullRegister, 'CallRatings.php');
+}
+
+function fnRecordData(fullRegister, fileName){
+  for (var i = 0; i < fullRegister.length; i++) {
+    alert(fullRegister[i][0] + " - " + fullRegister[i][1] + " - " + fullRegister[i][2] + " - "+ fullRegister[i][3] + " - " + fullRegister[i][4]);
+  }
+
+  var url = "../Functions/" + fileName;
+	$.ajax({
+	  type: "POST",
+	  url: url,
+	  data: {
+      array : fullRegister,
+      conditional: 'frmRatings'
+    },
+	  success: function(data)
+	  {
+			$('#alert').text(data);
+			$('#alert').show();
+			$('#alert').delay(3000).hide(600);
+	  }
 	});
 }
 
