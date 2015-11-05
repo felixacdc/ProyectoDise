@@ -52,8 +52,7 @@ function fnValidateCourse(){
 
 		if(ejecutar)
 		{
-			generarRegistro('CallRecordCourse.php', "#frmCourse");
-      fnEmptyCourse();
+      verifyData(Course, '#ErrorCourselbl', "#ErrorCoursediv", 'CallRecordCourse.php', "#frmCourse");
 		}
 
 }
@@ -81,8 +80,8 @@ function fnValidateAssignCourse(){
 
   if(ejecutar)
   {
-    generarRegistro('CallRecordCourse.php', "#frmAssignCourses");
-    fnEmptyCourse();
+    dataString = {ciclo: $("#cboCE").val(), curso: parseInt($("#CboCourse").val()), grado: $("#cboGrado").val()};
+    verifyDataTwo(dataString, 'CallRecordCourse.php', '#frmAssignCourses');
   }
 
 }

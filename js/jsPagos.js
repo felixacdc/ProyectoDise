@@ -209,15 +209,7 @@ function almacenamientoTemporal(){
 
 function borrarTemporal(){
 
-  localStorage.removeItem('idEstudiante');
-  localStorage.removeItem('idTipoPago');
-  localStorage.removeItem('idNivelAcademico');
-  localStorage.removeItem('fechaTransaccion');
-
-	localStorage.removeItem('idMes');
-  localStorage.removeItem('idCicloE');
-  localStorage.removeItem('valorMensual');
-	localStorage.removeItem('idTransaccion');
+  localStorage.clear();
 
 }
 

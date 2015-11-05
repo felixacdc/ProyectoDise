@@ -36,10 +36,12 @@ if (isset($_POST['cboPost'])) {
       echo $fnCombos->cboTeacher();
       break;
     case 'cboAsiGgRatings':
-      echo $fnCombos->cboAsiGgRatings($_POST['idCiclo'], $_POST['idTeacher']);
+      $arrayPost = $_POST['data'];
+      echo $fnCombos->cboAsiGgRatings($arrayPost['ciclo'], $arrayPost['teacher']);
       break;
     case 'CboCourseRatings':
-      echo $fnCombos->CboCourseRatings($_POST['idCiclo'], $_POST['idTeacher'], $_POST['idAssign']);
+      $arrayPost = $_POST['data'];
+      echo $fnCombos->CboCourseRatings($arrayPost['ciclo'], $arrayPost['teacher'], $arrayPost['assign']);
       break;
   }
 

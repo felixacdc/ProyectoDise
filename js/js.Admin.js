@@ -68,6 +68,38 @@ function verifyData(register, idLabel, idDiv, fileRegister, idForm)
 					generarRegistro(fileRegister, idForm);
 					vaciarInputMCat();
 					break;
+				case '#frmCourse':
+					generarRegistro(fileRegister, idForm);
+					fnEmptyCourse();
+			}
+
+		}
+	});
+}
+
+/*--------------------------------------
+			Verificacion de datos
+-----------------------------------------*/
+function verifyDataTwo(arrayData, fileRegister, idForm)
+{
+	$.ajax({
+		url: '../Functions/CallVerifyData.php',
+		type: 'POST',
+		data:{
+			data: arrayData,
+			conditional: idForm
+		},
+	}).done(function(answer){
+		if (answer != '') {
+			$('#alertE').text(answer);
+			$('#alertE').show();
+			$('#alertE').delay(3000).hide(600);
+		} else {
+
+			switch (idForm) {
+				case '#frmAssignCourses':
+					generarRegistro(fileRegister, idForm);
+					fnEmptyCourse();
 			}
 
 		}

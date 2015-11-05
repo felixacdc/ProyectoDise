@@ -61,10 +61,10 @@ function generarCargaCombos(cboPost, identificador)
 }
 
 /*-----------------------------
-			CARGAR COMBOS TWO
+			CARGAR COMBOS MAYORES A UNO
 ---------------------------------*/
 
-function fnLoadCombosTwo(cboPost, identificador, idCiclo, idTeacher)
+function fnLoadCombosMore(cboPost, identificador, dataArray)
 {
 	$.ajax({
 		url: '../Functions/CallCombos.php',
@@ -72,37 +72,7 @@ function fnLoadCombosTwo(cboPost, identificador, idCiclo, idTeacher)
 		dataType: "json",
 		data: {
 			cboPost:cboPost,
-			idCiclo : idCiclo,
-			idTeacher : idTeacher
-		},
-		success: function(data){
-			$.each(data,function(index){
-				var campos = data[index];
-				if (index == 0) {
-					$(identificador).append("<option value='" + campos.id +"' disabled selected>" + campos.descripcion + '</option>');
-				} else {
-					$(identificador).append("<option value='" + campos.id +"'>" + campos.descripcion + '</option>');
-				}
-			});
-		}
-	});
-}
-
-/*-----------------------------
-			CARGAR COMBOS TRES
----------------------------------*/
-
-function fnLoadCombosThree(cboPost, identificador, idCiclo, idTeacher, idAssign)
-{
-	$.ajax({
-		url: '../Functions/CallCombos.php',
-		type: 'POST',
-		dataType: "json",
-		data: {
-			cboPost:cboPost,
-			idCiclo : idCiclo,
-			idTeacher : idTeacher,
-			idAssign : idAssign 
+			data : dataArray
 		},
 		success: function(data){
 			$.each(data,function(index){

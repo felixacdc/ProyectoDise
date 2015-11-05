@@ -4,9 +4,9 @@
   session_start();
   if (isset($_SESSION['activado'])) {
   	$OpenSession = new SessionClass();
-  	$OpenSession->verifySession('i');	
+  	$OpenSession->verifySession('i');
   }
-  
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -313,7 +313,10 @@
 	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="assets/js/retina.js"></script>
 	<script type="text/javascript" src="assets/js/jquery.easing.1.3.js"></script>
-    <script type="text/javascript" src="assets/js/smoothscroll.js"></script>
+  <script type="text/javascript" src="assets/js/smoothscroll.js"></script>
 	<script type="text/javascript" src="assets/js/jquery-func.js"></script>
+  <script type="text/javascript">
+    localStorage.clear();
+  </script>
   </body>
 </html>

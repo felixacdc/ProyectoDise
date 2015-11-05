@@ -76,14 +76,16 @@ function fnValidateSearchThree(){
 
 function frmSearch2() {
   localStorage.idCicloEscolar = $("#cboCE").val();
-  fnLoadCombosTwo('cboAsiGgRatings', '#cboAsiGR', localStorage.idCicloEscolar, localStorage.idTeacher);
+  dataArray = {ciclo: localStorage.idCicloEscolar, teacher: localStorage.idTeacher};
+  fnLoadCombosMore('cboAsiGgRatings', '#cboAsiGR', dataArray);
   $("#frmSearchTwo").fadeIn();
   $("#frmSearchOne").fadeOut();
 }
 
 function frmSearchThree() {
   localStorage.idAssignSection = $("#cboAsiGR").val();
-  fnLoadCombosThree('CboCourseRatings', '#CboCourse', localStorage.idCicloEscolar, localStorage.idTeacher, localStorage.idAssignSection);
+  dataArray = {ciclo: localStorage.idCicloEscolar, teacher: localStorage.idTeacher, assign: localStorage.idAssignSection};
+  fnLoadCombosMore('CboCourseRatings', '#CboCourse', dataArray);
   $("#frmSearchThree").fadeIn();
   $("#frmSearchTwo").fadeOut();
 }
