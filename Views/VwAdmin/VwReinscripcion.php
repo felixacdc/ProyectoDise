@@ -460,3 +460,6 @@ $(document).ready(function () {
     $('#dataTables-example').dataTable();
 });
 </script>
+
+<!-- JS Mantenimiento Reinscripcion -->
+<script src="../js/jsReinscription.js"></script>
