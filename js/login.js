@@ -13,6 +13,7 @@ var password;
 -----------------------------------------*/
 
 function focoinput(){
+	$("#user").focus();
 	$("#user").focusin(function(){
 	  $(".inputUserIcon").css("color", "#e74c3c");
 	}).focusout(function(){

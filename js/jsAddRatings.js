@@ -8,14 +8,15 @@ $(document).ready(function(){
   $(document).delegate('#btnAddRatings', 'click',fnValidateAddRatings);
 
   $(document).delegate('.sum','focusout',function(){
-    var obj = $(this).parent().parent().find('.total').find('.form-control');
-    var sums = $(this).parent().siblings('td').find('.form-control');
+    var obj = $(this).parent().parent().parent().find('.total').find('.form-control');
+    var sums = $(this).parent().parent().siblings('td').find('.sum');
 
     procedimental = parseFloat(sums[0].value) || 0;
     actitudinal = parseFloat(sums[1].value) || 0;
     examen = parseFloat($(this).val()) || 0;
 
     sum = procedimental + actitudinal  + examen;
+
     obj.val(sum);
   });
 
@@ -107,6 +108,16 @@ function fnValidateAddRatings(){
 
     var totales = $('.total').find('.form-control');
 
+    $('.notas .form-control').each(function(i, element) {
+      if ($(element).val() == "") {
+        $(element).parent('div').addClass("has-error has-feedback");
+        $('#alertE').text('Datos Vacios');
+  			$('#alertE').show();
+  			$('#alertE').delay(3000).hide(600);
+        ejecutar = false;
+      }
+    });
+
     $('.total .form-control').each(function(i, element) {
       if (parseFloat($(element).val()) < 0 || parseFloat($(element).val()) > 100) {
         $(element).parent('div').addClass("has-error has-feedback");
@@ -141,23 +152,44 @@ function fnLoadStudents() {
 		data: {
       conditional : 'loadStudents',
       idAssign : localStorage.idAssignSection,
-      idciclo :  localStorage.idCicloEscolar
+      idciclo :  localStorage.idCicloEscolar,
+      idAssignCourses : localStorage.idAssignCourses,
+      idBimester : localStorage.idBimester
     },
 		success: function(data){
-      $('#frmAddRatings').fadeIn();
-      $("#frmSearchThree").fadeOut();
+
+      var verify = true;
+
 			$.each(data,function(index){
+
         var campos = data[index];
-        content = '<tr id="' + campos.id + '">' +
-                  '<td>' + campos.nombre + '</td>' +
-                  '<td><input type="text" class="form-control sum" placeholder="Nota"></td>' +
-                  '<td><input type="text" class="form-control sum" placeholder="Nota"></td>' +
-                  '<td><input type="text" class="form-control sum" placeholder="Nota"></td>' +
-                  '<td class="total"><div class="form-group"><input type="text" class="form-control" placeholder="Nota" value="0" disabled="true"></div></td>' +
-                  '</tr>';
-        $('#tableRatings').children('tbody').append(content);
+
+        if (campos.id == "-1") {
+
+          $('#alertE').text(campos.nombre);
+    			$('#alertE').show();
+    			$('#alertE').delay(3000).hide(600);
+          verify = false;
+
+        }else {
+
+          content = '<tr id="' + campos.id + '">' +
+                    '<td>' + campos.nombre + '</td>' +
+                    '<td class="notas"><div class="form-group"><input type="text" class="form-control sum" placeholder="Nota" value="0"></div></td>' +
+                    '<td class="notas"><div class="form-group"><input type="text" class="form-control sum" placeholder="Nota" value="0"></div></td>' +
+                    '<td class="notas"><div class="form-group"><input type="text" class="form-control sum" placeholder="Nota" value="0"></div></td>' +
+                    '<td class="total"><div class="form-group"><input type="text" class="form-control" placeholder="Nota" value="0" disabled="true"></div></td>' +
+                    '</tr>';
+          $('#tableRatings').children('tbody').append(content);
+
+        }
 
 			});
+
+      if (verify) {
+        $('#frmAddRatings').fadeIn();
+        $("#frmSearchThree").fadeOut();
+      }
 		}
 	});
 }
@@ -182,10 +214,8 @@ function fnCreateArray() {
 }
 
 function fnRecordData(fullRegister, fileName){
-  for (var i = 0; i < fullRegister.length; i++) {
-    alert(fullRegister[i][0] + " - " + fullRegister[i][1] + " - " + fullRegister[i][2] + " - "+ fullRegister[i][3] + " - " + fullRegister[i][4]);
-  }
-  dataArray = {bimester: localStorage.idBimester, assign: localStorage.idAssignCourses};
+  
+  dataArray = {bimester: localStorage.idBimester, assign: localStorage.idAssignCourses, section: localStorage.idAssignSection};
 
   var url = "../Functions/" + fileName;
 	$.ajax({
@@ -201,6 +231,8 @@ function fnRecordData(fullRegister, fileName){
 			$('#alert').text(data);
 			$('#alert').show();
 			$('#alert').delay(3000).hide(600);
+
+      fnLoadRatings();
 	  }
 	});
 }

@@ -9,7 +9,7 @@ if (isset($_POST['conditional'])) {
 
   switch ($_POST['conditional']) {
     case 'loadStudents':
-      echo $fnRatings->fnLoadStudents($_POST['idAssign'], $_POST['idciclo']);
+      echo $fnRatings->fnLoadStudents($_POST['idAssign'], $_POST['idciclo'], $_POST['idAssignCourses'], $_POST['idBimester']);
       break;
     case 'frmRatings':
       echo $fnRatings->fnRecordRatings($_POST['array'], $_POST['rating']);
