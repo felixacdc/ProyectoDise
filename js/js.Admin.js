@@ -39,6 +39,12 @@ $(document).ready(function(){
 		$('#op5').addClass('active-menu');
 	});
 
+	$('#opRi').on('click',function(){
+		$("#page-wrapper").load('VwAdmin/VwReinscripcion.php');
+		$('a').removeClass('active-menu');
+		$('#opRi').addClass('active-menu');
+	});
+
 
 });
 

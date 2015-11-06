@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="../css/Admin.css" media="screen" title="no title" charset="utf-8">
 	<!-- BOOTSTRAP STYLES-->
     <link href="../assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- TABLE STYLES-->
+    <link href="../assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
     <link href="../assets/css/font-awesome.css" rel="stylesheet" />
      <!-- MORRIS CHART STYLES-->
@@ -56,6 +58,9 @@
 
                     <li class="cursor">
                         <a id="op1"><i class="fa fa-odnoklassniki fa-3x"></i>Inscripcion</a>
+                    </li>
+                    <li class="cursor">
+                        <a id="opRi"><i class="fa fa-refresh fa-3x"></i>Reinscripcion</a>
                     </li>
                      <li class="cursor">
                         <a id="op2"><i class="fa fa-graduation-cap fa-3x"></i>Grados</a>
@@ -137,7 +142,7 @@
     <script src="../assets/js/jquery.metisMenu.js"></script>
      <!-- MORRIS CHART SCRIPTS -->
      <script src="../assets/js/morris/raphael-2.1.0.min.js"></script>
-    <script src="../assets/js/morris/morris.js"></script>
+    <!-- <script src="../assets/js/morris/morris.js"></script> -->
       <!-- CUSTOM SCRIPTS -->
     <script src="../assets/js/custom.js"></script>
 
