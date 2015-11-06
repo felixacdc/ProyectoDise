@@ -33,6 +33,7 @@ function fnDeleteTemporary(){
   localStorage.removeItem('idAssignSection');
   localStorage.removeItem('idAssignCourses');
   localStorage.removeItem('idBimester');
+  localStorage.removeItem('nameCourse');
 
 }
 

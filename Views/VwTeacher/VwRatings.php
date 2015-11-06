@@ -89,6 +89,7 @@
                     <div class="col-md-12">
                       <!-- *************** Notas *********************** -->
                       <div id="frmAddRatings" class="oculto-T animated bounceInDown">
+                        <h3 id="materia"></h3><br>
                         <table class="table table-striped table-bordered table-hover dataTable no-footer" id="tableRatings">
                           <thead>
                             <tr>

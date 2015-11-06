@@ -143,6 +143,7 @@ function frmSearch(dataArray, conditional, idcbo, divIn, divOut){
 
 function fnLoadStudents() {
   localStorage.idAssignCourses = document.getElementById('CboCourse').value;
+  localStorage.nameCourse = $('#CboCourse option:selected').text() + ":";
   localStorage.idBimester = document.getElementById('cboBimester').value;
 
   $.ajax({
@@ -187,6 +188,7 @@ function fnLoadStudents() {
 			});
 
       if (verify) {
+        $('#materia').text(localStorage.nameCourse);
         $('#frmAddRatings').fadeIn();
         $("#frmSearchThree").fadeOut();
       }
@@ -214,7 +216,7 @@ function fnCreateArray() {
 }
 
 function fnRecordData(fullRegister, fileName){
-  
+
   dataArray = {bimester: localStorage.idBimester, assign: localStorage.idAssignCourses, section: localStorage.idAssignSection};
 
   var url = "../Functions/" + fileName;
