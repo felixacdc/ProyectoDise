@@ -113,6 +113,8 @@
     <script src="../js/jsGlobal.js"></script>
     <!-- JS Global -->
     <script src="../js/jsStudent.js"></script>
+    <!-- JS Global -->
+    <script src="../js/ViewRatings.js"></script>
 
     <!-- *************** Fin JS personales ***************** -->
 

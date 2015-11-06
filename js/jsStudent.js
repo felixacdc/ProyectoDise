@@ -8,6 +8,7 @@ $(document).ready(function(){
   $('#op1').on('click',fnLoadRatings);
   $('#CloseSession').on('click',fnSignOut);
 
+
 });
 
 /*--------------------------------------
@@ -18,6 +19,8 @@ function fnLoadRatings(){
 	$('select option').remove();
 	$('a').removeClass('active-menu');
 	$('#op1').addClass('active-menu');
+  generarCargaCombos('cboCE', '#cboCE');
+  fnDeleteTemporary();
 }
 
 /*--------------------------------------
@@ -38,4 +41,14 @@ function fnCallIdStudent(){
 			localStorage.idStudent = data;
 	  }
 	});
+}
+
+/*--------------------------------------
+			BORRAR DATOS LOCALSTORAGE
+-----------------------------------------*/
+
+function fnDeleteTemporary(){
+
+  localStorage.removeItem('idCicloEscolar');
+
 }

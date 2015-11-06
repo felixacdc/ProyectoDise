@@ -11,5 +11,8 @@ if (isset($_POST['fnPOST'])) {
     case 'idUser':
       echo $fnStudent->fnSearchIdStudent($_POST["idUser"]);
       break;
+    case 'frmViewRatings':
+      echo $fnStudent->fnViewRatings($_POST["data"]);
+      break;
   }
 }

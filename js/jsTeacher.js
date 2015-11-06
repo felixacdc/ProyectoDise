@@ -8,11 +8,6 @@ $(document).ready(function(){
   $('#op1').on('click',fnLoadRatings);
   $('#CloseSession').on('click',fnSignOut);
 
-  $(document).delegate('select','focus',function(){
-    $(this).parent().siblings('label').fadeOut().addClass('bounceOutLeft');
-    $(this).parent().parent().removeClass('has-error has-feedback');
-  });
-
 });
 
 /*--------------------------------------

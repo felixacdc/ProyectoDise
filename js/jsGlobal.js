@@ -1,3 +1,20 @@
+$(document).ready(function(){
+
+	$(document).delegate('select','focus',function(){
+    $(this).parent().siblings('label').fadeOut().addClass('bounceOutLeft');
+    $(this).parent().parent().removeClass('has-error has-feedback');
+  });
+
+	$(document).delegate('input','focus',function(){
+		$(this).parent().siblings('label').fadeOut().addClass('bounceOutLeft');
+		$(this).parent().parent().removeClass('has-error has-feedback');
+	});
+
+	$(document).delegate('input','focus',function(){
+		$(this).parent().removeClass('has-error has-feedback');
+	});
+});
+
 /*--------------------------------------
 				Reset Clases
 -----------------------------------------*/
