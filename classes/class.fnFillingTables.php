@@ -20,17 +20,20 @@ class FillingTables
       $content = "";
       while($data = $sql->fetch_assoc()){
 
-        $content.='<tr id="' . $data['idEstudiante'] . '">
+        $content.='<tr">
                   <td>' . $data['nombreEstudiante'] . '</td>
                   <td>' . $data['numeroCarne'] . '</td>
                   <td>' . $data['telefonoEstudiante'] . '</td>
                   <td>' . $data['usuario'] . '</td>
-                  <td>' . $data['idEstudiante'] . '</td>
+                  <td style="text-align: center;">' .
+                  '<button type="button" class="btn btn-primary btn-xs"' .
+                  'onclick="fnReinscription(\'' . $data['idEstudiante'] . '\')">Reinscribir</button></td>
                   </tr>';
 
       }
 
       echo $content;
+
     }
 
   }
