@@ -11,17 +11,26 @@ class FillingTables
   {
     $db = new ConnectionClass();
 
-    $sql = $db->query("SELECT * FROM estudiantes");
+    $sql = $db->query("SELECT E.idEstudiante, E.nombreEstudiante, E.numeroCarne, E.telefonoEstudiante, U.usuario
+                        FROM estudiantes AS E
+                        INNER JOIN usuarios AS U ON E.idEstudiante = U.idEstudiante");
 
     if ($sql) {
 
-      $dataArray[0] = array("id" => '-1', "nombre" => 'SIIIIII');
-      header("Content-type: application/json");
-      return json_encode($dataArray);
-    }else {
-      $dataArray[0] = array("id" => '-1', "nombre" => 'ERROR');
-      header("Content-type: application/json");
-      return json_encode($dataArray);
+      $content = "";
+      while($data = $sql->fetch_assoc()){
+
+        $content.='<tr id="' . $data['idEstudiante'] . '">
+                  <td>' . $data['nombreEstudiante'] . '</td>
+                  <td>' . $data['numeroCarne'] . '</td>
+                  <td>' . $data['telefonoEstudiante'] . '</td>
+                  <td>' . $data['usuario'] . '</td>
+                  <td>' . $data['idEstudiante'] . '</td>
+                  </tr>';
+
+      }
+
+      echo $content;
     }
 
   }
