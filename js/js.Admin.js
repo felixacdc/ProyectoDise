@@ -5,6 +5,12 @@ function fnInicio(){
 	$('#op1').addClass('active-menu');
 }
 
+function fnLoadDegree(argument) {
+	$("#page-wrapper").load('VwAdmin/VwMantGrados.php');
+	$('a').removeClass('active-menu');
+	$('#op2').addClass('active-menu');
+}
+
 $(document).ready(function(){
 
 	$('#CloseSession').on('click',function(){
@@ -13,15 +19,9 @@ $(document).ready(function(){
 
 	fnInicio();
 
-	$('#op1').on('click',function(){
-		fnInicio();
-	});
+	$('#op1').on('click',fnInicio);
 
-	$('#op2').on('click',function(){
-		$("#page-wrapper").load('VwAdmin/VwMantGrados.php');
-		$('a').removeClass('active-menu');
-		$('#op2').addClass('active-menu');
-	});
+	$('#op2').on('click',fnLoadDegree);
 
 	$('#op3').on('click',function(){
 		$("#page-wrapper").load('VwAdmin/VwMantCat.php');

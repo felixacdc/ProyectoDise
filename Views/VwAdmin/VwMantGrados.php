@@ -57,6 +57,37 @@
                         <div class="col-md-3">
                         </div>
                     </div>
+
+                    <hr>
+
+                    <div class="row">
+                      <div class="col-md-1">
+                      </div>
+                      <div class="col-md-10">
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>Grados</th>
+                                        <th>Accion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <?php
+                                    require_once '../../classes/class.fnFillingTables.php';
+                                    require_once '../../classes/class.Connection.php';
+
+                                    $fnFillingTable = new FillingTables();
+                                    echo $fnFillingTable->fnFillingDegree();
+                                   ?>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                      </div>
+                    </div>
                 </div>
             </div>
             <!-- End Form Elements GRADOS -->
@@ -132,3 +163,10 @@
     </div>
 </div>
 <!-- /. PAGE INNER  -->
+<!-- DATA TABLE SCRIPTS -->
+<script src="../assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>
+<script>
+$(document).ready(function () {
+    $('#dataTables-example').dataTable();
+});

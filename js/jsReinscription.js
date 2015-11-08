@@ -19,7 +19,6 @@ function fnReinscription(id) {
   fnEmptyRecords();
 
   $('#myModalReinscription').modal('show');
-  // alert(id);
 }
 
 function fnLoadDataStudent(id) {

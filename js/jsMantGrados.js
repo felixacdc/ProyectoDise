@@ -120,6 +120,7 @@ function verifyG(Grad)
 			$('#ErrorGralbl').fadeIn();
 		} else {
 			generarRegistro('CallRecordMG.php', "#frmGrado");
+			fnLoadDegree();
 			vaciarInput();
 		}
 	});
@@ -180,5 +181,6 @@ $(document).ready(function(){
 			generarCargaCombos('cboG', '#cboGrado');
 			generarCargaCombos('cboS', '#cboseccion');
 		});
+		
 
 });

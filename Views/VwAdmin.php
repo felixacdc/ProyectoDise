@@ -133,6 +133,8 @@
     <script src="../js/jsPagos.js"></script>
     <!-- JS Mantenimiento Cursos -->
     <script src="../js/jsCourse.js"></script>
+    <!-- JS Mantenimiento De Tablas -->
+    <script src="../js/jsMaintenanceOfTables.js"></script>
 
 
     <!-- *************** Fin JS personales ***************** -->

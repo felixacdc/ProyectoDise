@@ -84,6 +84,21 @@ class Record
       return '';
     }
   }
+
+  public function verityGrado($id, $Grad){
+    $db = new ConnectionClass();
+
+    $Tgrad = $db->real_escape_string(htmlspecialchars($Grad));
+
+    $sql = $db->query("SELECT * FROM grado WHERE descripcion='$Tgrad' AND idGrado!='$id'");
+    $numberRecord = $sql->num_rows;
+
+    if ($numberRecord != 0) {
+      return 'Grado Ya Existente';
+    }else {
+      return '';
+    }
+  }
 }
 
  ?>

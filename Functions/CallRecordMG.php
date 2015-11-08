@@ -21,6 +21,11 @@ if (isset($_POST['frm'])) {
 			$secPost = $_POST['cboseccion'];
 			echo $fnRecord->rAsignacionGS($secPost, $gradPost);
 			break;
+		case 'Degree':
+			$fnGrad = new Record();
+
+			echo $fnGrad->verityGrado($_POST['id'], $_POST['rGrad']);
+			break;
 
 		default:
 			echo "Valor no encontrado";
