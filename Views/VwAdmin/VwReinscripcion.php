@@ -74,7 +74,7 @@
               </div>
               <div class="col-md-10">
                 <!-- contenido modal -->
-                <form method="POST" enctype="multipart/form-data" class="form-horizontal" id="frmInsc">
+                <form method="POST" enctype="multipart/form-data" class="form-horizontal" id="frmReinscription">
 
                     <!-- Ingreso de Nombre Estudiante -->
                       <div class="form-group" id="ErrorNomSdiv">

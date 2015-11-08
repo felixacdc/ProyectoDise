@@ -11,6 +11,9 @@ if (isset($_POST['conditional'])) {
     case 'load':
       echo $fnReinscription->fnLoadDataStudent($_POST['idStudent']);
       break;
+    case 'searchCycles':
+      echo $fnReinscription->fnSearchCycles($_POST['idStudent']);
+      break;
   }
 
 }
