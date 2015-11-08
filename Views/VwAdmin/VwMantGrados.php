@@ -61,12 +61,12 @@
                     <hr>
 
                     <div class="row">
-                      <div class="col-md-1">
+                      <div class="col-md-2">
                       </div>
-                      <div class="col-md-10">
+                      <div class="col-md-8">
 
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table class="table table-striped table-bordered table-hover" id="tableDegree">
                                 <thead>
                                     <tr>
                                         <th>Grados</th>
@@ -117,6 +117,37 @@
                       </form>
                     </div>
                   </div>
+
+                  <hr>
+
+                  <div class="row">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-8">
+
+                      <div class="table-responsive">
+                          <table class="table table-striped table-bordered table-hover" id="tableSection">
+                              <thead>
+                                  <tr>
+                                      <th>Grados</th>
+                                      <th>Accion</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                <?php
+                                  require_once '../../classes/class.fnFillingTables.php';
+                                  require_once '../../classes/class.Connection.php';
+
+                                  $fnFillingTable = new FillingTables();
+                                  echo $fnFillingTable->fnFillingSection();
+                                 ?>
+
+                              </tbody>
+                          </table>
+                      </div>
+
+                    </div>
+                  </div>
               </div>
               </div>
               <!-- End Form Elements SECCIONES -->
@@ -163,10 +194,15 @@
     </div>
 </div>
 <!-- /. PAGE INNER  -->
+<!-- JQUERY SCRIPTS -->
+<script src="../assets/js/jquery-1.10.2.js"></script>
 <!-- DATA TABLE SCRIPTS -->
 <script src="../assets/js/dataTables/jquery.dataTables.js"></script>
 <script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>
 <script>
 $(document).ready(function () {
-    $('#dataTables-example').dataTable();
+    $('#tableDegree').dataTable();
+    $('#tableSection').dataTable();
 });
+
+</script>

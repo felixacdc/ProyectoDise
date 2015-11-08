@@ -26,6 +26,11 @@ if (isset($_POST['frm'])) {
 
 			echo $fnGrad->verityGrado($_POST['id'], $_POST['rGrad']);
 			break;
+		case 'Section':
+			$fnGrad = new Record();
+			
+			echo $fnGrad->veritySection($_POST['id'], $_POST['Section']);
+			break;
 
 		default:
 			echo "Valor no encontrado";

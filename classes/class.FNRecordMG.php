@@ -99,6 +99,22 @@ class Record
       return '';
     }
   }
+
+  public function veritySection($id, $Section)
+  {
+    $db = new ConnectionClass();
+
+    $tSection = $db->real_escape_string(htmlspecialchars($Section));
+
+    $sql = $db->query("SELECT * FROM Seccion WHERE descripcion='$tSection' AND idSeccion!='$id'");
+    $numberRecord = $sql->num_rows;
+
+    if ($numberRecord != 0) {
+      return 'Seccion Ya Existente';
+    }else {
+      return '';
+    }
+  }
 }
 
  ?>
