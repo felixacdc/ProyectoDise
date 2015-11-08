@@ -47,6 +47,10 @@ function fnDeleteGeneral(id, deletes) {
           fnLoadDegree();
           vaciarInput();
           break;
+        case 'Section':
+          fnLoadDegree();
+          vaciarInput();
+          break;
       }
 
 	  }
@@ -159,14 +163,14 @@ function fnVerifySection(element, id) {
 		if (answer != '') {
 			fnValidateOne(element, answer);
 		} else {
-			// generarModify(element.val(), id);
+			fnGenerateModifySection(element.val(), id);
 			fnLoadDegree();
 			vaciarInput();
 		}
 	});
 }
 
-function generarModify(element, id) {
+function fnGenerateModifySection(element, id) {
   var url = "../Functions/CallMaintenanceOfTable.php";
 	$.ajax({
 	  type: "POST",
@@ -174,7 +178,7 @@ function generarModify(element, id) {
     data:{
 			datas: element,
       id: id,
-      modify: 'Degree'
+      modify: 'Section'
 		},
 	  success: function(data)
 	  {

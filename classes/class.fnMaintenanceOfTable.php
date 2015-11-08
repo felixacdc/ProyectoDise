@@ -29,12 +29,47 @@ class Maintenance
     }
   }
 
+  public function fnModifySection($id, $element)
+  {
+    $db = new ConnectionClass();
+
+    $tname = $this::depurar($element, $db);
+
+    $sql = $db->query("UPDATE Seccion
+                        SET Descripcion = '$tname'
+                        WHERE idSeccion = '$id'");
+
+    if ($sql) {
+
+      return 'Modificacion Correcta';
+
+    } else{
+      return 'Error en el Registro';
+    }
+  }
+
   public function fnDeleteDegree($id)
   {
     $db = new ConnectionClass();
 
     $sql = $db->query("DELETE FROM grado
                         WHERE idGrado = '$id'");
+
+    if ($sql) {
+
+      return 'Eliminacion Correcta';
+
+    } else{
+      return 'No se puede realizar la eliminacion';
+    }
+  }
+
+  public function fnDeleteSection($id)
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("DELETE FROM Seccion
+                        WHERE idSeccion = '$id'");
 
     if ($sql) {
 

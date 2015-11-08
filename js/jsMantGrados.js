@@ -142,6 +142,7 @@ function verifyS(Sec)
 			$('#ErrorSeclbl').fadeIn();
 		} else {
 			generarRegistro('CallRecordMG.php', "#frmSec");
+			fnLoadDegree();
 			vaciarInput();
 		}
 	});
@@ -163,6 +164,7 @@ function verifyAsiGS(Grad, Sec)
 			$('#alertE').delay(3000).hide(600);
 		} else {
 			generarRegistro('CallRecordMG.php', "#frmRegAsiGS");
+			fnLoadDegree();
 			vaciarInput();
 		}
 	});
@@ -181,6 +183,6 @@ $(document).ready(function(){
 			generarCargaCombos('cboG', '#cboGrado');
 			generarCargaCombos('cboS', '#cboseccion');
 		});
-		
+
 
 });
