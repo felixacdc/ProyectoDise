@@ -8,6 +8,7 @@ function fnReinscription(id) {
 
 
   resetValidate();
+  $('#txtidStudent').val(id);
 
   $('#cboAsiGR option').remove();
   $('#cboCE option').remove();
@@ -124,9 +125,29 @@ function fnValidationReinscription(){
 
 		if(ejecutar)
 		{
-			// fnSendReinscription('CallRecordInsc.php', "#frmInsc");
+			fnSendReinscription('CallReinscription.php', "#frmReinscription");
 		}
 
+}
+
+/*--------------------------------------
+			ENVIO DE FORMULARIOS PARA REGISTRO
+-----------------------------------------*/
+
+function fnSendReinscription(nameArchivo, identificador){
+	var url = "../Functions/" + nameArchivo;
+	$.ajax({
+	  type: "POST",
+	  url: url,
+	  data: $(identificador).serialize(),
+	  success: function(data)
+	  {
+			$('#alert').text(data);
+			$('#alert').show();
+			$('#alert').delay(3000).hide(700);
+      $('#myModalReinscription').modal('hide');
+	  }
+	});
 }
 
 /*--------------------------------------

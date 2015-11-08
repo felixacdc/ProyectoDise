@@ -76,6 +76,8 @@
                 <!-- contenido modal -->
                 <form method="POST" enctype="multipart/form-data" class="form-horizontal" id="frmReinscription">
 
+                    <input type="hidden" name="idStudent" value="" id="txtidStudent"/>
+
                     <!-- Ingreso de Nombre Estudiante -->
                       <div class="form-group" id="ErrorNomSdiv">
                         <label class="control-label control-label-input-group" id="ErrorNomSlbl" for="ErrorNomSlbl"></label>
@@ -129,6 +131,8 @@
                             <SELECT NAME="cboCE" class="form-control" SIZE=0 id="cboCE" ></SELECT>
                         </div>
                       </div>
+
+                      <input type="hidden" name="conditional" value="frmReinscription"/>
 
                 </form>
 

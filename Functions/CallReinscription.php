@@ -14,6 +14,10 @@ if (isset($_POST['conditional'])) {
     case 'searchCycles':
       echo $fnReinscription->fnSearchCycles($_POST['idStudent']);
       break;
+    case 'frmReinscription':
+      echo $fnReinscription->fnSendReinscription($_POST['idStudent'], $_POST['NameS'], $_POST['AddressS'], $_POST['PhoneS'], $_POST['EmailS'], $_POST['cboAsiGR'], $_POST['cboCE']);
+      break;
+
   }
 
 }
