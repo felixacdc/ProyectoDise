@@ -70,7 +70,7 @@
                                 <thead>
                                     <tr>
                                         <th>Grados</th>
-                                        <th>Accion</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -129,8 +129,8 @@
                           <table class="table table-striped table-bordered table-hover" id="tableSection">
                               <thead>
                                   <tr>
-                                      <th>Grados</th>
-                                      <th>Accion</th>
+                                      <th>Secciones</th>
+                                      <th>Acciones</th>
                                   </tr>
                               </thead>
                               <tbody>
@@ -185,6 +185,39 @@
                         </form>
                       </div>
                     </div>
+
+                    <hr>
+
+                    <div class="row">
+                      <div class="col-md-1">
+                      </div>
+                      <div class="col-md-10">
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="tableAssignSection">
+                                <thead>
+                                    <tr>
+                                        <th>Secciones</th>
+                                        <th>Grados</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <?php
+                                    require_once '../../classes/class.fnFillingTables.php';
+                                    require_once '../../classes/class.Connection.php';
+
+                                    $fnFillingTable = new FillingTables();
+                                    echo $fnFillingTable->fnFillingAssignSection();
+                                   ?>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                      </div>
+                    </div>
+
                 </div>
                 </div>
                 <!-- End Form Elements Asignacion Seccion -->
@@ -203,6 +236,7 @@
 $(document).ready(function () {
     $('#tableDegree').dataTable();
     $('#tableSection').dataTable();
+    $('#tableAssignSection').dataTable();
 });
 
 </script>

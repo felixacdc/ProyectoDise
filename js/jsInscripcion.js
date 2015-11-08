@@ -288,6 +288,18 @@ function generarCargaCombos(cboPost, identificador)
 					$(identificador).append("<option value='" + campos.id +"'>" + campos.descripcion + '</option>');
 				}
 			});
+
+			$('#tableAssignSection tbody tr td div input').each(function(i, element) {
+
+		    $('#tableAssignSection tbody tr td div select').each(function(j, element2) {
+
+		      if(i == j){
+		        $(element2).find("option[value='" + $(element).val() + "']").attr("selected",true);
+		      }
+
+		    });
+
+		  });
 		}
 	});
 }

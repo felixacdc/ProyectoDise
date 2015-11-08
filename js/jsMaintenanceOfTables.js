@@ -1,6 +1,8 @@
+
 /*--------------------------------------
 					FUNCIONES GENERALES
 -----------------------------------------*/
+
 function fnModifyGeneral(id, idtable) {
 
   element = $(' #' + idtable + ' tbody #' + id).find('td').find('input');
@@ -14,7 +16,7 @@ function fnModifyGeneral(id, idtable) {
 function fnAcceptGeneral(id, idtable,functions) {
 
   element = $(' #' + idtable + ' tbody #' + id).find('td').find('input');
-  elementSelect = $(' #' + idtable + ' tbody #' + id).find('td').find('select');
+  // elementSelect = $(' #' + idtable + ' tbody #' + id).find('td').find('select');
 
   switch (functions) {
     case 'Degree':
@@ -22,6 +24,18 @@ function fnAcceptGeneral(id, idtable,functions) {
       break;
     case 'Section':
       fnValidateSection(element, id);
+      break;
+
+  }
+}
+
+function fnAcceptGeneralCbo(id, idtable,functions) {
+
+  element = $(' #' + idtable + ' tbody #' + id).find('td').find('select');
+
+  switch (functions) {
+    case 'AssignSection':
+      fnValidateAssignSection(element, id);
       break;
 
   }

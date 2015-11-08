@@ -109,4 +109,48 @@ class FillingTables
 
     }
   }
+
+  public function fnFillingAssignSection()
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("SELECT S.idSeccion, G.idGrado, AG.idAsignacionSeccion, G.descripcion as GDesc, S.Descripcion
+                        FROM AsignacionSeccion as AG
+                        inner join grado as G on AG.idGrado = G.idGrado
+                        inner join Seccion as S on S.idSeccion = AG.idSeccion");
+
+    if ($sql) {
+
+      $content = "";
+      while($data = $sql->fetch_assoc()){
+
+        $content.='<tr id="'. $data['idAsignacionSeccion'] .'">
+                      <td>
+                        <div class="form-group" style="color: transparent">
+                          <input type="hidden" name="cbos" value="' . $data['idGrado'] . '"/>
+                          <SELECT NAME="cboGrado" class="form-control cboGrado" SIZE=0 disabled></SELECT>' . $data['GDesc'] . '
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-group" style="color: transparent">
+                          <input type="hidden" name="cbos" value="' . $data['idSeccion'] . '"/>
+                          <SELECT NAME="cboGrado" class="form-control cboseccion" SIZE=0 disabled></SELECT>' . $data['Descripcion'] . '
+                        </div>
+                      </td>
+                      <td style="text-align: center;" class="btnActions">' .
+                  '      <div class="btn-group">
+                            <button class="btn btn-primary" onclick="fnModifyGeneral(\'' . $data['idAsignacionSeccion'] . '\',
+                            \'tableAssignSection\')"><i class="fa fa-pencil"></i></button>
+                            <button class="btn btn-success" onclick="fnAcceptGeneral(\'' . $data['idAsignacionSeccion'] . '\', \'tableAssignSection\', \'Section\')"><i class="fa fa-check"></i></button>
+                            <button class="btn btn-danger" onclick="fnDeleteGeneral(\'' . $data['idAsignacionSeccion'] . '\', \'AssignSection\')"><i class="fa fa-trash-o"></i></button>
+                          </div>
+                      </td>
+                  </tr>';
+
+      }
+
+      echo $content;
+
+    }
+  }
 }

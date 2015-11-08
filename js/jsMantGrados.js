@@ -180,8 +180,12 @@ $(document).ready(function(){
 
 		$(document).delegate('#tab-AGS','click',function(){
 			$('select option').remove();
+
+			generarCargaCombos('cboG', '.cboGrado');
+			generarCargaCombos('cboS', '.cboseccion');
 			generarCargaCombos('cboG', '#cboGrado');
 			generarCargaCombos('cboS', '#cboseccion');
+
 		});
 
 
