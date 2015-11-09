@@ -153,4 +153,41 @@ class FillingTables
 
     }
   }
+
+  public function fnFillingCourses()
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("SELECT *
+                        FROM cursos ");
+
+    if ($sql) {
+
+      $content = "";
+      while($data = $sql->fetch_assoc()){
+
+        $content.='<tr id="'. $data['idCurso'] .'">
+                      <td>
+                        <div class="form-group" style="color: transparent">
+                          <input class="form-control" type="text" placeholder="Curso" disabled="true" ' .
+                          ' value="' . $data['nombreCurso'] . '"/>' . $data['nombreCurso'] . '
+                        </div>
+                      </td>
+                      <td style="text-align: center;" class="btnActions">' .
+                  '      <div class="btn-group">
+                            <button class="btn btn-primary" onclick="fnModifyGeneral(\'' . $data['idCurso'] . '\',
+                            \'tableCourses\')"><i class="fa fa-pencil"></i></button>
+                            <button class="btn btn-success" onclick="fnAcceptGeneral(\'' . $data['idCurso'] . '\', \'tableCourses\', \'Course\')"><i class="fa fa-check"></i></button>
+                            <button class="btn btn-danger" onclick="fnDeleteGeneral(\'' . $data['idCurso'] . '\', \'Course\')"><i class="fa fa-trash-o"></i></button>
+                          </div>
+                      </td>
+                  </tr>';
+
+      }
+
+      echo $content;
+
+    }
+  }
+
 }

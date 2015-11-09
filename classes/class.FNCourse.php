@@ -36,4 +36,20 @@ class Record
       return 'Error en el Registro';
     }
   }
+
+  public function verityAssignCourses($id, $values)
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("SELECT * FROM cursos
+                        WHERE nombreCurso='$values[0]' AND idCurso!='$id'");
+    $numberRecord = $sql->num_rows;
+
+    if ($numberRecord != 0) {
+      return 'Curso Ya Existente';
+    }else {
+      return '';
+    }
+  }
+
 }

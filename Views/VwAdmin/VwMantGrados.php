@@ -197,8 +197,8 @@
                             <table class="table table-striped table-bordered table-hover" id="tableAssignSection">
                                 <thead>
                                     <tr>
-                                        <th>Secciones</th>
                                         <th>Grados</th>
+                                        <th>Secciones</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>

@@ -19,6 +19,9 @@ if (isset($_POST['frm'])) {
 			$schoolYearPost = $_POST['cboCE'];
 			echo $fnProfec->fnRegisterAssignCourse($degreePost, $coursePost, $teacherPost, $schoolYearPost);
 			break;
+		case 'Course':
+			echo $fnProfec->verityAssignCourses($_POST['id'], $_POST['datas']);
+			break;
 
 		default:
 			echo 'No se encontro el valor';

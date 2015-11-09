@@ -65,6 +65,23 @@ class Maintenance
     }
   }
 
+  public function fnModifyCourse($id, $values)
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("UPDATE cursos
+                        SET nombreCurso='$values[0]'
+                        WHERE idCurso='$id'");
+
+    if ($sql) {
+
+      return 'Modificacion Correcta';
+
+    } else{
+      return 'Error en el Registro';
+    }
+  }
+
   public function fnDeleteDegree($id)
   {
     $db = new ConnectionClass();
@@ -103,6 +120,22 @@ class Maintenance
 
     $sql = $db->query("DELETE FROM AsignacionSeccion
                         WHERE idAsignacionSeccion='$id'");
+
+    if ($sql) {
+
+      return 'Eliminacion Correcta';
+
+    } else{
+      return 'No se puede realizar la eliminacion';
+    }
+  }
+
+  public function fnDeleteCourse($id)
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("DELETE FROM cursos
+                        WHERE IdCurso='$id'");
 
     if ($sql) {
 

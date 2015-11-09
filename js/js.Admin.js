@@ -5,10 +5,16 @@ function fnInicio(){
 	$('#op1').addClass('active-menu');
 }
 
-function fnLoadDegree(argument) {
+function fnLoadDegree() {
 	$("#page-wrapper").load('VwAdmin/VwMantGrados.php');
 	$('a').removeClass('active-menu');
 	$('#op2').addClass('active-menu');
+}
+
+function fnLoadCourses() {
+	$("#page-wrapper").load('VwAdmin/VwCursos.php');
+	$('a').removeClass('active-menu');
+	$('#op5').addClass('active-menu');
 }
 
 $(document).ready(function(){
@@ -29,15 +35,9 @@ $(document).ready(function(){
 		$('#op3').addClass('active-menu');
 	});
 
-	$('#op4').on('click',function(){
-		cargarPaginaPagos();
-	});
+	$('#op4').on('click',cargarPaginaPagos);
 
-	$('#op5').on('click',function(){
-		$("#page-wrapper").load('VwAdmin/VwCursos.php');
-		$('a').removeClass('active-menu');
-		$('#op5').addClass('active-menu');
-	});
+	$('#op5').on('click',fnLoadCourses);
 
 	$('#opRi').on('click',function(){
 		$("#page-wrapper").load('VwAdmin/VwReinscripcion.php');
@@ -76,6 +76,7 @@ function verifyData(register, idLabel, idDiv, fileRegister, idForm)
 					break;
 				case '#frmCourse':
 					generarRegistro(fileRegister, idForm);
+					fnLoadCourses();
 					fnEmptyCourse();
 			}
 

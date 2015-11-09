@@ -17,6 +17,9 @@ if (isset($_POST['modify'])) {
     case 'AssignSection':
       echo $fnMaintenance->fnModifyAssignSection($_POST['id'], $_POST['datas']);
       break;
+    case 'Course':
+      echo $fnMaintenance->fnModifyCourse($_POST['id'], $_POST['datas']);
+      break;
   }
 
 }elseif (isset($_POST['delete'])) {
@@ -32,6 +35,9 @@ if (isset($_POST['modify'])) {
       break;
     case 'AssignSection':
       echo $fnMaintenance->fnDeleteAssignSection($_POST['id']);
+      break;
+    case 'Course':
+      echo $fnMaintenance->fnDeleteCourse($_POST['id']);
       break;
   }
 

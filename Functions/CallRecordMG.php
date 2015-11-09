@@ -22,18 +22,12 @@ if (isset($_POST['frm'])) {
 			echo $fnRecord->rAsignacionGS($secPost, $gradPost);
 			break;
 		case 'Degree':
-			$fnGrad = new Record();
-
 			echo $fnGrad->verityGrado($_POST['id'], $_POST['datas'][0]);
 			break;
 		case 'Section':
-			$fnGrad = new Record();
-
 			echo $fnGrad->veritySection($_POST['id'], $_POST['datas'][0]);
 			break;
 		case 'AssignSection':
-			$fnGrad = new Record();
-
 			echo $fnGrad->verityAssignSection($_POST['id'], $_POST['datas']);
 			break;
 

@@ -52,6 +52,37 @@
                         <div class="col-md-3">
                         </div>
                     </div>
+
+                    <hr>
+
+                    <div class="row">
+                      <div class="col-md-2">
+                      </div>
+                      <div class="col-md-8">
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="tableCourses">
+                                <thead>
+                                    <tr>
+                                        <th>Secciones</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <?php
+                                    require_once '../../classes/class.fnFillingTables.php';
+                                    require_once '../../classes/class.Connection.php';
+
+                                    $fnFillingTable = new FillingTables();
+                                    echo $fnFillingTable->fnFillingCourses();
+                                   ?>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                      </div>
+                    </div>
                 </div>
             </div>
             <!-- End Form Elements Profeciones -->
@@ -120,3 +151,14 @@
     </div>
 </div>
 <!-- /. PAGE INNER  -->
+<!-- JQUERY SCRIPTS -->
+<script src="../assets/js/jquery-1.10.2.js"></script>
+<!-- DATA TABLE SCRIPTS -->
+<script src="../assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>
+<script>
+$(document).ready(function () {
+    $('#tableCourses').dataTable();
+});
+
+</script>

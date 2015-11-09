@@ -23,17 +23,21 @@ function fnAcceptGeneral(id, idtable,functions) {
   switch (functions) {
     case 'Degree':
       arraydata[0] = $(element).val();
-      fnVerifyDataGeneral(arraydata, element, id, 'CallRecordMG','Degree');
+      fnValidateDegree(arraydata, element, id, 'CallRecordMG','Degree');
       break;
     case 'Section':
       arraydata[0] = $(element).val();
-      fnVerifyDataGeneral(arraydata, element, id, 'CallRecordMG','Section');
+      fnValidateSection(arraydata, element, id, 'CallRecordMG','Section');
       break;
     case 'AssignSection':
       $(elementSelect).each(function(i, element) {
         arraydata[i] = $(element).val()
       });
       fnVerifyDataGeneral(arraydata, elementSelect, id, 'CallRecordMG','AssignSection');
+      break;
+    case 'Course':
+      arraydata[0] = $(element).val();
+      fnValidateCoursesMan(arraydata, element, id, 'CallRecordCourse','Course');
       break;
 
   }
@@ -86,6 +90,10 @@ function fnDeleteGeneral(id, deletes) {
           fnLoadDegree();
           vaciarInput();
           break;
+        case 'Course':
+          fnLoadCourses();
+          fnEmptyCourse();
+          break;
       }
 
 	  }
@@ -126,6 +134,9 @@ function fnVerifyDataGeneral(arraydata, element, id, archivo, frm){
         case 'Degree':
           fnValidateOne(element, answer);
           break;
+        case 'Course':
+          fnValidateOne(element, answer);
+          break;
 
       }
 
@@ -146,6 +157,11 @@ function fnVerifyDataGeneral(arraydata, element, id, archivo, frm){
           fnLoadDegree();
           vaciarInput();
           break;
+        case 'Course':
+          generarModify(arraydata, id, 'Course');
+          fnLoadCourses();
+          fnEmptyCourse();
+          break;
 
       }
 
@@ -161,7 +177,7 @@ function fnVerifyDataGeneral(arraydata, element, id, archivo, frm){
 /*--------------------------------------
 					FUNCIONES PARA GRADOS
 -----------------------------------------*/
-function fnValidateDegree(element, id){
+function fnValidateDegree(arraydata, element, id){
 		ejecutar=true;
 		limpiarInputMG();
 		resetClassMG();
@@ -172,7 +188,7 @@ function fnValidateDegree(element, id){
 
 		if(ejecutar)
 		{
-			fnVerifyDegree(element, id);
+      fnVerifyDataGeneral(arraydata, element, id, 'CallRecordMG','Degree');
 		}
 
 }
@@ -184,7 +200,7 @@ function fnValidateDegree(element, id){
 /*--------------------------------------
 					FUNCIONES PARA SECCIONES
 -----------------------------------------*/
-function fnValidateSection(element, id){
+function fnValidateSection(arraydata, element, id){
 		ejecutar=true;
 		limpiarInputMG();
 		resetClassMG();
@@ -195,10 +211,32 @@ function fnValidateSection(element, id){
 
 		if(ejecutar)
 		{
-			fnVerifySection(element, id);
+			fnVerifyDataGeneral(arraydata, element, id, 'CallRecordMG','Section');
 		}
 
 }
 /*--------------------------------------
 				FIN FUNCIONES PARA SECCIONES
+-----------------------------------------*/
+
+/*--------------------------------------
+					FUNCIONES PARA CURSOS
+-----------------------------------------*/
+function fnValidateCoursesMan(arraydata, element, id){
+		ejecutar=true;
+		fnCleanCourse();
+		resetClassMG();
+
+		if (element.val()==""){
+      fnValidateOne(element, 'Datos Vacios')
+		}
+
+		if(ejecutar)
+		{
+			fnVerifyDataGeneral(arraydata, element, id, 'CallRecordCourse','Course');
+		}
+
+}
+/*--------------------------------------
+				FIN FUNCIONES PARA CURSOS
 -----------------------------------------*/
