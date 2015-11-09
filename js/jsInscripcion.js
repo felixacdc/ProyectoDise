@@ -259,7 +259,7 @@ function generarRegistroTwo(nameArchivo, identificador){
 					var campos = data[index];
 					document.getElementById('btnModalA').id = "btnAceptarIncripcion";
 					$('#btnModalC').fadeOut(1);
-					$('#myModalLabel').text('Inscripcion Realizado Correctamente');
+					$('#myModal #myModalLabel').text('Inscripcion Realizado Correctamente');
 					content = '<p>Su Carnet es: <strong>' + campos.carnet + '</strong></p><p>Su Usuario es: <strong>' + campos.usuario + '</strong></p><p>Su Contraseña es: <strong>' + campos.contraseña + '</strong></p>';
 					document.getElementById('myModalContenido').innerHTML = content;
 					$('#myModal').modal('show');

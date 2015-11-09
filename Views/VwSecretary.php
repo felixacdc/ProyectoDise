@@ -11,6 +11,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Secretaria</title>
     <link rel="stylesheet" href="../css/Admin.css" media="screen" title="no title" charset="utf-8">
+    <style media="screen">
+      .pagination {
+        padding-left: 50% !important;
+         margin: 0 0 !important;
+      }
+
+      .dataTables_filter label {
+        padding-left: 30% !important;
+      }
+    </style>
 	<!-- BOOTSTRAP STYLES-->
     <link href="../assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->

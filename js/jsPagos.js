@@ -183,7 +183,7 @@ function realizarDetalleT(){
 						$('#myModal').modal('show');
 						document.getElementById('btnModalA').id = "btnNuevoDT";
 						document.getElementById('btnModalC').id = 'btnCerrarFT';
-						$('#myModalLabel').text('Pago Realizado Correctamente');
+						$('#myModal #myModalLabel').text('Pago Realizado Correctamente');
 						$('#myModalContenido').text('¿Desea Realizar Otro Pago?');
 					}else {
 						alert(campos.error);
