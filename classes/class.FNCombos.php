@@ -15,7 +15,7 @@ class Combos
 			$dataArray = array();
 			$i = 0;
 
-      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Seleccione el Grado');
+      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Grado');
 
 			while($data = $sql->fetch_assoc()){
         $i++;
@@ -111,7 +111,7 @@ class Combos
 			$dataArray = array();
 			$i = 0;
 
-      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Seleccione el Ciclo Escolar');
+      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Ciclo Escolar');
 
 			while($data = $sql->fetch_assoc()){
         $i++;
@@ -234,7 +234,7 @@ class Combos
 			$dataArray = array();
 			$i = 0;
 
-      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Seleccione el Curso');
+      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Curso');
 
 			while($data = $sql->fetch_assoc()){
         $i++;
@@ -256,7 +256,7 @@ class Combos
 			$dataArray = array();
 			$i = 0;
 
-      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Seleccione el Catedratico');
+      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Catedratico');
 
 			while($data = $sql->fetch_assoc()){
         $i++;

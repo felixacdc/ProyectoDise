@@ -92,10 +92,24 @@ function fnValidateAssignCourse(){
 
 function fnLoadAssignCourses(){
 
-    $('select option').remove();
+    $('#cboGrado option').remove();
+    $('#cboCE option').remove();
+    $('#CboCourse option').remove();
+    $('#CboTeacher option').remove();
+
+    $('.cboGrado option').remove();
+    $('.cboCE option').remove();
+    $('.CboCourse option').remove();
+    $('.CboTeacher option').remove();
+
     generarCargaCombos('cboG', '#cboGrado');
     generarCargaCombos('cboCE', '#cboCE');
     generarCargaCombos('CboCourse', '#CboCourse');
     generarCargaCombos('CboTeacher', '#CboTeacher');
+
+    generarCargaCombos('cboG', '.cboGrado');
+    generarCargaCombos('cboCE', '.cboCE');
+    generarCargaCombos('CboCourse', '.CboCourse');
+    generarCargaCombos('CboTeacher', '.CboTeacher');
 
 }

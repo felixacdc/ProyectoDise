@@ -15,6 +15,7 @@ function fnLoadCourses() {
 	$("#page-wrapper").load('VwAdmin/VwCursos.php');
 	$('a').removeClass('active-menu');
 	$('#op5').addClass('active-menu');
+	fnLoadAssignCourses();
 }
 
 $(document).ready(function(){

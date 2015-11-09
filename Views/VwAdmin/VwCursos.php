@@ -66,7 +66,7 @@
                             <table class="table table-striped table-bordered table-hover" id="tableCourses">
                                 <thead>
                                     <tr>
-                                        <th>Secciones</th>
+                                        <th>Cursos</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -143,6 +143,24 @@
                       </form>
                     </div>
                   </div>
+
+                  <hr>
+
+                  <div class="row">
+                    <div class="col-md-12">
+
+                      <h3 class="text-center">Mantenimientos Asignacion Cursos</h3><br>
+
+                      <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-6">
+                          <button data-toggle="modal" data-target=".bs-example-modal-lg" type="button" class="btn btn-success btn-lg" id="buttonM">Visualizar Mantenimientos</button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
               </div>
               </div>
               <!-- End Form Elements Catedraticos -->
@@ -153,6 +171,57 @@
     </div>
 </div>
 <!-- /. PAGE INNER  -->
+
+
+
+<!-- Modal -->
+	<div class="modal fade bs-example-modal-lg" id="myModalAssign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+		   <div class="modal-content">
+		     <div class="modal-header">
+		       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		       <h3 class="modal-title" id="myModalLabel">Mantenimientos Asignacion Cursos</h3>
+		    </div>
+		    <div  >
+			    <div class="modal-body scrollit" id="contdiv">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover" id="tableAssignCourses">
+                    <thead>
+                        <tr>
+                            <th>Catedratico</th>
+                            <th>Curso</th>
+                            <th>Grado</th>
+                            <th>Ciclo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                        require_once '../../classes/class.fnFillingTables.php';
+                        require_once '../../classes/class.Connection.php';
+
+                        $fnFillingTable = new FillingTables();
+                        echo $fnFillingTable->fnFillingAssignCourses();
+                       ?>
+
+                    </tbody>
+                </table>
+            </div>
+			    </div>
+			    <div class="modal-footer">
+			    	<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+			    </div>
+		   </div>
+		   </div>
+		 </div>
+	</div>
+
+
+
+
+
+
+
 <!-- JQUERY SCRIPTS -->
 <script src="../assets/js/jquery-1.10.2.js"></script>
 <!-- DATA TABLE SCRIPTS -->
@@ -161,6 +230,7 @@
 <script>
 $(document).ready(function () {
     $('#tableCourses').dataTable();
+    $('#tableAssignCourses').dataTable();
 });
 
 </script>

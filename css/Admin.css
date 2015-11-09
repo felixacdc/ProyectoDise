@@ -54,6 +54,16 @@
   display: none;
 }
 
+
+body #myModalAssign {
+    /* new custom width */
+    width: 100%;
+}
+
+body #myModalAssign .modal-lg{
+  width: 90%;
+}
+
 @media only screen and (max-width: 778px) {
   .alert{
     left: 0;

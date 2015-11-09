@@ -296,6 +296,14 @@ function generarCargaCombos(cboPost, identificador)
 				$(element2).eq(i).find("option[value='" + $(element).val() + "']").attr("selected",true);
 
 		  });
+
+			$('#tableAssignCourses tbody tr td div input').each(function(i, element) {
+
+				element2 = $('#tableAssignCourses tbody tr td div select');
+
+				$(element2).eq(i).find("option[value='" + $(element).val() + "']").attr("selected",true);
+
+		  });
 		}
 	});
 }

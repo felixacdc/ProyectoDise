@@ -190,4 +190,63 @@ class FillingTables
     }
   }
 
+  public function fnFillingAssignCourses()
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("SELECT AGC.idAsignacionCursos, C.idCurso, G.idGrado, CA.IdCatedratico, CL.idCicloEscolar,
+                        C.nombreCurso, G.Descripcion, CA.nombreCatedratico, CL.Año
+                        FROM asignacioncursos as AGC
+                        INNER JOIN grado as G on AGC.idGrado = G.idGrado
+                        INNER JOIN cursos AS C ON AGC.idCurso = C.idCurso
+                        INNER JOIN catedraticos as CA on AGC.IdCatedratico = CA.IdCatedratico
+                        INNER JOIN cicloescolar as CL on AGC.idCicloEscolar = CL.idCicloEscolar");
+
+    if ($sql) {
+
+      $content = "";
+      while($data = $sql->fetch_assoc()){
+
+        $content.='<tr id="'. $data['idAsignacionCursos'] .'">
+                      <td>
+                        <div class="form-group" style="color: transparent">
+                          <input type="hidden" name="cbos" value="' . $data['IdCatedratico'] . '"/>
+                          <SELECT NAME="cbo1" class="form-control CboTeacher" SIZE=0 disabled="true"></SELECT>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-group" style="color: transparent">
+                          <input type="hidden" name="cbos" value="' . $data['idCurso'] . '"/>
+                          <SELECT NAME="cbo2" class="form-control CboCourse" SIZE=0 disabled="true"></SELECT>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-group" style="color: transparent">
+                          <input type="hidden" name="cbos" value="' . $data['idGrado'] . '"/>
+                          <SELECT NAME="cbo1" class="form-control cboGrado" SIZE=0 disabled="true"></SELECT>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-group" style="color: transparent">
+                          <input type="hidden" name="cbos" value="' . $data['idCicloEscolar'] . '"/>
+                          <SELECT NAME="cbo2" class="form-control cboCE" SIZE=0 disabled="true"></SELECT>
+                        </div>
+                      </td>
+                      <td style="text-align: center;" class="btnActions">' .
+                  '      <div class="btn-group">
+                            <button class="btn btn-primary" onclick="fnModifyGeneral(\'' . $data['idAsignacionCursos'] . '\',
+                            \'tableAssignCourses\')"><i class="fa fa-pencil"></i></button>
+                            <button class="btn btn-success" onclick="fnAcceptGeneral(\'' . $data['idAsignacionCursos'] . '\', \'tableAssignCourses\', \'AssignCourse\')"><i class="fa fa-check"></i></button>
+                            <button class="btn btn-danger" onclick="fnDeleteGeneral(\'' . $data['idAsignacionCursos'] . '\', \'AssignCourse\')"><i class="fa fa-trash-o"></i></button>
+                          </div>
+                      </td>
+                  </tr>';
+
+      }
+
+      echo $content;
+
+    }
+  }
+
 }
