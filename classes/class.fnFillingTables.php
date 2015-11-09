@@ -128,13 +128,13 @@ class FillingTables
                       <td>
                         <div class="form-group" style="color: transparent">
                           <input type="hidden" name="cbos" value="' . $data['idGrado'] . '"/>
-                          <SELECT NAME="cboGrado" class="form-control cboGrado" SIZE=0 disabled></SELECT>' . $data['GDesc'] . '
+                          <SELECT NAME="cbo1" class="form-control cboGrado" SIZE=0 disabled="true"></SELECT>' . $data['GDesc'] . '
                         </div>
                       </td>
                       <td>
                         <div class="form-group" style="color: transparent">
                           <input type="hidden" name="cbos" value="' . $data['idSeccion'] . '"/>
-                          <SELECT NAME="cboGrado" class="form-control cboseccion" SIZE=0 disabled></SELECT>' . $data['Descripcion'] . '
+                          <SELECT NAME="cbo2" class="form-control cboseccion" SIZE=0 disabled="true"></SELECT>' . $data['Descripcion'] . '
                         </div>
                       </td>
                       <td style="text-align: center;" class="btnActions">' .

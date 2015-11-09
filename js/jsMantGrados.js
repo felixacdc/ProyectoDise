@@ -179,7 +179,10 @@ $(document).ready(function(){
 		$(document).delegate('#buttonASG','click',fnvaliAsecMG);
 
 		$(document).delegate('#tab-AGS','click',function(){
-			$('select option').remove();
+			$('#cboGrado option').remove();
+			$('#cboseccion option').remove();
+			$('.cboGrado option').remove();
+			$('.cboseccion option').remove();
 
 			generarCargaCombos('cboG', '.cboGrado');
 			generarCargaCombos('cboS', '.cboseccion');
