@@ -107,6 +107,7 @@ function verifyDataTwo(arrayData, fileRegister, idForm)
 			switch (idForm) {
 				case '#frmAssignCourses':
 					generarRegistro(fileRegister, idForm);
+					fnLoadCourses();
 					fnEmptyCourse();
 			}
 

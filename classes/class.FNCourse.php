@@ -37,7 +37,7 @@ class Record
     }
   }
 
-  public function verityAssignCourses($id, $values)
+  public function verityCourses($id, $values)
   {
     $db = new ConnectionClass();
 
@@ -47,6 +47,22 @@ class Record
 
     if ($numberRecord != 0) {
       return 'Curso Ya Existente';
+    }else {
+      return '';
+    }
+  }
+
+  public function verityAssignCourses($id, $values)
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("SELECT * FROM asignacioncursos
+                        WHERE IdCatedratico='$values[0]' AND IdCurso='$values[1]' AND IdGrado='$values[2]'
+                        AND IdCatedratico='$values[3]' AND idAsignacionCursos!='$id'");
+    $numberRecord = $sql->num_rows;
+
+    if ($numberRecord != 0) {
+      return 'Asignacion de Curso ya Existente';
     }else {
       return '';
     }

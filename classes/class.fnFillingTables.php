@@ -53,8 +53,8 @@ class FillingTables
         $content.='<tr id="'. $data['idGrado'] .'">
                       <td>
                         <div class="form-group" style="color: transparent;">
-                          <input class="form-control" type="text" placeholder="Grado" disabled="true" ' .
-                          ' value="' . $data['Descripcion'] . '"/>' . $data['Descripcion'] . '
+                          <input class="form-control" type="text" placeholder="Grado" disabled="true" ' . ' value="' . $data['Descripcion'] . '"/>
+                          <p style="display: none">' . $data['Descripcion'] . '</p>
                         </div>
                       </td>
                       <td style="text-align: center;" class="btnActions">' .
@@ -90,7 +90,8 @@ class FillingTables
                       <td>
                         <div class="form-group" style="color: transparent">
                           <input class="form-control" type="text" placeholder="Grado" disabled="true" ' .
-                          ' value="' . $data['Descripcion'] . '"/>' . $data['Descripcion'] . '
+                          ' value="' . $data['Descripcion'] . '"/>
+                          <p style="display: none">' . $data['Descripcion'] . '</p>
                         </div>
                       </td>
                       <td style="text-align: center;" class="btnActions">' .
@@ -128,13 +129,15 @@ class FillingTables
                       <td>
                         <div class="form-group" style="color: transparent">
                           <input type="hidden" name="cbos" value="' . $data['idGrado'] . '"/>
-                          <SELECT NAME="cbo1" class="form-control cboGrado" SIZE=0 disabled="true"></SELECT>' . $data['GDesc'] . '
+                          <SELECT NAME="cbo1" class="form-control cboGrado" SIZE=0 disabled="true"></SELECT>
+                          <p style="display: none">' . $data['GDesc'] . '</p>
                         </div>
                       </td>
                       <td>
                         <div class="form-group" style="color: transparent">
                           <input type="hidden" name="cbos" value="' . $data['idSeccion'] . '"/>
-                          <SELECT NAME="cbo2" class="form-control cboseccion" SIZE=0 disabled="true"></SELECT>' . $data['Descripcion'] . '
+                          <SELECT NAME="cbo2" class="form-control cboseccion" SIZE=0 disabled="true"></SELECT>
+                          <p style="display: none">' . $data['Descripcion'] . '</p>
                         </div>
                       </td>
                       <td style="text-align: center;" class="btnActions">' .
@@ -168,9 +171,9 @@ class FillingTables
 
         $content.='<tr id="'. $data['idCurso'] .'">
                       <td>
-                        <div class="form-group" style="color: transparent">
+                        <div class="form-group">
                           <input class="form-control" type="text" placeholder="Curso" disabled="true" ' .
-                          ' value="' . $data['nombreCurso'] . '"/>' . $data['nombreCurso'] . '
+                          ' value="' . $data['nombreCurso'] . '"/><p style="display: none">' . $data['nombreCurso'] . '</p>
                         </div>
                       </td>
                       <td style="text-align: center;" class="btnActions">' .
@@ -212,24 +215,28 @@ class FillingTables
                         <div class="form-group" style="color: transparent">
                           <input type="hidden" name="cbos" value="' . $data['IdCatedratico'] . '"/>
                           <SELECT NAME="cbo1" class="form-control CboTeacher" SIZE=0 disabled="true"></SELECT>
+                          <p style="display: none">' . $data['nombreCatedratico'] . '</p>
                         </div>
                       </td>
                       <td>
                         <div class="form-group" style="color: transparent">
                           <input type="hidden" name="cbos" value="' . $data['idCurso'] . '"/>
                           <SELECT NAME="cbo2" class="form-control CboCourse" SIZE=0 disabled="true"></SELECT>
+                          <p style="display: none">' . $data['nombreCurso'] . '</p>
                         </div>
                       </td>
                       <td>
                         <div class="form-group" style="color: transparent">
                           <input type="hidden" name="cbos" value="' . $data['idGrado'] . '"/>
                           <SELECT NAME="cbo1" class="form-control cboGrado" SIZE=0 disabled="true"></SELECT>
+                          <p style="display: none">' . $data['Descripcion'] . '</p>
                         </div>
                       </td>
                       <td>
                         <div class="form-group" style="color: transparent">
                           <input type="hidden" name="cbos" value="' . $data['idCicloEscolar'] . '"/>
                           <SELECT NAME="cbo2" class="form-control cboCE" SIZE=0 disabled="true"></SELECT>
+                          <p style="display: none">' . $data['Año'] . '</p>
                         </div>
                       </td>
                       <td style="text-align: center;" class="btnActions">' .

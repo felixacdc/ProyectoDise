@@ -154,7 +154,7 @@
                       <div class="row">
                         <div class="col-md-4"></div>
                         <div class="col-md-6">
-                          <button data-toggle="modal" data-target=".bs-example-modal-lg" type="button" class="btn btn-success btn-lg" id="buttonM">Visualizar Mantenimientos</button>
+                          <button data-toggle="modal" data-target=".bs-example-modal-lg" type="button" class="btn btn-success btn-lg" id="buttonAssignCourses">Visualizar Mantenimientos</button>
                         </div>
                       </div>
 
@@ -224,6 +224,8 @@
 
 <!-- JQUERY SCRIPTS -->
 <script src="../assets/js/jquery-1.10.2.js"></script>
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="../assets/js/bootstrap.min.js"></script>
 <!-- DATA TABLE SCRIPTS -->
 <script src="../assets/js/dataTables/jquery.dataTables.js"></script>
 <script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>

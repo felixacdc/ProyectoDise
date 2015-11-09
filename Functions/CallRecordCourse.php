@@ -20,6 +20,9 @@ if (isset($_POST['frm'])) {
 			echo $fnProfec->fnRegisterAssignCourse($degreePost, $coursePost, $teacherPost, $schoolYearPost);
 			break;
 		case 'Course':
+			echo $fnProfec->verityCourses($_POST['id'], $_POST['datas']);
+			break;
+		case 'AssignCourse':
 			echo $fnProfec->verityAssignCourses($_POST['id'], $_POST['datas']);
 			break;
 

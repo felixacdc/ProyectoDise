@@ -39,6 +39,12 @@ function fnAcceptGeneral(id, idtable,functions) {
       arraydata[0] = $(element).val();
       fnValidateCoursesMan(arraydata, element, id, 'CallRecordCourse','Course');
       break;
+    case 'AssignCourse':
+      $(elementSelect).each(function(i, element) {
+        arraydata[i] = $(element).val()
+      });
+      fnVerifyDataGeneral(arraydata, element, id, 'CallRecordCourse','AssignCourse');
+      break;
 
   }
 }
@@ -94,6 +100,11 @@ function fnDeleteGeneral(id, deletes) {
           fnLoadCourses();
           fnEmptyCourse();
           break;
+        case 'AssignCourse':
+          $('#myModalAssign').modal('hide');
+          $('.modal-backdrop').remove();
+          fnEmptyCourse();
+          break;
       }
 
 	  }
@@ -137,10 +148,17 @@ function fnVerifyDataGeneral(arraydata, element, id, archivo, frm){
         case 'Course':
           fnValidateOne(element, answer);
           break;
+        case 'AssignCourse':
+          $(element).each(function(i, element2) {
+            fnValidateOne(element2, answer);
+          });
+          break;
+
 
       }
 
 		} else {
+
       switch (frm) {
         case 'AssignSection':
           generarModify(arraydata, id, 'AssignSection');
@@ -160,6 +178,12 @@ function fnVerifyDataGeneral(arraydata, element, id, archivo, frm){
         case 'Course':
           generarModify(arraydata, id, 'Course');
           fnLoadCourses();
+          fnEmptyCourse();
+          break;
+        case 'AssignCourse':
+          generarModify(arraydata, id, 'AssignCourse');
+          $('#myModalAssign').modal('hide');
+          $('.modal-backdrop').remove();
           fnEmptyCourse();
           break;
 

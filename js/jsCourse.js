@@ -11,6 +11,7 @@ $(document).ready(function(){
   $(document).delegate('#btnCourse', 'click', fnValidateCourse);
   $(document).delegate('#tab-AssignCourses','click',fnLoadAssignCourses);
   $(document).delegate('#btnAssignCourses', 'click', fnValidateAssignCourse);
+  $(document).delegate('#buttonAssignCourses', 'click',fnLoadAssignCourses);
 
 });
 
