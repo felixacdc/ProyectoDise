@@ -65,6 +65,8 @@
                       </div>
                       <div class="col-md-8">
 
+                        <h3 class="text-center">Mantenimientos Grados</h3><br>
+
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover" id="tableDegree">
                                 <thead>
@@ -124,6 +126,8 @@
                     <div class="col-md-2">
                     </div>
                     <div class="col-md-8">
+
+                      <h3 class="text-center">Mantenimientos Secciones</h3><br>
 
                       <div class="table-responsive">
                           <table class="table table-striped table-bordered table-hover" id="tableSection">
@@ -192,6 +196,8 @@
                       <div class="col-md-1">
                       </div>
                       <div class="col-md-10">
+
+                        <h3 class="text-center">Mantenimientos Asignacion de Secciones</h3><br>
 
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover" id="tableAssignSection">

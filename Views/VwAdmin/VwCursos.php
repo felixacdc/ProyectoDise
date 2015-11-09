@@ -60,6 +60,8 @@
                       </div>
                       <div class="col-md-8">
 
+                        <h3 class="text-center">Mantenimientos Cursos</h3><br>
+
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover" id="tableCourses">
                                 <thead>
