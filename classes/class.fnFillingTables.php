@@ -256,4 +256,67 @@ class FillingTables
     }
   }
 
+  public function fnFillingSearchPayments()
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("SELECT E.idEstudiante, E.nombreEstudiante, E.numeroCarne, E.telefonoEstudiante, U.usuario
+                        FROM estudiantes AS E
+                        INNER JOIN usuarios AS U ON E.idEstudiante = U.idEstudiante");
+
+    if ($sql) {
+
+      $content = "";
+      while($data = $sql->fetch_assoc()){
+
+        $content.='<tr">
+                  <td>' . $data['nombreEstudiante'] . '</td>
+                  <td>' . $data['numeroCarne'] . '</td>
+                  <td>' . $data['telefonoEstudiante'] . '</td>
+                  <td>' . $data['usuario'] . '</td>
+                  <td style="text-align: center;">' .
+                  '<button type="button" class="btn btn-primary btn-xs"' .
+                  'onclick="fnViewPayments(\'' . $data['idEstudiante'] . '\')">Ver Pagos</button></td>
+                  </tr>';
+
+      }
+
+      echo $content;
+
+    }
+
+  }
+
+  public function fnFillingPaymentsStudent($id)
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("SELECT M.idMes , M.Descripcion, T.fechaTransaccion, CL.año, TP.Descripcion as TpDescripcion
+                        FROM detalletransacciones as D
+                        inner join mes as M on D.idMes = M.idMes
+                        inner join cicloescolar as CL on CL.idCicloEscolar = D.idCicloEscolar
+                        INNER JOIN transacciones as T on D.idTransaccion = T.idTransaccion
+                        INNER JOIN tipopago as TP on TP.IdTipoPago = T.IdTipoPago
+                        WHERE T.IdEstudiante = '$id'");
+
+    if ($sql) {
+
+      $content = "";
+      while($data = $sql->fetch_assoc()){
+
+        $content.='<tr">
+                  <td>' . $data['año'] . '</td>
+                  <td>' . $data['Descripcion'] . '</td>
+                  <td>' . $data['fechaTransaccion'] . '</td>
+                  <td>' . $data['TpDescripcion'] . '</td>
+                  </tr>';
+
+      }
+
+      echo $content;
+
+    }
+
+  }
+
 }

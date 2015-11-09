@@ -17,6 +17,7 @@
           <!-- TABS -->
           <ul class="nav nav-tabs">
             <li role="presentation" class="active"><a href="#tabRpagos" data-toggle="tab" id="tab-rPagos">Pagos</a></li>
+            <li role="presentation"><a href="#tabViewPayments" data-toggle="tab" id="tab-ViewPayments">Vista de Pagos</a></li>
           </ul>
           <!-- END TABS -->
 
@@ -135,9 +136,92 @@
                 </div>
             </div>
             <!-- End Form Elements GRADOS -->
+
+            <!-- Form Elements CONSULTA DE PAGOS DE ESTUDIANTES-->
+            <div class="panel panel-default tab-pane animated rollIn retraso-1 " id="tabViewPayments">
+                <!-- <div class="panel-heading">
+                    Formulario de mantenimiento grados
+                </div> -->
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <h3>Buscar Pagos</h3>
+                            <hr>
+
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="tableViewPayments">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Carnet</th>
+                                            <th>Telefono</th>
+                                            <th>Usuario</th>
+                                            <th>Reinscribir</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      <?php
+                                        require_once '../../classes/class.fnFillingTables.php';
+                                        require_once '../../classes/class.Connection.php';
+
+                                        $fnFillingTable = new FillingTables();
+                                        echo $fnFillingTable->fnFillingSearchPayments();
+                                       ?>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Form Elements VISTA DE PAGOS DE ALUMNOS -->
+
           </div>
           <!-- END CONTENT-TABS -->
         </div>
     </div>
 </div>
 <!-- /. PAGE INNER  -->
+
+<!-- Modal -->
+	<div class="modal fade bs-example-modal-lg" id="myModalViewPayments" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+		   <div class="modal-content">
+		     <div class="modal-header">
+		       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		       <h3 class="modal-title" id="myModalLabel">Pagos Realizados por el Estudiante</h3>
+		    </div>
+		    <div  >
+			    <div class="modal-body scrollit" id="contdiv">
+
+
+			    </div>
+			    <div class="modal-footer">
+			    	<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+			    </div>
+		   </div>
+		   </div>
+		 </div>
+	</div>
+
+
+<!-- JQUERY SCRIPTS -->
+<script src="../assets/js/jquery-1.10.2.js"></script>
+<!-- JQUERY SCRIPTS -->
+<script src="../js/jsViewPayments.js"></script>
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="../assets/js/bootstrap.min.js"></script>
+<!-- DATA TABLE SCRIPTS -->
+<script src="../assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>
+<script>
+$(document).ready(function () {
+    $('#tableViewPayments').dataTable();
+    // $('#tablePayments').dataTable();
+});
+
+</script>
