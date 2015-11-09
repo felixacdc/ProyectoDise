@@ -75,4 +75,60 @@ class Students
       return json_encode($dataArray);
     }
   }
+
+  public function fnSearchPayment($value)
+  {
+    $db = new ConnectionClass();
+
+    $idCiclo = $value['ciclo'];
+    $idStudent = $value['student'];
+
+    $sql = $db->query("SELECT M.idMes , M.Descripcion, D.iddetalleTransaccion, CL.año
+                        FROM detalletransacciones as D
+                        inner join mes as M on D.idMes = M.idMes
+                        inner join cicloescolar as CL on CL.idCicloEscolar = D.idCicloEscolar
+                        INNER JOIN transacciones as T on D.idTransaccion = T.idTransaccion
+                        WHERE T.IdEstudiante = '$idStudent' and D.idCicloEscolar = '$idCiclo'
+                        ORDER BY D.iddetalleTransaccion DESC LIMIT 1");
+    $numberRecord = $sql->num_rows;
+
+    if ($numberRecord != 0) {
+      $idMes;
+      $valorMes;
+      $año;
+
+      while($data = $sql->fetch_assoc()){
+        $idMes = $data['idMes'];
+        $año = $data['año'];
+      }
+
+      $mesActual = date("n");
+      $valorMes = $idMes - 1;
+
+      if($valorMes >= $mesActual || $valorMes == 10){
+        if($año < date('Y') && $valorMes == 10){
+          $dataArray[0] = array("id" => '-1', "message" => 'No esta al dia en sus pagos');
+          header("Content-type: application/json");
+          return json_encode($dataArray);
+        }else {
+          $dataArray[0] = array("id" => '10', "message" => 'Si');
+          header("Content-type: application/json");
+          return json_encode($dataArray);
+        }
+
+      }else{
+        $dataArray[0] = array("id" => '-1', "message" => 'No esta al dia en sus pagos');
+        header("Content-type: application/json");
+        return json_encode($dataArray);
+      }
+
+
+    }else{
+      $dataArray[0] = array("id" => '-1', "message" => 'No se pueden ver las notas');
+      header("Content-type: application/json");
+      return json_encode($dataArray);
+    }
+
+
+  }
 }

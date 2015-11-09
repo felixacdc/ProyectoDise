@@ -140,8 +140,40 @@ function fnValidateCe(){
 		{
       localStorage.idCicloEscolar = $("#cboCE").val();
       dataArray = {ciclo: localStorage.idCicloEscolar, student: localStorage.idStudent};
-			fnViewRatings(dataArray, 'frmViewRatings', "#frmSearchTwo", "#frmSearchOne");
-      fnEmptyRatings();
+      fnSearchPayment(dataArray, 'searchPayment');
+			// fnViewRatings(dataArray, 'frmViewRatings', "#frmSearchTwo", "#frmSearchOne");
+      // fnEmptyRatings();
 		}
 
+}
+
+function fnSearchPayment(dataArray, conditional) {
+  $.ajax({
+		url: '../Functions/CallFnStudent.php',
+		type: 'POST',
+		dataType: "json",
+		data: {
+			fnPOST :conditional,
+			data : dataArray
+		},
+		success: function(data){
+
+			$.each(data,function(index){
+
+        var campos = data[index];
+
+        if (campos.id == "-1") {
+
+          $('#alertE').text(campos.message);
+    			$('#alertE').show();
+    			$('#alertE').delay(3000).hide(1000);
+
+        }else{
+          fnViewRatings(dataArray, 'frmViewRatings', "#frmSearchTwo", "#frmSearchOne");
+          fnEmptyRatings();
+        }
+			});
+
+		}
+	});
 }

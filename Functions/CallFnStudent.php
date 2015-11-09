@@ -14,5 +14,8 @@ if (isset($_POST['fnPOST'])) {
     case 'frmViewRatings':
       echo $fnStudent->fnViewRatings($_POST["data"]);
       break;
+    case 'searchPayment':
+      echo $fnStudent->fnSearchPayment($_POST["data"]);
+      break;
   }
 }
