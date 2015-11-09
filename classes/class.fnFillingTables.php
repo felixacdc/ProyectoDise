@@ -141,7 +141,7 @@ class FillingTables
                   '      <div class="btn-group">
                             <button class="btn btn-primary" onclick="fnModifyGeneral(\'' . $data['idAsignacionSeccion'] . '\',
                             \'tableAssignSection\')"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-success" onclick="fnAcceptGeneral(\'' . $data['idAsignacionSeccion'] . '\', \'tableAssignSection\', \'Section\')"><i class="fa fa-check"></i></button>
+                            <button class="btn btn-success" onclick="fnAcceptGeneral(\'' . $data['idAsignacionSeccion'] . '\', \'tableAssignSection\', \'AssignSection\')"><i class="fa fa-check"></i></button>
                             <button class="btn btn-danger" onclick="fnDeleteGeneral(\'' . $data['idAsignacionSeccion'] . '\', \'AssignSection\')"><i class="fa fa-trash-o"></i></button>
                           </div>
                       </td>

@@ -16,29 +16,46 @@ function fnModifyGeneral(id, idtable) {
 function fnAcceptGeneral(id, idtable,functions) {
 
   element = $(' #' + idtable + ' tbody #' + id).find('td').find('input');
-  // elementSelect = $(' #' + idtable + ' tbody #' + id).find('td').find('select');
+  elementSelect = $(' #' + idtable + ' tbody #' + id).find('td').find('select');
+
+  var arraydata = new Array();
 
   switch (functions) {
     case 'Degree':
-      fnValidateDegree(element, id);
+      arraydata[0] = $(element).val();
+      fnVerifyDataGeneral(arraydata, element, id, 'CallRecordMG','Degree');
       break;
     case 'Section':
-      fnValidateSection(element, id);
+      arraydata[0] = $(element).val();
+      fnVerifyDataGeneral(arraydata, element, id, 'CallRecordMG','Section');
+      break;
+    case 'AssignSection':
+      $(elementSelect).each(function(i, element) {
+        arraydata[i] = $(element).val()
+      });
+      fnVerifyDataGeneral(arraydata, elementSelect, id, 'CallRecordMG','AssignSection');
       break;
 
   }
 }
 
-function fnAcceptGeneralCbo(id, idtable,functions) {
-
-  element = $(' #' + idtable + ' tbody #' + id).find('td').find('select');
-
-  switch (functions) {
-    case 'AssignSection':
-      fnValidateAssignSection(element, id);
-      break;
-
-  }
+function generarModify(arraydata, id, modify) {
+  var url = "../Functions/CallMaintenanceOfTable.php";
+	$.ajax({
+	  type: "POST",
+	  url: url,
+    data:{
+			datas: arraydata,
+      id: id,
+      modify: modify
+		},
+	  success: function(data)
+	  {
+			$('#alert').text(data);
+			$('#alert').show();
+			$('#alert').delay(3000).hide(800);
+	  }
+	});
 }
 
 function fnDeleteGeneral(id, deletes) {
@@ -65,6 +82,10 @@ function fnDeleteGeneral(id, deletes) {
           fnLoadDegree();
           vaciarInput();
           break;
+        case 'AssignSection':
+          fnLoadDegree();
+          vaciarInput();
+          break;
       }
 
 	  }
@@ -78,6 +99,60 @@ function fnValidateOne(element, message) {
   $('#alertE').show();
   $('#alertE').delay(3000).hide(600);
   ejecutar = false;
+}
+
+function fnVerifyDataGeneral(arraydata, element, id, archivo, frm){
+
+  $.ajax({
+		url: '../Functions/' + archivo + '.php',
+		type: 'POST',
+		data:{
+			datas: arraydata,
+      id: id,
+      frm: frm
+		},
+	}).done(function(answer){
+		if (answer != '') {
+
+      switch (frm) {
+        case 'AssignSection':
+          $(element).each(function(i, element2) {
+            fnValidateOne(element2, answer);
+          });
+          break;
+        case 'Section':
+          fnValidateOne(element, answer);
+          break;
+        case 'Degree':
+          fnValidateOne(element, answer);
+          break;
+
+      }
+
+		} else {
+      switch (frm) {
+        case 'AssignSection':
+          generarModify(arraydata, id, 'AssignSection');
+          fnLoadDegree();
+          vaciarInput();
+          break;
+        case 'Degree':
+          generarModify(arraydata, id, 'Degree');
+          fnLoadDegree();
+          vaciarInput();
+          break;
+        case 'Section':
+          generarModify(arraydata, id, 'Section');
+          fnLoadDegree();
+          vaciarInput();
+          break;
+
+      }
+
+		}
+	});
+
+
 }
 /*--------------------------------------
 					FINAL FUNCIONES GENERALES
@@ -101,45 +176,6 @@ function fnValidateDegree(element, id){
 		}
 
 }
-
-function fnVerifyDegree(element, id) {
-  $.ajax({
-		url: '../Functions/CallRecordMG.php',
-		type: 'POST',
-		data:{
-			rGrad: element.val(),
-      id: id,
-      frm: 'Degree'
-		},
-	}).done(function(answer){
-		if (answer != '') {
-			fnValidateOne(element, answer);
-		} else {
-			generarModify(element.val(), id);
-			fnLoadDegree();
-			vaciarInput();
-		}
-	});
-}
-
-function generarModify(element, id) {
-  var url = "../Functions/CallMaintenanceOfTable.php";
-	$.ajax({
-	  type: "POST",
-	  url: url,
-    data:{
-			datas: element,
-      id: id,
-      modify: 'Degree'
-		},
-	  success: function(data)
-	  {
-			$('#alert').text(data);
-			$('#alert').show();
-			$('#alert').delay(3000).hide(600);
-	  }
-	});
-}
 /*--------------------------------------
 				FIN FUNCIONES PARA GRADOS
 -----------------------------------------*/
@@ -162,45 +198,6 @@ function fnValidateSection(element, id){
 			fnVerifySection(element, id);
 		}
 
-}
-
-function fnVerifySection(element, id) {
-  $.ajax({
-		url: '../Functions/CallRecordMG.php',
-		type: 'POST',
-		data:{
-			Section: element.val(),
-      id: id,
-      frm: 'Section'
-		},
-	}).done(function(answer){
-		if (answer != '') {
-			fnValidateOne(element, answer);
-		} else {
-			fnGenerateModifySection(element.val(), id);
-			fnLoadDegree();
-			vaciarInput();
-		}
-	});
-}
-
-function fnGenerateModifySection(element, id) {
-  var url = "../Functions/CallMaintenanceOfTable.php";
-	$.ajax({
-	  type: "POST",
-	  url: url,
-    data:{
-			datas: element,
-      id: id,
-      modify: 'Section'
-		},
-	  success: function(data)
-	  {
-			$('#alert').text(data);
-			$('#alert').show();
-			$('#alert').delay(3000).hide(600);
-	  }
-	});
 }
 /*--------------------------------------
 				FIN FUNCIONES PARA SECCIONES

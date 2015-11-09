@@ -9,10 +9,13 @@ if (isset($_POST['modify'])) {
 
   switch ($_POST['modify']) {
     case 'Degree':
-      echo $fnMaintenance->fnModifyDegree($_POST['id'], $_POST['datas']);
+      echo $fnMaintenance->fnModifyDegree($_POST['id'], $_POST['datas'][0]);
       break;
     case 'Section':
-      echo $fnMaintenance->fnModifySection($_POST['id'], $_POST['datas']);
+      echo $fnMaintenance->fnModifySection($_POST['id'], $_POST['datas'][0]);
+      break;
+    case 'AssignSection':
+      echo $fnMaintenance->fnModifyAssignSection($_POST['id'], $_POST['datas']);
       break;
   }
 
@@ -26,6 +29,9 @@ if (isset($_POST['modify'])) {
       break;
     case 'Section':
       echo $fnMaintenance->fnDeleteSection($_POST['id']);
+      break;
+    case 'AssignSection':
+      echo $fnMaintenance->fnDeleteAssignSection($_POST['id']);
       break;
   }
 

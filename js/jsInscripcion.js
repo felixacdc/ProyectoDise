@@ -291,13 +291,9 @@ function generarCargaCombos(cboPost, identificador)
 
 			$('#tableAssignSection tbody tr td div input').each(function(i, element) {
 
-		    $('#tableAssignSection tbody tr td div select').each(function(j, element2) {
+				element2 = $('#tableAssignSection tbody tr td div select');
 
-		      if(i == j){
-		        $(element2).find("option[value='" + $(element).val() + "']").attr("selected",true);
-		      }
-
-		    });
+				$(element2).eq(i).find("option[value='" + $(element).val() + "']").attr("selected",true);
 
 		  });
 		}

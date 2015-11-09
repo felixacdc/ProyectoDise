@@ -115,6 +115,24 @@ class Record
       return '';
     }
   }
+
+  public function verityAssignSection($id, $values)
+  {
+    $db = new ConnectionClass();
+
+    $idGrado = $values[0];
+    $idSeccion = $values[1];
+
+    $sql = $db->query("SELECT * FROM AsignacionSeccion
+                        WHERE idSeccion='$idSeccion' AND idGrado='$idGrado' AND idAsignacionSeccion!='$id'");
+    $numberRecord = $sql->num_rows;
+
+    if ($numberRecord != 0) {
+      return 'Asignacion Ya Existente';
+    }else {
+      return '';
+    }
+  }
 }
 
  ?>
