@@ -179,17 +179,72 @@ $(document).ready(function(){
 		$(document).delegate('#buttonASG','click',fnvaliAsecMG);
 
 		$(document).delegate('#tab-AGS','click',function(){
+
 			$('#cboGrado option').remove();
 			$('#cboseccion option').remove();
+
+			generarCargaCombos('cboG', '#cboGrado');
+			generarCargaCombos('cboS', '#cboseccion');
+
 			$('.cboGrado option').remove();
 			$('.cboseccion option').remove();
 
-			generarCargaCombos('cboG', '.cboGrado');
-			generarCargaCombos('cboS', '.cboseccion');
-			generarCargaCombos('cboG', '#cboGrado');
-			generarCargaCombos('cboS', '#cboseccion');
+		 generarCargaCombos('cboG', '.cboGrado');
+		 generarCargaCombos('cboS', '.cboseccion');
+
+			// $('#tableAssignSection tbody').children('tr').remove()
+
+			// fnFillingTableStudents('CallFillingTables.php', '#tableAssignSection', 'tableAssignSection');
 
 		});
 
 
+
+
 });
+
+// function fnFillingTableStudents(nameArchivo, identificador, conditional){
+// 	var url = "../Functions/" + nameArchivo;
+// 	$.ajax({
+// 		dataType: "json",
+// 	  type: "POST",
+// 	  url: url,
+//    data:{
+//      conditional : conditional
+//    },
+// 	  success: function(data)
+// 	  {
+// 			$.each(data,function(index){
+//        var campos = data[index];
+//        if (campos.idAsignacionSeccion) {
+//          content = '<tr id="' + campos.idAsignacionSeccion + '">' +
+// 	                   '<td><div class="form-group" style="color: transparent">' +
+// 										 '<input type="hidden" name="cbos" value="' + campos.idGrado + '"/>' +
+// 										 '<SELECT NAME="cbo1" class="form-control cboGrado" SIZE=0 disabled="true"></SELECT>' +
+// 										 campos.Grado + '</div></td>' +
+// 										 '<td><div class="form-group" style="color: transparent">' +
+// 										 '<input type="hidden" name="cbos" value="' + campos.idSeccion + '"/>' +
+// 										 '<SELECT NAME="cbo1" class="form-control cboseccion" SIZE=0 disabled="true"></SELECT>' +
+// 										 campos.Seccion + '</div></td>' +
+// 										 '<td style="text-align: center;" class="btnActions">' +
+// 										 	'<div class="btn-group">' +
+// 												'<button class="btn btn-primary" onclick="fnModifyGeneral(\'' + campos.idAsignacionSeccion +
+// 										 		'\', \'tableAssignSection\')"><i class="fa fa-pencil"></i></button>' +
+// 										 		'<button class="btn btn-success" onclick="fnAcceptGeneral(\'' + campos.idAsignacionSeccion +
+// 												'\', \'tableAssignSection\', \'AssignSection\')"><i class="fa fa-check"></i></button>' +
+// 												'<button class="btn btn-danger" onclick="fnDeleteGeneral(\'' + campos.idAsignacionSeccion +
+// 												'\', \'AssignSection\')"><i class="fa fa-trash-o"></i></button></div></td>' +
+//                    '</tr>';
+//          $(identificador).children('tbody').append(content);
+// 				 $('#tableAssignSection').dataTable();
+//
+// 		 			$('.cboGrado option').remove();
+// 		 			$('.cboseccion option').remove();
+//
+// 				 generarCargaCombos('cboG', '.cboGrado');
+// 				 generarCargaCombos('cboS', '.cboseccion');
+//        }
+// 			});
+// 	  }
+// 	});
+// }

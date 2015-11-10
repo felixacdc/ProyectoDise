@@ -62,22 +62,22 @@
                     <li class="cursor">
                         <a id="opRi"><i class="fa fa-refresh fa-3x"></i>Reinscripcion</a>
                     </li>
+                    <li class="cursor">
+                        <a id="op4"><i class="fa fa-money fa-3x"></i>Pagos</a>
+                    </li>
+                    <li  class="cursor">
+                      <a id="op6"><i class="fa fa-star fa-3x"></i>Ver Notas</a>
+                  </li>
                      <li class="cursor">
                         <a id="op2"><i class="fa fa-graduation-cap fa-3x"></i>Grados</a>
                     </li>
                     <li class="cursor">
                         <a id="op3"><i class="fa fa-user-secret fa-3x"></i>Catedraticos</a>
                     </li>
-						        <li>
-                        <a id="op4"><i class="fa fa-money fa-3x"></i>Pagos</a>
-                    </li>
-                      <li  >
+                      <li class="cursor">
                         <a  id="op5"><i class="fa fa-clone fa-3x"></i>Cursos</a>
                     </li>
-                    <li  >
-                      <a id="op6"><i class="fa fa-star fa-3x"></i>Ver Notas</a>
-                  </li>
-                    <li>
+                    <li class="cursor">
                         <a id="CloseSession"><i class="fa fa-sign-out fa-3x"></i>cerrar sesión</a>
                     </li>
                 </ul>

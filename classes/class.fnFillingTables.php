@@ -122,8 +122,16 @@ class FillingTables
 
     if ($sql) {
 
+      $dataArray = array();
+      $i = 0;
+
       $content = "";
       while($data = $sql->fetch_assoc()){
+      //
+      //   $dataArray[$i] = array("idAsignacionSeccion" => $data['idAsignacionSeccion'], "idGrado" => $data['idGrado'],
+      //                           "idSeccion" => $data['idSeccion'], "Grado" => $data['GDesc'],
+      //                           "Seccion" => $data['Descripcion']);
+      //   $i++;
 
         $content.='<tr id="'. $data['idAsignacionSeccion'] .'">
                       <td>
@@ -153,6 +161,8 @@ class FillingTables
       }
 
       echo $content;
+      // header("Content-type: application/json");
+      // return json_encode($dataArray);
 
     }
   }
