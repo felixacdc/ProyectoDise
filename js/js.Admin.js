@@ -27,6 +27,13 @@ function fnLoadRatings(){
 	generarCargaCombos('cboCE', '#cboCE');
 }
 
+function fnLoadManStudents(){
+	$("#page-wrapper").load('VwAdmin/VwMaintenanceStudents.php');
+	$('select option').remove();
+	$('a').removeClass('active-menu');
+	$('#opManStudents').addClass('active-menu');
+}
+
 $(document).ready(function(){
 
 	$('#CloseSession').on('click',function(){
@@ -50,6 +57,8 @@ $(document).ready(function(){
 	$('#op5').on('click',fnLoadCourses);
 
 	$('#op6').on('click',fnLoadRatings);
+	
+	$('#opManStudents').on('click',fnLoadManStudents);
 
 	$('#opRi').on('click',function(){
 		$("#page-wrapper").load('VwAdmin/VwReinscripcion.php');

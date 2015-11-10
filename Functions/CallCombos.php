@@ -46,6 +46,9 @@ if (isset($_POST['cboPost'])) {
     case 'cboBimester':
       echo $fnCombos->cboBimester();
       break;
+    case 'cboEstado':
+      echo $fnCombos->cboEstado();
+      break;
   }
 
 } elseif (isset($_POST['buscarEncar'])) {

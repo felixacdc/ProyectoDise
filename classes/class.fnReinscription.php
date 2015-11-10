@@ -24,7 +24,8 @@ class Reinscription
 
       while($data = $sql->fetch_assoc()){
         $dataArray[$i] = array("name" => $data['nombreEstudiante'], "address" => $data['direccionEstudiante'],
-                                "phone" => $data['telefonoEstudiante'], "email" => $data['emailEstudiante']);
+                                "phone" => $data['telefonoEstudiante'], "email" => $data['emailEstudiante'],
+                                "estado" => $data['idEstado']);
         $i++;
       }
 

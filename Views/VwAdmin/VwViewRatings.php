@@ -37,7 +37,8 @@
                                         <th>Carnet</th>
                                         <th>Telefono</th>
                                         <th>Usuario</th>
-                                        <th>Reinscribir</th>
+                                        <th>Estados</th>
+                                        <th>Ver Notas</th>
                                     </tr>
                                 </thead>
                                 <tbody>

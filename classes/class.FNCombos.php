@@ -348,6 +348,28 @@ class Combos
 			return json_encode($dataArray);
 		}
 	}
+
+  public function cboEstado(){
+		$db = new connectionClass();
+
+		$sql = $db->query("SELECT idEstado, tipoEstado FROM estados");
+		$numberRecord = $sql->num_rows;
+
+		if ($numberRecord != 0) {
+			$dataArray = array();
+			$i = 0;
+
+      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Seleccione el Estado');
+
+			while($data = $sql->fetch_assoc()){
+        $i++;
+				$dataArray[$i] = array("id" => $data['idEstado'], "descripcion" => $data['tipoEstado']);
+			}
+
+			header("Content-type: application/json");
+			return json_encode($dataArray);
+		}
+	}
 }
 
  ?>

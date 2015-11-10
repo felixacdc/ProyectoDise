@@ -8,6 +8,7 @@ function fnReinscription(id) {
 
 
   resetValidate();
+  fnEmptyRecords();
   $('#txtidStudent').val(id);
 
   $('#cboAsiGR option').remove();
@@ -16,7 +17,7 @@ function fnReinscription(id) {
 	generarCargaCombos('cboCE', '#cboCE');
 
   fnLoadDataStudent(id);
-  fnEmptyRecords();
+
 
   $('#myModalReinscription').modal('show');
 }

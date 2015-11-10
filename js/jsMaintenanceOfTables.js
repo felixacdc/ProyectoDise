@@ -1,4 +1,8 @@
+var cycles;
 
+$(document).ready(function(){
+  $(document).delegate('#btnModalR','click',fnValidationReinscription);
+});
 /*--------------------------------------
 					FUNCIONES GENERALES
 -----------------------------------------*/
@@ -263,4 +267,159 @@ function fnValidateCoursesMan(arraydata, element, id){
 }
 /*--------------------------------------
 				FIN FUNCIONES PARA CURSOS
+-----------------------------------------*/
+
+/*--------------------------------------
+					FUNCIONES PARA ESTUDIANTES
+-----------------------------------------*/
+function fnViewManStudents(id) {
+
+
+  resetValidate();
+  fnEmptyRecords();
+  $('#txtidStudent').val(id);
+
+  $('#cboEstado option').remove();
+  generarCargaCombos('cboEstado', '#cboEstado');
+
+  fnLoadDataStudent(id);
+
+
+  $('#myModalManStudents').modal('show');
+}
+
+function resetValidate() {
+  $('.control-label-input-group').fadeOut();
+  $('.form-group').removeClass('has-error has-feedback');
+}
+
+function fnLoadDataStudent(id) {
+  $.ajax({
+		url: '../Functions/CallReinscription.php',
+		type: 'POST',
+		dataType: "json",
+		data: {
+      conditional: 'load',
+      idStudent: id
+    },
+		success: function(data){
+			$.each(data,function(index){
+				var campos = data[index];
+
+        if(campos.name){
+
+          $('#txtNameS').val(campos.name);
+          $('#txtAddressS').val(campos.address);
+          $('#txtPhoneS').val(campos.phone);
+          $('#txtemailS').val(campos.email);
+          $("select#cboEstado").val(campos.estado);
+
+        }
+
+			});
+		}
+	});
+
+  fnSearchCycles(id);
+}
+
+function fnSearchCycles(id) {
+  $.ajax({
+		url: '../Functions/CallReinscription.php',
+		type: 'POST',
+		dataType: "json",
+		data: {
+      conditional: 'searchCycles',
+      idStudent: id
+    },
+		success: function(data){
+
+      cycles = data;
+
+		}
+	});
+
+}
+
+function fnEmptyRecords(){
+	$("#txtNameS").val(' ');
+	$("#txtAddressS").val(' ');
+	$("#txtemailS").val(' ');
+	$("#txtPhoneS").val(' ');
+
+  $("#txtNameS").val($("#txtNameS").val().trim());
+	$("#txtAddressS").val($("#txtAddressS").val().trim());
+	$("#txtemailS").val($("#txtemailS").val().trim());
+	$("#txtPhoneS").val($("#txtPhoneS").val().trim());
+
+  $("select#cboEstado").val("0");
+
+}
+
+/*--------------------------------------
+					Funcion Validar
+-----------------------------------------*/
+
+function fnValidationReinscription(){
+		ejecutar=true;
+		fnClearInput();
+		resetClass();
+
+    if (nombreS==""){
+			generalValidacion('#ErrorNomSdiv', '#ErrorNomSlbl', 'Ingrese el nombre');
+		} else if (!verifyOne.test(nombreS)){
+			generalValidacion('#ErrorNomSdiv', '#ErrorNomSlbl', 'Ingrese solo letras');
+		}
+
+		if (direccionS==""){
+			generalValidacion('#ErrorDirSdiv', '#ErrorDirSlbl', 'Ingrese la Direccion');
+		} else if (!verifyFore.test(direccionS)){
+			generalValidacion('#ErrorDirSdiv', '#ErrorDirSlbl', 'Caracteres Incorrectos');
+		}
+
+		if (emailS==""){
+			generalValidacion('#ErrorEmaSdiv', '#ErrorEmaSlbl', 'Ingrese el correo electronico');
+		} else if (!verifyThree.test(emailS)){
+			generalValidacion('#ErrorEmaSdiv', '#ErrorEmaSlbl', 'Correo Electronico invalido');
+		}
+
+		if (phoneS==""){
+			generalValidacion('#ErrorTelSdiv', '#ErrorTelSlbl', 'Ingrese el telefono');
+		} else if (!verifyTwo.test(phoneS)){
+			generalValidacion('#ErrorTelSdiv', '#ErrorTelSlbl', 'Ingrese solo numeros');
+		} else if (phoneS.length != 8){
+			generalValidacion('#ErrorTelSdiv', '#ErrorTelSlbl', 'Ingrese un numero con 8 digitos');
+		}
+
+    if ($("select#cboEstado").val() == null){
+			generalValidacion('#ErrorEstadodiv', '#ErrorEstadolbl', 'Seleccione el Estado');
+		}
+
+		if(ejecutar)
+		{
+			// fnSendReinscription('CallReinscription.php', "#frmReinscription");
+		}
+
+}
+
+/*--------------------------------------
+			LIMPIADO DE TEXT
+-----------------------------------------*/
+function fnClearInput(){
+	nombreS=$("#txtNameS").val().trim();
+	direccionS=$("#txtAddressS").val().trim();
+  emailS=$("#txtemailS").val().trim();
+  phoneS=$("#txtPhoneS").val().trim();
+	AsignacionG = $("#cboAsiGR").val();
+	CicloE = $("#cboCE").val();
+
+  $("#txtNameS").val(nombreS);
+	$("#txtAddressS").val(direccionS);
+	$("#txtemailS").val(emailS);
+	$("#txtPhoneS").val(phoneS);
+}
+
+
+/*--------------------------------------
+					FUNCIONES FIN ESTUDIANTES
 -----------------------------------------*/

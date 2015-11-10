@@ -32,6 +32,7 @@
                                 <th>Carnet</th>
                                 <th>Telefono</th>
                                 <th>Usuario</th>
+                                <th>Estado</th>
                                 <th>Reinscribir</th>
                             </tr>
                         </thead>

@@ -157,7 +157,8 @@
                                             <th>Carnet</th>
                                             <th>Telefono</th>
                                             <th>Usuario</th>
-                                            <th>Reinscribir</th>
+                                            <th>Estado</th>
+                                            <th>Ver Pagos</th>
                                         </tr>
                                     </thead>
                                     <tbody>

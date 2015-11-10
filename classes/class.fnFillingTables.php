@@ -11,9 +11,10 @@ class FillingTables
   {
     $db = new ConnectionClass();
 
-    $sql = $db->query("SELECT E.idEstudiante, E.nombreEstudiante, E.numeroCarne, E.telefonoEstudiante, U.usuario
+    $sql = $db->query("SELECT ES.tipoEstado, E.idEstudiante, E.nombreEstudiante, E.numeroCarne, E.telefonoEstudiante, U.usuario
                         FROM estudiantes AS E
-                        INNER JOIN usuarios AS U ON E.idEstudiante = U.idEstudiante");
+                        INNER JOIN usuarios AS U ON E.idEstudiante = U.idEstudiante
+                        INNER JOIN estados AS ES ON ES.idestado = E.idestado");
 
     if ($sql) {
 
@@ -25,6 +26,7 @@ class FillingTables
                   <td>' . $data['numeroCarne'] . '</td>
                   <td>' . $data['telefonoEstudiante'] . '</td>
                   <td>' . $data['usuario'] . '</td>
+                  <td>' . $data['tipoEstado'] . '</td>
                   <td style="text-align: center;">' .
                   '<button type="button" class="btn btn-primary btn-xs"' .
                   'onclick="fnReinscription(\'' . $data['idEstudiante'] . '\')">Reinscribir</button></td>
@@ -270,9 +272,10 @@ class FillingTables
   {
     $db = new ConnectionClass();
 
-    $sql = $db->query("SELECT E.idEstudiante, E.nombreEstudiante, E.numeroCarne, E.telefonoEstudiante, U.usuario
+    $sql = $db->query("SELECT ES.tipoEstado, E.idEstudiante, E.nombreEstudiante, E.numeroCarne, E.telefonoEstudiante, U.usuario
                         FROM estudiantes AS E
-                        INNER JOIN usuarios AS U ON E.idEstudiante = U.idEstudiante");
+                        INNER JOIN usuarios AS U ON E.idEstudiante = U.idEstudiante
+                        INNER JOIN estados AS ES ON ES.idestado = E.idestado");
 
     if ($sql) {
 
@@ -284,6 +287,7 @@ class FillingTables
                   <td>' . $data['numeroCarne'] . '</td>
                   <td>' . $data['telefonoEstudiante'] . '</td>
                   <td>' . $data['usuario'] . '</td>
+                  <td>' . $data['tipoEstado'] . '</td>
                   <td style="text-align: center;">' .
                   '<button type="button" class="btn btn-primary btn-xs"' .
                   'onclick="fnViewPayments(\'' . $data['idEstudiante'] . '\')">Ver Pagos</button></td>
@@ -333,9 +337,10 @@ class FillingTables
   {
     $db = new ConnectionClass();
 
-    $sql = $db->query("SELECT E.idEstudiante, E.nombreEstudiante, E.numeroCarne, E.telefonoEstudiante, U.usuario
+    $sql = $db->query("SELECT ES.tipoEstado, E.idEstudiante, E.nombreEstudiante, E.numeroCarne, E.telefonoEstudiante, U.usuario
                         FROM estudiantes AS E
-                        INNER JOIN usuarios AS U ON E.idEstudiante = U.idEstudiante");
+                        INNER JOIN usuarios AS U ON E.idEstudiante = U.idEstudiante
+                        INNER JOIN estados AS ES ON ES.idestado = E.idestado");
 
     if ($sql) {
 
@@ -347,10 +352,47 @@ class FillingTables
                   <td>' . $data['numeroCarne'] . '</td>
                   <td>' . $data['telefonoEstudiante'] . '</td>
                   <td>' . $data['usuario'] . '</td>
+                  <td>' . $data['tipoEstado'] . '</td>
                   <td style="text-align: center;">' .
                   '<button type="button" class="btn btn-primary btn-xs"' .
                   'onclick="fnViewRatings(\'' . $data['idEstudiante'] . '\')">Ver Notas</button></td>
                   </tr>';
+
+      }
+
+      echo $content;
+
+    }
+
+  }
+
+  public function fnFillingViewManStudents()
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("SELECT ES.tipoEstado, E.idEstudiante, E.nombreEstudiante, E.numeroCarne, E.telefonoEstudiante, U.usuario, E.idEstudiante
+                        FROM estudiantes AS E
+                        INNER JOIN usuarios AS U ON E.idEstudiante = U.idEstudiante
+                        INNER JOIN estados AS ES ON ES.idestado = E.idestado");
+
+    if ($sql) {
+
+      $content = "";
+      while($data = $sql->fetch_assoc()){
+
+        $content.='<tr">
+                  <td>' . $data['nombreEstudiante'] . '</td>
+                  <td>' . $data['numeroCarne'] . '</td>
+                  <td>' . $data['telefonoEstudiante'] . '</td>
+                  <td>' . $data['usuario'] . '</td>
+                  <td>' . $data['tipoEstado'] . '</td>
+                  <td style="text-align: center;" class="btnActions">' .
+                  ' <div class="btn-group">
+                        <button class="btn btn-primary" onclick="fnViewManStudents(\'' . $data['idEstudiante'] . '\')">
+                        <i class="fa fa-pencil"></i></button>
+                        <button class="btn btn-danger" onclick="fnDeleteGeneral(\'' . $data['idEstudiante'] . '\', \'ManStudents\')"><i class="fa fa-trash-o"></i></button>
+                      </div>
+                  </td></tr>';
 
       }
 
