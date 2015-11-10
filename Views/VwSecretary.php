@@ -66,7 +66,10 @@
                     <li class="cursor">
                         <a id="op1"><i class="fa fa-odnoklassniki fa-3x"></i>Inscripcion</a>
                     </li>
-						        <li>
+                    <li class="cursor">
+                        <a id="opRi"><i class="fa fa-refresh fa-3x"></i>Reinscripcion</a>
+                    </li>
+                    <li>
                         <a id="op4"><i class="fa fa-money fa-3x"></i>Pagos</a>
                     </li>
                     <li>

@@ -74,6 +74,9 @@
                       <li  >
                         <a  id="op5"><i class="fa fa-clone fa-3x"></i>Cursos</a>
                     </li>
+                    <li  >
+                      <a id="op6"><i class="fa fa-star fa-3x"></i>Ver Notas</a>
+                  </li>
                     <li>
                         <a id="CloseSession"><i class="fa fa-sign-out fa-3x"></i>cerrar sesión</a>
                     </li>

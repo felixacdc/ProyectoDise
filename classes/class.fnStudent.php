@@ -66,6 +66,10 @@ class Students
 
         header("Content-type: application/json");
         return json_encode($dataArray);
+      }else {
+        $dataArray[0] = array("id" => '0', "nombre" => 'Error Segunda COnsulta.');
+        header("Content-type: application/json");
+        return json_encode($dataArray);
       }
 
 

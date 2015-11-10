@@ -18,6 +18,15 @@ function fnLoadCourses() {
 	fnLoadAssignCourses();
 }
 
+function fnLoadRatings(){
+	$("#page-wrapper").load('VwAdmin/VwViewRatings.php');
+	$('select option').remove();
+	$('a').removeClass('active-menu');
+	$('#op6').addClass('active-menu');
+
+	generarCargaCombos('cboCE', '#cboCE');
+}
+
 $(document).ready(function(){
 
 	$('#CloseSession').on('click',function(){
@@ -39,6 +48,8 @@ $(document).ready(function(){
 	$('#op4').on('click',cargarPaginaPagos);
 
 	$('#op5').on('click',fnLoadCourses);
+
+	$('#op6').on('click',fnLoadRatings);
 
 	$('#opRi').on('click',function(){
 		$("#page-wrapper").load('VwAdmin/VwReinscripcion.php');
