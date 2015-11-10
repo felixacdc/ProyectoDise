@@ -72,6 +72,9 @@
                     <li>
                         <a id="op4"><i class="fa fa-money fa-3x"></i>Pagos</a>
                     </li>
+                    <li  >
+                      <a id="op6"><i class="fa fa-star fa-3x"></i>Ver Notas</a>
+                  </li>
                     <li>
                         <a id="CloseSession"><i class="fa fa-sign-out fa-3x"></i>cerrar sesión</a>
                     </li>

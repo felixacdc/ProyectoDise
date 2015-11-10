@@ -16,6 +16,8 @@ function fnViewRatings(id) {
 
 $(document).ready(function(){
   $(document).delegate('#btnSearchCe','click',fnValidateCe);
+
+  localStorage.clear();
 });
 
 /*--------------------------------------
@@ -45,17 +47,6 @@ function fnValidateCe(){
 			fnViewDataRatings(dataArray, 'frmViewRatings', "#frmSearchTwoRatings");
       fnEmptyRatings();
 		}
-
-}
-
-/*--------------------------------------
-			BORRAR DATOS LOCALSTORAGE
------------------------------------------*/
-
-function fnDeleteTemporary(){
-
-  localStorage.removeItem('idCicloEscolar');
-  localStorage.removeItem('idStudent');
 
 }
 
