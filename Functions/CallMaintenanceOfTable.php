@@ -45,6 +45,9 @@ if (isset($_POST['modify'])) {
     case 'AssignCourse':
       echo $fnMaintenance->fnDeleteAssignCourse($_POST['id']);
       break;
+    case 'ManStudents':
+      echo $fnMaintenance->fnDeleteManStudents($_POST['id']);
+      break;
   }
 
 }

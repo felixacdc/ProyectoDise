@@ -178,4 +178,39 @@ class Maintenance
       return 'No se puede realizar la eliminacion';
     }
   }
+
+  public function fnDeleteManStudents($id)
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("SELECT * FROM estudiantes WHERE idEstudiante='$id'");
+
+    if ($sql) {
+
+      $data = $sql->fetch_assoc();
+
+      if ($data['idEstado'] == 1) {
+
+        $sql = $db->query("UPDATE estudiantes
+                            SET  idEstado='2'
+                            WHERE IdEstudiante = '$id'");
+
+      }else {
+
+        $sql = $db->query("UPDATE estudiantes
+                            SET  idEstado='1'
+                            WHERE IdEstudiante = '$id'");
+
+      }
+
+      if ($sql) {
+        return 'Estado Modificado Correctamente';
+      }else{
+        return 'Error en el Registro';
+      }
+
+    } else{
+      return 'Error en el Registro';
+    }
+  }
 }

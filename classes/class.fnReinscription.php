@@ -94,4 +94,27 @@ class Reinscription
       return 'Error en el Registro';
     }
   }
+
+  public function fnSendManStudents($id, $namePost, $addressPost, $phonePost, $emailPost, $estado)
+  {
+    $db = new ConnectionClass();
+
+    $tname = $this::depurar($namePost, $db);
+    $taddress = $this::depurar($addressPost, $db);
+    $tphone = $this::depurar($phonePost, $db);
+    $temail = $this::depurar($emailPost, $db);
+
+    $sql = $db->query("UPDATE estudiantes
+                        SET nombreEstudiante = '$tname', direccionEstudiante = '$taddress',
+                        telefonoEstudiante = '$tphone', emailEstudiante = '$temail', idEstado='$estado'
+                        WHERE IdEstudiante = '$id'");
+
+    if ($sql) {
+
+      return 'Modificacion Realizada Correctamente';
+
+    } else{
+      return 'Error en el Registro';
+    }
+  }
 }

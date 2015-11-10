@@ -32,6 +32,7 @@ function fnLoadManStudents(){
 	$('select option').remove();
 	$('a').removeClass('active-menu');
 	$('#opManStudents').addClass('active-menu');
+	$('#myModalManStudents').modal('hide');
 }
 
 $(document).ready(function(){
@@ -57,7 +58,7 @@ $(document).ready(function(){
 	$('#op5').on('click',fnLoadCourses);
 
 	$('#op6').on('click',fnLoadRatings);
-	
+
 	$('#opManStudents').on('click',fnLoadManStudents);
 
 	$('#opRi').on('click',function(){

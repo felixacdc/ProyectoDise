@@ -17,6 +17,9 @@ if (isset($_POST['conditional'])) {
     case 'frmReinscription':
       echo $fnReinscription->fnSendReinscription($_POST['idStudent'], $_POST['NameS'], $_POST['AddressS'], $_POST['PhoneS'], $_POST['EmailS'], $_POST['cboAsiGR'], $_POST['cboCE']);
       break;
+    case 'frmManStudents':
+      echo $fnReinscription->fnSendManStudents($_POST['idStudent'], $_POST['NameS'], $_POST['AddressS'], $_POST['PhoneS'], $_POST['EmailS'], $_POST['cboEstado']);
+      break;
 
   }
 

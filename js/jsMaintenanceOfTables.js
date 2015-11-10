@@ -109,6 +109,9 @@ function fnDeleteGeneral(id, deletes) {
           $('.modal-backdrop').remove();
           fnEmptyCourse();
           break;
+        case 'ManStudents':
+          fnLoadManStudents();
+          break;
       }
 
 	  }
@@ -397,7 +400,7 @@ function fnValidationReinscription(){
 
 		if(ejecutar)
 		{
-			// fnSendReinscription('CallReinscription.php', "#frmReinscription");
+			fnSendManStudents('CallReinscription.php', "#frmReinscription");
 		}
 
 }
@@ -417,6 +420,29 @@ function fnClearInput(){
 	$("#txtAddressS").val(direccionS);
 	$("#txtemailS").val(emailS);
 	$("#txtPhoneS").val(phoneS);
+}
+
+/*--------------------------------------
+			ENVIO DE FORMULARIOS PARA REGISTRO
+-----------------------------------------*/
+
+function fnSendManStudents(nameArchivo, identificador){
+	var url = "../Functions/" + nameArchivo;
+	$.ajax({
+	  type: "POST",
+	  url: url,
+	  data: $(identificador).serialize(),
+	  success: function(data)
+	  {
+      $('#alert').text(data);
+			$('#alert').show();
+			$('#alert').delay(3000).hide(700);
+
+      fnLoadManStudents();
+
+	  }
+	});
+
 }
 
 
