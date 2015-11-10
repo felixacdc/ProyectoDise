@@ -75,7 +75,7 @@ class Reinscription
 
     $sql = $db->query("UPDATE estudiantes
                         SET nombreEstudiante = '$tname', direccionEstudiante = '$taddress',
-                        telefonoEstudiante = '$tphone', emailEstudiante = '$temail'
+                        telefonoEstudiante = '$tphone', emailEstudiante = '$temail', idEstado='1'
                         WHERE IdEstudiante = '$id'");
 
     if ($sql) {
@@ -115,6 +115,36 @@ class Reinscription
 
     } else{
       return 'Error en el Registro';
+    }
+  }
+
+  public function fnSearchLastPayment($idStudent)
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("SELECT M.idMes
+                        FROM detalletransacciones as D
+                        inner join mes as M on D.idMes = M.idMes
+                        inner join cicloescolar as CL on CL.idCicloEscolar = D.idCicloEscolar
+                        INNER JOIN transacciones as T on D.idTransaccion = T.idTransaccion
+                        WHERE T.IdEstudiante = '$idStudent' and D.idCicloEscolar = (
+                          SELECT C.IdCicloEscolar
+                          FROM asignaciongrados as AG
+                          inner join cicloescolar as C on AG.IdCicloEscolar = C.IdCicloEscolar WHERE AG.IdEstudiante = '$idStudent' ORDER BY AG.idAsignacionGrados DESC LIMIT 1)
+                        ORDER BY D.iddetalleTransaccion DESC LIMIT 1");
+    $numberRecord = $sql->num_rows;
+
+    if ($numberRecord != 0) {
+      $dataArray = array();
+      $i = 0;
+
+      while($data = $sql->fetch_assoc()){
+        $dataArray[$i] = array("Mes" => $data['idMes']);
+        $i++;
+      }
+
+      header("Content-type: application/json");
+      return json_encode($dataArray);
     }
   }
 }

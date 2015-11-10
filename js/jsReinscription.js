@@ -1,4 +1,5 @@
 var cycles;
+var lastPayment;
 
 $(document).ready(function(){
   $(document).delegate('#btnModalR','click',fnValidationReinscription);
@@ -63,6 +64,25 @@ function fnSearchCycles(id) {
 		success: function(data){
 
       cycles = data;
+      fnSearchLastPayment(id);
+
+		}
+	});
+
+}
+
+function fnSearchLastPayment(id) {
+  $.ajax({
+		url: '../Functions/CallReinscription.php',
+		type: 'POST',
+		dataType: "json",
+		data: {
+      conditional: 'searchLastPayment',
+      idStudent: id
+    },
+		success: function(data){
+
+      lastPayment = data;
 
 		}
 	});
@@ -122,6 +142,22 @@ function fnValidationReinscription(){
 
 			});
 		}
+
+    if (ejecutar) {
+      $.each(lastPayment,function(index){
+				var campos = lastPayment[index];
+
+        if(campos.Mes != '11'){
+
+          $('#alertE').text('Faltan Pagos por realizar');
+    			$('#alertE').show();
+    			$('#alertE').delay(3000).hide(700);
+          ejecutar=false;
+
+        }
+
+			});
+    }
 
 		if(ejecutar)
 		{

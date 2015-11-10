@@ -20,6 +20,9 @@ if (isset($_POST['conditional'])) {
     case 'frmManStudents':
       echo $fnReinscription->fnSendManStudents($_POST['idStudent'], $_POST['NameS'], $_POST['AddressS'], $_POST['PhoneS'], $_POST['EmailS'], $_POST['cboEstado']);
       break;
+    case 'searchLastPayment':
+      echo $fnReinscription->fnSearchLastPayment($_POST['idStudent']);
+      break;
 
   }
 
