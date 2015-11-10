@@ -6,6 +6,9 @@ $(document).ready(function(){
   $(document).delegate('#btnSearchTwo','click',fnValidateSearchTwo);
   $(document).delegate('#btnSearchThree', 'click',fnValidateSearchThree);
   $(document).delegate('#btnAddRatings', 'click',fnValidateAddRatings);
+  $(document).delegate('#btnViewRatings', 'click',fnLoadViewRatings);
+
+  $(document).delegate('#btnSearchThreeView', 'click',fnValidateSearchThreeView);
 
   $(document).delegate('.sum','focusout',function(){
     var obj = $(this).parent().parent().parent().find('.total').find('.form-control');
@@ -239,18 +242,85 @@ function fnRecordData(fullRegister, fileName){
 	});
 }
 
-// function frmSearch2() {
-//   localStorage.idCicloEscolar = $("#cboCE").val();
-//   dataArray = {ciclo: localStorage.idCicloEscolar, teacher: localStorage.idTeacher};
-//   fnLoadCombosMore('cboAsiGgRatings', '#cboAsiGR', dataArray);
-//   $("#frmSearchTwo").fadeIn();
-//   $("#frmSearchOne").fadeOut();
-// }
 
-// function frmSearchThree() {
-//   localStorage.idAssignSection = $("#cboAsiGR").val();
-//   dataArray = {ciclo: localStorage.idCicloEscolar, teacher: localStorage.idTeacher, assign: localStorage.idAssignSection};
-//   fnLoadCombosMore('CboCourseRatings', '#CboCourse', dataArray);
-//   $("#frmSearchThree").fadeIn();
-//   $("#frmSearchTwo").fadeOut();
-// }
+/*--------------------------------------
+					Funciones VIEW RATINGS
+-----------------------------------------*/
+
+
+function fnLoadViewRatingsStudents() {
+  localStorage.idAssignCourses = document.getElementById('CboCourse').value;
+  localStorage.nameCourse = $('#CboCourse option:selected').text() + " " + $('#cboBimester option:selected').text()
+  + " Bimestre:";
+  localStorage.idBimester = document.getElementById('cboBimester').value;
+
+  $.ajax({
+		url: '../Functions/CallRatings.php',
+		type: 'POST',
+		dataType: "json",
+		data: {
+      conditional : 'loadStudentsView',
+      idAssign : localStorage.idAssignSection,
+      idciclo :  localStorage.idCicloEscolar,
+      idAssignCourses : localStorage.idAssignCourses,
+      idBimester : localStorage.idBimester
+    },
+		success: function(data){
+
+      var verify = true;
+
+			$.each(data,function(index){
+
+        var campos = data[index];
+
+        if (campos.id == "-1") {
+
+          $('#alertE').text(campos.nombre);
+    			$('#alertE').show();
+    			$('#alertE').delay(3000).hide(600);
+          verify = false;
+
+        }else {
+
+          content = '<tr id="' + campos.id + '">' +
+                    '<td>' + campos.student + '</td>' +
+                    '<td>' + campos.procedural + '</td>' +
+                    '<td>' + campos.Actitudinal + '</td>' +
+                    '<td>' + campos.Exam + '</td>' +
+                    '<td>' + campos.TotalScore + '</td>' +
+                    '</tr>';
+          $('#tableRatings').children('tbody').append(content);
+
+        }
+
+			});
+
+      if (verify) {
+        $('#materia').text(localStorage.nameCourse);
+        $('#frmAddRatings').fadeIn();
+        $("#frmSearchThree").fadeOut();
+        $('#tableRatings').dataTable();
+
+      }
+		}
+	});
+}
+
+function fnValidateSearchThreeView(){
+		ejecutar=true;
+		resetClass();
+
+		if (document.getElementById('CboCourse').value == '0'){
+			generalValidacion('#ErrorCboCoursediv', '#ErrorCboCourselbl', 'Seleccione el Curso');
+		}
+
+    if (document.getElementById('cboBimester').value == '0'){
+			generalValidacion('#ErrorBimesterdiv', '#ErrorBimesterlbl', 'Seleccione el Curso');
+		}
+
+		if(ejecutar)
+		{
+			fnLoadViewRatingsStudents();
+		}
+
+}

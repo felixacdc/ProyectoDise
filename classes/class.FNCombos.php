@@ -337,7 +337,7 @@ class Combos
 			$dataArray = array();
 			$i = 0;
 
-      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Seleccione el Catedratico');
+      $dataArray[$i] = array("id" => '0' , "descripcion" => 'Seleccione el Bimestre');
 
 			while($data = $sql->fetch_assoc()){
         $i++;

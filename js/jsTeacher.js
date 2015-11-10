@@ -6,6 +6,7 @@ $(document).ready(function(){
   fnCallIdTeacher();
 
   $('#op1').on('click',fnLoadRatings);
+  $('#op2').on('click',fnLoadViewRatings);
   $('#CloseSession').on('click',fnSignOut);
 
 });
@@ -18,6 +19,15 @@ function fnLoadRatings(){
 	$('select option').remove();
 	$('a').removeClass('active-menu');
 	$('#op1').addClass('active-menu');
+  generarCargaCombos('cboCE', '#cboCE');
+  fnDeleteTemporary();
+}
+
+function fnLoadViewRatings(){
+	$("#page-wrapper").load('VwTeacher/ViewRatings.php');
+	$('select option').remove();
+	$('a').removeClass('active-menu');
+	$('#op2').addClass('active-menu');
   generarCargaCombos('cboCE', '#cboCE');
   fnDeleteTemporary();
 }

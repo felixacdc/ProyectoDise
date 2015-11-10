@@ -82,4 +82,57 @@ class Ratings
 
 
   }
+
+  public function fnLoadStudentsView($idAssign, $idCiclo, $idAssignCourses, $idBimester)
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("SELECT * FROM Ratings
+                        WHERE idAssignCourses = '$idAssignCourses' AND idBimester = '$idBimester' AND idAssignSections = '$idAssign';");
+    $numberRecord = $sql->num_rows;
+
+    if ($numberRecord == 0) {
+      $dataArray[0] = array("id" => '-1', "nombre" => 'Notas del Curso no han Sido Ingresadas');
+      header("Content-type: application/json");
+      return json_encode($dataArray);
+    }else {
+
+      $sql = $db->query("SELECT E.nombreEstudiante, DR.Procedural, DR.Actitudinal,
+                          DR.Exam, DR.TotalScore, E.IdEstudiante
+                          FROM AsignacionSeccion AS AGS
+                          INNER JOIN grado AS G ON G.idGrado = AGS.idGrado
+                          INNER JOIN asignacioncursos AS AGC ON G.idGrado = AGC.idGrado
+                          INNER JOIN Ratings AS R ON R.idAssignCourses = AGC.idAsignacionCursos
+                          INNER JOIN DetailedRatings AS DR ON DR.idRatigns = R.idRatings
+                          INNER JOIN estudiantes AS E ON E.idEstudiante = DR.idStudent
+                          WHERE R.idAssignCourses = '$idAssignCourses' AND AGC.idCicloEscolar = '$idCiclo'
+                          AND R.idAssignSections = '$idAssign' AND R.idBimester = '$idBimester'
+                          AND AGC.idAsignacionCursos = '$idAssignCourses'
+                          GROUP BY E.nombreEstudiante, DR.Procedural, DR.Actitudinal,
+                          DR.Exam, DR.TotalScore, E.IdEstudiante");
+      $numberRecord = $sql->num_rows;
+
+      if ($numberRecord != 0) {
+        $dataArray = array();
+        $i = 0;
+
+        while($data = $sql->fetch_assoc()){
+          $dataArray[$i] = array("student" => $data['nombreEstudiante'], "procedural" => $data['Procedural'],
+                                  "Actitudinal" => $data['Actitudinal'], "Exam" => $data['Exam'],
+                                  "TotalScore" => $data['TotalScore']);
+          $i++;
+        }
+
+        header("Content-type: application/json");
+        return json_encode($dataArray);
+      } else
+      {
+        $dataArray[0] = array("id" => '-1', "nombre" => 'No Existen Estudiantes En Esta Seccion');
+        header("Content-type: application/json");
+        return json_encode($dataArray);
+      }
+    }
+
+
+  }
 }

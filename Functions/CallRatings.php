@@ -14,6 +14,9 @@ if (isset($_POST['conditional'])) {
     case 'frmRatings':
       echo $fnRatings->fnRecordRatings($_POST['array'], $_POST['rating']);
       break;
+    case 'loadStudentsView':
+      echo $fnRatings->fnLoadStudentsView($_POST['idAssign'], $_POST['idciclo'], $_POST['idAssignCourses'], $_POST['idBimester']);
+      break;
   }
 
 }

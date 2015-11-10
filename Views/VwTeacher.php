@@ -22,6 +22,16 @@
     <!-- Animate y font-->
     <link rel="stylesheet" href="../font-awesome-4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/animate.css">
+    <style media="screen">
+      .pagination {
+        padding-left: 50% !important;
+         margin: 0 0 !important;
+      }
+
+      .dataTables_filter label {
+        padding-left: 30% !important;
+      }
+    </style>
      <!-- GOOGLE FONTS-->
    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
 
@@ -55,6 +65,9 @@
 
                     <li class="cursor">
                         <a id="op1"><i class="fa fa-star fa-3x"></i>Notas</a>
+                    </li>
+                    <li class="cursor">
+                        <a id="op2"><i class="fa fa-eye fa-3x"></i>Ver Notas</a>
                     </li>
                     <li>
                         <a id="CloseSession"><i class="fa fa-sign-out fa-3x"></i>cerrar sesión</a>
@@ -126,6 +139,9 @@
     <script src="../assets/js/morris/morris.js"></script>
       <!-- CUSTOM SCRIPTS -->
     <script src="../assets/js/custom.js"></script>
+    <!-- DATA TABLE SCRIPTS -->
+    <script src="../assets/js/dataTables/jquery.dataTables.js"></script>
+    <script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>
 
 
 </body>
