@@ -35,6 +35,12 @@ function fnLoadManStudents(){
 	$('#myModalManStudents').modal('hide');
 }
 
+function fnLoadCatedratico() {
+		$("#page-wrapper").load('VwAdmin/VwMantCat.php');
+		$('a').removeClass('active-menu');
+		$('#op3').addClass('active-menu');
+}
+
 $(document).ready(function(){
 
 	$('#CloseSession').on('click',function(){
@@ -47,11 +53,7 @@ $(document).ready(function(){
 
 	$('#op2').on('click',fnLoadDegree);
 
-	$('#op3').on('click',function(){
-		$("#page-wrapper").load('VwAdmin/VwMantCat.php');
-		$('a').removeClass('active-menu');
-		$('#op3').addClass('active-menu');
-	});
+	$('#op3').on('click',fnLoadCatedratico);
 
 	$('#op4').on('click',cargarPaginaPagos);
 
@@ -94,6 +96,7 @@ function verifyData(register, idLabel, idDiv, fileRegister, idForm)
 			switch (idForm) {
 				case '#frmProfe':
 					generarRegistro(fileRegister, idForm);
+					fnLoadCatedratico();
 					vaciarInputMCat();
 					break;
 				case '#frmCourse':

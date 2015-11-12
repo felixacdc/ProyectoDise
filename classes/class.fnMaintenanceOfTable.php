@@ -99,6 +99,41 @@ class Maintenance
     }
   }
 
+  public function fnModifyProfession($id, $values)
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("UPDATE profesiones
+                        SET Profesion='$values[0]'
+                        WHERE idProfesion='$id'");
+
+    if ($sql) {
+
+      return 'Modificacion Correcta';
+
+    } else{
+      return 'Error en el Registro';
+    }
+  }
+
+  public function fnModifyParent($id, $values)
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("UPDATE encargados
+                        SET nombreEncargado='$values[0]', domicilioEncargado='$values[1]', numeroContacto='$values[2]',
+                        emailContacto='$values[3]'
+                        WHERE idEncargado='$id'");
+
+    if ($sql) {
+
+      return 'Modificacion Correcta';
+
+    } else{
+      return 'Error en el Registro';
+    }
+  }
+
   public function fnDeleteDegree($id)
   {
     $db = new ConnectionClass();
@@ -211,6 +246,38 @@ class Maintenance
 
     } else{
       return 'Error en el Registro';
+    }
+  }
+
+  public function fnDeleteProfession($id)
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("DELETE FROM profesiones
+                        WHERE idProfesion='$id'");
+
+    if ($sql) {
+
+      return 'Eliminacion Correcta';
+
+    } else{
+      return 'No se puede realizar la eliminacion';
+    }
+  }
+
+  public function fnDeleteParent($id)
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("DELETE FROM encargados
+                        WHERE idEncargado='$id'");
+
+    if ($sql) {
+
+      return 'Eliminacion Correcta';
+
+    } else{
+      return 'No se puede realizar la eliminacion';
     }
   }
 }

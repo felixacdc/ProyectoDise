@@ -117,7 +117,10 @@ function fnvalidacionCat(){
 $(document).ready(function(){
 
 			$(document).delegate('#tab-Cat','click',function(){
-				$('select option').remove();
+				$('#cbopro option').remove();
+				$('.cbopro option').remove();
+
+				generarCargaCombos('cboProfec', '.cbopro');
 				generarCargaCombos('cboProfec', '#cbopro');
 			});
 

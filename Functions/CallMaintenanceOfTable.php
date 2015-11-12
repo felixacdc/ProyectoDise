@@ -23,6 +23,12 @@ if (isset($_POST['modify'])) {
     case 'AssignCourse':
       echo $fnMaintenance->fnModifyAssignCourse($_POST['id'], $_POST['datas']);
       break;
+    case 'Profession':
+      echo $fnMaintenance->fnModifyProfession($_POST['id'], $_POST['datas']);
+      break;
+    case 'Parent':
+      echo $fnMaintenance->fnModifyParent($_POST['id'], $_POST['datas']);
+      break;
   }
 
 }elseif (isset($_POST['delete'])) {
@@ -47,6 +53,12 @@ if (isset($_POST['modify'])) {
       break;
     case 'ManStudents':
       echo $fnMaintenance->fnDeleteManStudents($_POST['id']);
+      break;
+    case 'Profession':
+      echo $fnMaintenance->fnDeleteProfession($_POST['id']);
+      break;
+    case 'Parent':
+      echo $fnMaintenance->fnDeleteParent($_POST['id']);
       break;
   }
 

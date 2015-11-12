@@ -49,6 +49,16 @@ function fnAcceptGeneral(id, idtable,functions) {
       });
       fnVerifyDataGeneral(arraydata, element, id, 'CallRecordCourse','AssignCourse');
       break;
+    case 'Profession':
+      arraydata[0] = $(element).val();
+      fnValidateProfession(arraydata, element, id, 'CallRecordMCat','Profession');
+      break;
+    case 'Parent':
+      $(element).each(function(i, element2) {
+        arraydata[i] = $(element2).val()
+      });
+      fnValidateParents(arraydata, element, id, 'CallRecordInsc','Parent');
+      break;
 
   }
 }
@@ -112,6 +122,12 @@ function fnDeleteGeneral(id, deletes) {
         case 'ManStudents':
           fnLoadManStudents();
           break;
+        case 'Profession':
+          fnLoadCatedratico();
+          break;
+        case 'Parent':
+          fnInicio();
+          break;
       }
 
 	  }
@@ -160,6 +176,9 @@ function fnVerifyDataGeneral(arraydata, element, id, archivo, frm){
             fnValidateOne(element2, answer);
           });
           break;
+        case 'Profession':
+            fnValidateOne(element, answer);
+          break;
 
 
       }
@@ -192,6 +211,10 @@ function fnVerifyDataGeneral(arraydata, element, id, archivo, frm){
           $('#myModalAssign').modal('hide');
           $('.modal-backdrop').remove();
           fnEmptyCourse();
+          break;
+        case 'Profession':
+            generarModify(arraydata, id, 'Profession');
+            fnLoadCatedratico();
           break;
 
       }
@@ -270,6 +293,51 @@ function fnValidateCoursesMan(arraydata, element, id){
 }
 /*--------------------------------------
 				FIN FUNCIONES PARA CURSOS
+-----------------------------------------*/
+
+/*--------------------------------------
+					FUNCIONES PARA PROFESIONES
+-----------------------------------------*/
+function fnValidateProfession(arraydata, element, id){
+		ejecutar=true;
+		limpiarInputCat();
+		resetClassMG();
+
+		if (element.val()==""){
+      fnValidateOne(element, 'Datos Vacios')
+		}
+
+		if(ejecutar)
+		{
+      fnVerifyDataGeneral(arraydata, element, id, 'CallRecordMCat','Profession');
+		}
+
+}
+
+/*--------------------------------------
+					FUNCIONES PARA ENCARGADOS
+-----------------------------------------*/
+function fnValidateParents(arraydata, element, id){
+		ejecutar=true;
+		limpiarInput();
+		resetClassMG();
+
+    $(element).each(function(i, element2) {
+      if ($(element2).val()==""){
+        fnValidateOne(element2, 'Datos Vacios')
+  		}
+    });
+
+		if(ejecutar)
+		{
+      generarModify(arraydata, id, 'Parent');
+      fnInicio();
+		}
+
+}
+
+/*--------------------------------------
+				FIN FUNCIONES PARA PROFESIONES
 -----------------------------------------*/
 
 /*--------------------------------------

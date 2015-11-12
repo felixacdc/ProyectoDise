@@ -401,4 +401,156 @@ class FillingTables
     }
 
   }
+
+  public function fnFillingProfessions()
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("SELECT *
+                        FROM profesiones ");
+
+    if ($sql) {
+
+      $content = "";
+      while($data = $sql->fetch_assoc()){
+
+        $content.='<tr id="'. $data['idProfesion'] .'">
+                      <td>
+                        <div class="form-group" style="color: transparent;">
+                          <input class="form-control" type="text" placeholder="Grado" disabled="true" ' . ' value="' . $data['Profesion'] . '"/>
+                          <p style="display: none">' . $data['Profesion'] . '</p>
+                        </div>
+                      </td>
+                      <td style="text-align: center;" class="btnActions">' .
+                  '      <div class="btn-group">
+                            <button class="btn btn-primary" onclick="fnModifyGeneral(\'' . $data['idProfesion'] . '\',
+                            \'tableProfession\')"><i class="fa fa-pencil"></i></button>
+                            <button class="btn btn-success" onclick="fnAcceptGeneral(\'' . $data['idProfesion'] . '\', \'tableProfession\', \'Profession\')"><i class="fa fa-check"></i></button>
+                            <button class="btn btn-danger" onclick="fnDeleteGeneral(\'' . $data['idProfesion'] . '\', \'Profession\')"><i class="fa fa-trash-o"></i></button>
+                          </div>
+                      </td>
+                  </tr>';
+
+      }
+
+      echo $content;
+
+    }
+  }
+
+  public function fnFillingParents()
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("SELECT *
+                        FROM encargados ");
+
+    if ($sql) {
+
+      $content = "";
+      while($data = $sql->fetch_assoc()){
+
+        $content.='<tr id="'. $data['idEncargado'] .'">
+                      <td>
+                        <div class="form-group" style="color: transparent;">
+                          <input class="form-control" type="text" placeholder="Grado" disabled="true" ' . ' value="' . $data['nombreEncargado'] . '"/>
+                          <p style="display: none">' . $data['nombreEncargado'] . '</p>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-group" style="color: transparent;">
+                          <input class="form-control" type="text" placeholder="Grado" disabled="true" ' . ' value="' . $data['domicilioEncargado'] . '"/>
+                          <p style="display: none">' . $data['domicilioEncargado'] . '</p>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-group" style="color: transparent;">
+                          <input class="form-control" type="text" placeholder="Grado" disabled="true" ' . ' value="' . $data['numeroContacto'] . '"/>
+                          <p style="display: none">' . $data['numeroContacto'] . '</p>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-group" style="color: transparent;">
+                          <input class="form-control" type="text" placeholder="Grado" disabled="true" ' . ' value="' . $data['emailContacto'] . '"/>
+                          <p style="display: none">' . $data['emailContacto'] . '</p>
+                        </div>
+                      </td>
+                      <td style="text-align: center;" class="btnActions">' .
+                  '      <div class="btn-group">
+                            <button class="btn btn-primary" onclick="fnModifyGeneral(\'' . $data['idEncargado'] . '\',
+                            \'tableParent\')"><i class="fa fa-pencil"></i></button>
+                            <button class="btn btn-success" onclick="fnAcceptGeneral(\'' . $data['idEncargado'] . '\', \'tableParent\', \'Parent\')"><i class="fa fa-check"></i></button>
+                            <button class="btn btn-danger" onclick="fnDeleteGeneral(\'' . $data['idEncargado'] . '\', \'Parent\')"><i class="fa fa-trash-o"></i></button>
+                          </div>
+                      </td>
+                  </tr>';
+
+      }
+
+      echo $content;
+
+    }
+  }
+
+  public function fnFillingTeachers()
+  {
+    $db = new ConnectionClass();
+
+    $sql = $db->query("SELECT *
+                        FROM catedraticos AS C
+                        INNER JOIN profesiones AS P ON C.Profesiones_idProfesion = P.idProfesion");
+
+    if ($sql) {
+
+      $content = "";
+      while($data = $sql->fetch_assoc()){
+
+        $content.='<tr id="'. $data['idCatedratico'] .'">
+                      <td>
+                        <div class="form-group" style="color: transparent;">
+                          <input class="form-control" type="text" placeholder="Grado" disabled="true" ' . ' value="' . $data['nombreCatedratico'] . '"/>
+                          <p style="display: none">' . $data['nombreCatedratico'] . '</p>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-group" style="color: transparent;">
+                          <input class="form-control" type="text" placeholder="Grado" disabled="true" ' . ' value="' . $data['domicilioCatedratico'] . '"/>
+                          <p style="display: none">' . $data['domicilioCatedratico'] . '</p>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-group" style="color: transparent;">
+                          <input class="form-control" type="text" placeholder="Grado" disabled="true" ' . ' value="' . $data['telefonoCatedratico'] . '"/>
+                          <p style="display: none">' . $data['telefonoCatedratico'] . '</p>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-group" style="color: transparent;">
+                          <input class="form-control" type="text" placeholder="Grado" disabled="true" ' . ' value="' . $data['emailCatedratico'] . '"/>
+                          <p style="display: none">' . $data['emailCatedratico'] . '</p>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-group" style="color: transparent">
+                          <input type="hidden" name="cbos" class="hid" value="' . $data['Profesiones_idProfesion'] . '"/>
+                          <SELECT NAME="cbo1" class="form-control cbopro" SIZE=0 disabled="true"></SELECT>
+                          <p style="display: none">' . $data['Profesion'] . '</p>
+                        </div>
+                      </td>
+                      <td style="text-align: center;" class="btnActions">' .
+                  '      <div class="btn-group">
+                            <button class="btn btn-primary" onclick="fnModifyGeneral(\'' . $data['idCatedratico'] . '\',
+                            \'tableTeacher\')"><i class="fa fa-pencil"></i></button>
+                            <button class="btn btn-success" onclick="fnAcceptGeneral(\'' . $data['idCatedratico'] . '\', \'tableTeacher\', \'Teacher\')"><i class="fa fa-check"></i></button>
+                            <button class="btn btn-danger" onclick="fnDeleteGeneral(\'' . $data['idCatedratico'] . '\', \'Teacher\')"><i class="fa fa-trash-o"></i></button>
+                          </div>
+                      </td>
+                  </tr>';
+
+      }
+
+      echo $content;
+
+    }
+  }
 }

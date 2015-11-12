@@ -22,6 +22,9 @@ if (isset($_POST['frm'])) {
 
 			echo $fnProfec->rCatedratico($namePost, $addressPost, $phonePost, $emailPost, $profetionPost);
 			break;
+		case 'Profession':
+			echo $fnProfec->verityProfession($_POST['id'], $_POST['datas']);
+			break;
 
 		default:
 			echo 'No se encontro el valor';

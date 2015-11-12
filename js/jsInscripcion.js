@@ -160,6 +160,7 @@ function fnvalidacionEnc(){
 		if(ejecutar)
 		{
 			generarRegistro('CallRecordInsc.php', "#frmEncar");
+			fnInicio();
 			vaciarInputIns();
 		}
 
@@ -300,6 +301,14 @@ function generarCargaCombos(cboPost, identificador)
 			$('#tableAssignCourses tbody tr td div input').each(function(i, element) {
 
 				element2 = $('#tableAssignCourses tbody tr td div select');
+
+				$(element2).eq(i).find("option[value='" + $(element).val() + "']").attr("selected",true);
+
+		  });
+
+			$('#tableTeacher tbody tr td div .hid').each(function(i, element) {
+
+				element2 = $('#tableTeacher tbody tr td div select');
 
 				$(element2).eq(i).find("option[value='" + $(element).val() + "']").attr("selected",true);
 

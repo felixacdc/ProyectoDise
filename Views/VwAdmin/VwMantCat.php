@@ -52,6 +52,39 @@
                         <div class="col-md-3">
                         </div>
                     </div>
+
+                    <hr>
+
+                    <div class="row">
+                      <div class="col-md-2">
+                      </div>
+                      <div class="col-md-8">
+
+                        <h3 class="text-center">Mantenimientos Profesiones</h3><br>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="tableProfession">
+                                <thead>
+                                    <tr>
+                                        <th>Profesiones</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <?php
+                                    require_once '../../classes/class.fnFillingTables.php';
+                                    require_once '../../classes/class.Connection.php';
+
+                                    $fnFillingTable = new FillingTables();
+                                    echo $fnFillingTable->fnFillingProfessions();
+                                   ?>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                      </div>
+                    </div>
                 </div>
             </div>
             <!-- End Form Elements Profeciones -->
@@ -117,6 +150,43 @@
                       </form>
                     </div>
                   </div>
+
+                  <hr>
+
+                  <div class="row" style="overflow: auto;">
+                    <div class="col-md-12" style="overflow: auto;">
+
+                      <h3 class="text-center">Mantenimientos Catedraticos</h3><br>
+
+                      <div class="table-responsive">
+                          <table class="table table-striped table-bordered table-hover" id="tableTeacher">
+                              <thead>
+                                  <tr>
+                                    <th>Nombres</th>
+                                    <th>Direccion</th>
+                                    <th>Telefono</th>
+                                    <th>Email</th>
+                                    <th>Profesion</th>
+                                    <th>Acciones</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                <?php
+                                  require_once '../../classes/class.fnFillingTables.php';
+                                  require_once '../../classes/class.Connection.php';
+
+                                  $fnFillingTable = new FillingTables();
+                                  echo $fnFillingTable->fnFillingTeachers();
+                                 ?>
+
+                              </tbody>
+                          </table>
+                      </div>
+
+                    </div>
+                  </div>
+
+
               </div>
               </div>
               <!-- End Form Elements Catedraticos -->
@@ -127,3 +197,17 @@
     </div>
 </div>
 <!-- /. PAGE INNER  -->
+<!-- JQUERY SCRIPTS -->
+<script src="../assets/js/jquery-1.10.2.js"></script>
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="../assets/js/bootstrap.min.js"></script>
+<!-- DATA TABLE SCRIPTS -->
+<script src="../assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>
+<script>
+$(document).ready(function () {
+    $('#tableProfession').dataTable();
+    $('#tableTeacher').dataTable();
+});
+
+</script>

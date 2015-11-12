@@ -53,6 +53,19 @@ class Record
 
   }
 
+  public function verityProfession($id, $values){
+    $db = new ConnectionClass();
+
+    $sql = $db->query("SELECT * FROM profesiones WHERE Profesion='$values[0]' AND idProfesion!='$id'");
+    $numberRecord = $sql->num_rows;
+
+    if ($numberRecord != 0) {
+      return 'Profesion Ya Existente';
+    }else {
+      return '';
+    }
+  }
+
   public static function fnGenerarUser($string ,$number){
     $subString = explode(" ", $string);
 
