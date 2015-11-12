@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 08-11-2015 a las 07:52:34
+-- Tiempo de generación: 12-11-2015 a las 20:03:05
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de datos: `edusoft`
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `asignacioncursos` (
   `IdCurso` int(11) NOT NULL,
   `IdCatedratico` int(11) NOT NULL,
   `idCicloEscolar` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `asignacioncursos`
@@ -43,13 +43,13 @@ INSERT INTO `asignacioncursos` (`idAsignacionCursos`, `IdGrado`, `IdCurso`, `IdC
 (2, 1, 3, 2, 1),
 (3, 1, 4, 2, 1),
 (6, 1, 5, 1, 1),
-(7, 1, 2, 1, 1),
-(8, 2, 1, 1, 1),
+(7, 1, 2, 5, 1),
 (9, 2, 3, 2, 1),
 (10, 2, 4, 2, 1),
 (11, 1, 6, 4, 1),
 (12, 1, 7, 3, 1),
-(13, 1, 12, 6, 1);
+(13, 1, 12, 5, 1),
+(20, 3, 5, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `asignaciongrados` (
   `IdEstudiante` int(11) NOT NULL,
   `IdCicloEscolar` int(11) NOT NULL,
   `idAsignacionSeccion` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `asignaciongrados`
@@ -83,7 +83,10 @@ INSERT INTO `asignaciongrados` (`idAsignacionGrados`, `IdEstudiante`, `IdCicloEs
 (15, 17, 1, 2),
 (16, 18, 1, 2),
 (17, 19, 1, 4),
-(18, 20, 1, 2);
+(18, 20, 1, 2),
+(19, 21, 1, 4),
+(20, 22, 1, 3),
+(24, 23, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -217,31 +220,27 @@ CREATE TABLE IF NOT EXISTS `DetailedRatings` (
   `Actitudinal` decimal(20,2) NOT NULL,
   `Exam` decimal(20,2) NOT NULL,
   `TotalScore` decimal(20,2) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `DetailedRatings`
 --
 
 INSERT INTO `DetailedRatings` (`idDetailedRatings`, `idRatigns`, `idStudent`, `Procedural`, `Actitudinal`, `Exam`, `TotalScore`) VALUES
-(53, 20, 3, '50.00', '20.00', '30.00', '100.00'),
-(54, 20, 4, '42.00', '14.50', '30.00', '86.50'),
-(55, 20, 5, '35.00', '10.00', '25.00', '70.00'),
-(56, 21, 3, '38.00', '20.00', '20.00', '78.00'),
-(57, 21, 4, '30.00', '20.00', '15.00', '65.00'),
-(58, 21, 5, '30.00', '10.00', '20.00', '60.00'),
-(59, 22, 3, '40.00', '20.00', '30.00', '90.00'),
-(60, 22, 4, '40.00', '12.00', '25.00', '77.00'),
-(61, 22, 5, '35.00', '12.00', '20.00', '67.00'),
-(62, 23, 3, '35.00', '20.00', '30.00', '85.00'),
-(63, 23, 4, '32.00', '16.00', '25.00', '73.00'),
-(64, 23, 5, '30.00', '15.00', '25.00', '70.00'),
-(65, 24, 3, '45.00', '20.00', '30.00', '95.00'),
-(66, 24, 4, '40.00', '20.00', '20.00', '80.00'),
-(67, 24, 5, '40.00', '20.00', '15.00', '75.00'),
-(68, 25, 3, '40.00', '20.00', '35.00', '95.00'),
-(69, 25, 4, '35.00', '20.00', '30.00', '85.00'),
-(70, 25, 5, '40.00', '20.00', '40.00', '100.00');
+(71, 26, 3, '50.00', '20.00', '30.00', '100.00'),
+(72, 26, 4, '41.00', '19.00', '29.00', '89.00'),
+(73, 26, 5, '42.00', '18.00', '28.00', '88.00'),
+(74, 26, 8, '43.00', '20.00', '27.00', '90.00'),
+(75, 26, 9, '44.00', '19.00', '25.00', '88.00'),
+(76, 26, 10, '33.00', '20.00', '20.00', '73.00'),
+(77, 26, 16, '24.00', '10.00', '10.00', '44.00'),
+(78, 27, 3, '50.00', '20.00', '20.00', '90.00'),
+(79, 27, 4, '10.30', '30.00', '39.00', '79.30'),
+(80, 27, 5, '27.00', '23.00', '30.00', '80.00'),
+(81, 27, 8, '23.00', '34.00', '34.00', '91.00'),
+(82, 27, 9, '3.00', '34.00', '45.00', '82.00'),
+(83, 27, 10, '39.00', '5.00', '50.00', '94.00'),
+(84, 27, 16, '40.00', '10.00', '10.00', '60.00');
 
 -- --------------------------------------------------------
 
@@ -255,14 +254,86 @@ CREATE TABLE IF NOT EXISTS `detalletransacciones` (
   `IdMes` int(11) NOT NULL,
   `IdCicloEscolar` int(11) NOT NULL,
   `subTotal` decimal(20,2) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `detalletransacciones`
 --
 
 INSERT INTO `detalletransacciones` (`iddetalleTransaccion`, `idTransaccion`, `IdMes`, `IdCicloEscolar`, `subTotal`) VALUES
-(1, 1, 1, 1, '150.00');
+(1, 1, 1, 1, '150.00'),
+(2, 2, 2, 1, '250.00'),
+(3, 2, 3, 1, '250.00'),
+(4, 2, 4, 1, '250.00'),
+(5, 2, 5, 1, '250.00'),
+(6, 2, 6, 1, '250.00'),
+(7, 2, 7, 1, '250.00'),
+(8, 2, 8, 1, '250.00'),
+(9, 2, 9, 1, '250.00'),
+(10, 2, 10, 1, '250.00'),
+(14, 4, 1, 1, '150.00'),
+(15, 4, 2, 1, '250.00'),
+(16, 5, 1, 1, '150.00'),
+(17, 5, 2, 1, '250.00'),
+(18, 5, 3, 1, '250.00'),
+(19, 5, 4, 1, '250.00'),
+(20, 6, 1, 1, '150.00'),
+(21, 6, 2, 1, '250.00'),
+(22, 6, 3, 1, '250.00'),
+(23, 6, 4, 1, '250.00'),
+(24, 6, 5, 1, '250.00'),
+(25, 6, 6, 1, '250.00'),
+(26, 7, 1, 1, '150.00'),
+(27, 7, 2, 1, '250.00'),
+(28, 8, 1, 1, '150.00'),
+(29, 9, 1, 1, '150.00'),
+(30, 9, 2, 1, '250.00'),
+(31, 9, 3, 1, '250.00'),
+(32, 9, 4, 1, '250.00'),
+(33, 9, 5, 1, '250.00'),
+(34, 9, 6, 1, '250.00'),
+(35, 9, 7, 1, '250.00'),
+(36, 9, 8, 1, '250.00'),
+(37, 9, 9, 1, '250.00'),
+(38, 9, 10, 1, '250.00'),
+(39, 9, 11, 1, '250.00'),
+(40, 10, 1, 1, '150.00'),
+(41, 10, 2, 1, '250.00'),
+(42, 11, 3, 1, '250.00'),
+(43, 11, 4, 1, '250.00'),
+(44, 11, 5, 1, '250.00'),
+(45, 11, 6, 1, '250.00'),
+(46, 11, 7, 1, '250.00'),
+(47, 11, 8, 1, '250.00'),
+(48, 12, 1, 1, '150.00'),
+(49, 12, 2, 1, '250.00'),
+(50, 12, 3, 1, '250.00'),
+(51, 13, 4, 1, '250.00'),
+(52, 13, 5, 1, '250.00'),
+(53, 13, 6, 1, '250.00'),
+(54, 14, 7, 1, '250.00'),
+(55, 14, 8, 1, '250.00'),
+(56, 14, 9, 1, '250.00'),
+(57, 14, 10, 1, '250.00'),
+(58, 15, 1, 1, '150.00'),
+(59, 15, 2, 1, '250.00'),
+(60, 16, 3, 1, '250.00'),
+(61, 16, 4, 1, '250.00'),
+(62, 16, 5, 1, '250.00'),
+(63, 17, 6, 1, '250.00'),
+(64, 17, 7, 1, '250.00'),
+(65, 18, 1, 1, '150.00'),
+(66, 19, 2, 1, '250.00'),
+(67, 19, 3, 1, '250.00'),
+(68, 20, 1, 1, '150.00'),
+(69, 20, 2, 1, '250.00'),
+(70, 21, 9, 1, '250.00'),
+(71, 21, 10, 1, '250.00'),
+(72, 21, 11, 1, '250.00'),
+(73, 22, 3, 1, '250.00'),
+(74, 22, 4, 1, '250.00'),
+(75, 23, 11, 1, '250.00'),
+(76, 24, 7, 1, '250.00');
 
 -- --------------------------------------------------------
 
@@ -276,7 +347,7 @@ CREATE TABLE IF NOT EXISTS `encargados` (
   `domicilioEncargado` varchar(100) NOT NULL,
   `numeroContacto` varchar(8) NOT NULL,
   `emailContacto` varchar(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `encargados`
@@ -289,7 +360,8 @@ INSERT INTO `encargados` (`idEncargado`, `nombreEncargado`, `domicilioEncargado`
 (4, 'Alemán Mundo Marcial', 'Retalhuelu', '56897458', 'ya@gmail.com'),
 (5, 'Pascual Gerardo Alonso Ibarra', 'Canton Pamelita', '25232410', 'yano@gmail.com'),
 (6, 'Miguel Angel Burguete GarcIa', 'Retalhuelu', '25263214', 'jjj@gmail.com'),
-(7, 'Alejandro Casas Bastida', 'Retalhuelu', '48756952', 'ujma@gmail.com');
+(7, 'Alejandro Casas Bastida', 'Retalhuleu', '55856789', 'Ale@gmail.com'),
+(8, 'Carlos Gonzales', 'Reu', '57868542', 'notengo@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -325,7 +397,7 @@ CREATE TABLE IF NOT EXISTS `estudiantes` (
   `emailEstudiante` varchar(20) NOT NULL,
   `idEncargado` int(11) NOT NULL,
   `idEstado` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `estudiantes`
@@ -345,8 +417,11 @@ INSERT INTO `estudiantes` (`idEstudiante`, `numeroCarne`, `nombreEstudiante`, `d
 (16, 'maancaco-15-4568', 'Marco Antonio Cardenas Cornejo', 'Canton Ocosito', '25147896', 'uweo@gmail.com', 5, 1),
 (17, 'erfecafi-15-2581', 'Erick Fernando Cano Figueroa', 'Reu', '11223344', 's25s@gmail.com', 6, 1),
 (18, 'alcaba-15-2906', 'Alejandro Casas Bastida', 'Reu', '47856920', 'hhhfff2@gmailc.om', 7, 1),
-(19, 'alcaba-15-734', 'Alejandra Casas Bastida', 'Reu', '45123560', 'pola@gmail.com', 7, 1),
-(20, 'micaba-15-548', 'Milagro Casas Bastida', '8va ave 3-45 zona 3', '14002502', 'aklsi@gmail.com', 7, 1);
+(19, 'alcaba-15-734', 'Alejandra Casas Bastida', 'Retalhuleu', '45123560', 'pola@gmail.com', 7, 1),
+(20, 'micaba-15-548', 'Milagro Casas Bastida', '8va ave 3-45 zona 3', '14002502', 'aklsi@gmail.com', 7, 1),
+(21, 'alcaba-15-3005', 'Alex Casas Bastida', 'Retalhuleu', '54789658', 'asd@gmail.com', 7, 1),
+(22, 'kaangoca-15-2001', 'Karla Antonia Gonzales Castillo', 'Reu', '88869925', 'aaabb@gmail.com', 8, 1),
+(23, 'felu-15-4443', 'Fernando Luez', 'Retalhuleu', '12893278', 'Umg@gmail.com', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -377,7 +452,7 @@ INSERT INTO `grado` (`idGrado`, `Descripcion`) VALUES
 CREATE TABLE IF NOT EXISTS `mes` (
   `idMes` int(11) NOT NULL,
   `Descripcion` varchar(45) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `mes`
@@ -394,9 +469,7 @@ INSERT INTO `mes` (`idMes`, `Descripcion`) VALUES
 (8, 'Julio'),
 (9, 'Agosto'),
 (10, 'Septiembre'),
-(11, 'Octubre'),
-(12, 'Noviembre'),
-(13, 'Diciembre');
+(11, 'Octubre');
 
 -- --------------------------------------------------------
 
@@ -453,19 +526,15 @@ CREATE TABLE IF NOT EXISTS `Ratings` (
   `idBimester` int(11) NOT NULL,
   `idAssignCourses` int(11) NOT NULL,
   `idAssignSections` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `Ratings`
 --
 
 INSERT INTO `Ratings` (`idRatings`, `idBimester`, `idAssignCourses`, `idAssignSections`) VALUES
-(20, 1, 2, 1),
-(21, 1, 3, 1),
-(22, 1, 1, 1),
-(23, 1, 6, 1),
-(24, 1, 7, 1),
-(25, 2, 1, 1);
+(26, 1, 1, 1),
+(27, 1, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -476,7 +545,7 @@ INSERT INTO `Ratings` (`idRatings`, `idBimester`, `idAssignCourses`, `idAssignSe
 CREATE TABLE IF NOT EXISTS `Seccion` (
   `idSeccion` int(11) NOT NULL,
   `Descripcion` varchar(145) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `Seccion`
@@ -484,7 +553,8 @@ CREATE TABLE IF NOT EXISTS `Seccion` (
 
 INSERT INTO `Seccion` (`idSeccion`, `Descripcion`) VALUES
 (1, 'A'),
-(2, 'B');
+(2, 'B'),
+(3, 'C');
 
 -- --------------------------------------------------------
 
@@ -539,14 +609,37 @@ CREATE TABLE IF NOT EXISTS `transacciones` (
   `IdNivelAcademico` int(11) NOT NULL,
   `fechaTransaccion` date NOT NULL,
   `montoTotal` decimal(20,2) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `transacciones`
 --
 
 INSERT INTO `transacciones` (`idTransaccion`, `idEstudiante`, `IdTipoPago`, `IdNivelAcademico`, `fechaTransaccion`, `montoTotal`) VALUES
-(1, 3, 1, 1, '2015-11-05', '150.00');
+(1, 3, 1, 1, '2015-11-05', '150.00'),
+(2, 3, 1, 1, '2015-11-09', '2500.00'),
+(3, 3, 1, 1, '2015-11-09', '250.00'),
+(4, 19, 2, 1, '2015-11-06', '400.00'),
+(5, 18, 2, 1, '2015-11-06', '900.00'),
+(6, 4, 1, 1, '2015-11-09', '1400.00'),
+(7, 21, 2, 1, '2015-11-03', '400.00'),
+(8, 17, 1, 1, '2015-11-08', '150.00'),
+(9, 9, 1, 1, '2015-11-02', '2650.00'),
+(10, 1, 2, 1, '2015-08-19', '400.00'),
+(11, 1, 1, 1, '2015-09-29', '1500.00'),
+(12, 5, 1, 1, '2015-01-02', '650.00'),
+(13, 5, 2, 1, '2015-04-11', '750.00'),
+(14, 5, 1, 1, '2015-07-03', '1000.00'),
+(15, 6, 1, 1, '2015-01-12', '400.00'),
+(16, 6, 2, 1, '2015-03-28', '750.00'),
+(17, 6, 1, 1, '2015-07-06', '500.00'),
+(18, 16, 1, 1, '2015-01-06', '150.00'),
+(19, 16, 1, 1, '2015-02-04', '500.00'),
+(20, 8, 1, 1, '2015-01-04', '400.00'),
+(21, 1, 1, 1, '2015-09-12', '750.00'),
+(22, 19, 1, 1, '2015-11-04', '500.00'),
+(23, 3, 1, 1, '2015-11-04', '250.00'),
+(24, 4, 1, 1, '2015-11-12', '250.00');
 
 -- --------------------------------------------------------
 
@@ -561,7 +654,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `IdTipoUsuario` int(11) NOT NULL,
   `IdEstudiante` int(11) DEFAULT NULL,
   `idCatedratico` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -591,7 +684,10 @@ INSERT INTO `usuarios` (`idUsuarios`, `usuario`, `contraseña`, `IdTipoUsuario`,
 (21, 'efcf-250839', 'study83', 4, 17, NULL),
 (22, 'acb-550821', 'study94', 4, 18, NULL),
 (23, 'acb-590816', 'study20', 4, 19, NULL),
-(24, 'mcb-920813', 'study94', 4, 20, NULL);
+(24, 'mcb-920813', 'study94', 4, 20, NULL),
+(25, 'acb-530957', 'study62', 4, 21, NULL),
+(26, 'kagc-870934', 'study100', 4, 22, NULL),
+(27, 'fl-941106', 'study2', 4, 23, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -762,12 +858,12 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `asignacioncursos`
 --
 ALTER TABLE `asignacioncursos`
-  MODIFY `idAsignacionCursos` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `idAsignacionCursos` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `asignaciongrados`
 --
 ALTER TABLE `asignaciongrados`
-  MODIFY `idAsignacionGrados` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+  MODIFY `idAsignacionGrados` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT de la tabla `AsignacionSeccion`
 --
@@ -797,17 +893,17 @@ ALTER TABLE `cursos`
 -- AUTO_INCREMENT de la tabla `DetailedRatings`
 --
 ALTER TABLE `DetailedRatings`
-  MODIFY `idDetailedRatings` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=71;
+  MODIFY `idDetailedRatings` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=85;
 --
 -- AUTO_INCREMENT de la tabla `detalletransacciones`
 --
 ALTER TABLE `detalletransacciones`
-  MODIFY `iddetalleTransaccion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `iddetalleTransaccion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=77;
 --
 -- AUTO_INCREMENT de la tabla `encargados`
 --
 ALTER TABLE `encargados`
-  MODIFY `idEncargado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `idEncargado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `estados`
 --
@@ -817,7 +913,7 @@ ALTER TABLE `estados`
 -- AUTO_INCREMENT de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
-  MODIFY `idEstudiante` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+  MODIFY `idEstudiante` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT de la tabla `grado`
 --
@@ -827,7 +923,7 @@ ALTER TABLE `grado`
 -- AUTO_INCREMENT de la tabla `mes`
 --
 ALTER TABLE `mes`
-  MODIFY `idMes` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `idMes` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `nivelesacademicos`
 --
@@ -842,12 +938,12 @@ ALTER TABLE `profesiones`
 -- AUTO_INCREMENT de la tabla `Ratings`
 --
 ALTER TABLE `Ratings`
-  MODIFY `idRatings` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
+  MODIFY `idRatings` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT de la tabla `Seccion`
 --
 ALTER TABLE `Seccion`
-  MODIFY `idSeccion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `idSeccion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `tipopago`
 --
@@ -862,12 +958,12 @@ ALTER TABLE `tipousuario`
 -- AUTO_INCREMENT de la tabla `transacciones`
 --
 ALTER TABLE `transacciones`
-  MODIFY `idTransaccion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `idTransaccion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuarios` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+  MODIFY `idUsuarios` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
 --
 -- Restricciones para tablas volcadas
 --
